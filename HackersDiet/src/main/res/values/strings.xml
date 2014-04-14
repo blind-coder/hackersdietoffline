@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HackersDiet</string>
+    <string name="title_month_detail">Month Detail</string>
+    <string name="downloadingFromHackDietOnline">Downloading from Hackers Diet Online</string>
+    <string name="uploadingToHackDietOnline">Uploading to Hackers Diet Online</string>
+    <string name="errorUsernameIsEmpty">Error: Username is empty!</string>
+    <string name="errorPasswordIsEmpty">Error: Password is empty!</string>
+    <string name="reallySyncFromHDO">Really sync from HDO? This will overwrite your local data!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="reallySyncToHDO">Really sync to the Hackers Diet Online? This will overwrite all your data there!</string>
+    <string name="loginInProgress">Contacting the Hackers Diet Online</string>
+    <string name="loginSuccessful">Login successful!</string>
+    <string name="errorLoginFailed">Login failed! Incorrect credentials?</string>
+    <string name="downloadFromHDOSuccessful">Successfully downloaded data from the Hackers Diet Online!</string>
+    <string name="requestingDataFromHDO">Downloading data from the Hackers Diet Online</string>
+    <string name="errorCouldNotReadData">Could not read data from HDO!</string>
+    <string name="uploadToHDOSuccessful">Successfully uploaded data to the Hackers Diet Online!</string>
+    <string name="sendigDataToHDO">Uploading data to the Hackers Diet Online</string>
+    <string name="settings">Settings</string>
+    <string name="menuSave">Save</string>
+    <string name="about">About</string>
+    <string name="preferences">Preferences</string>
+    <string name="prefshelptext">If you want to sync your data to the Hackers Diet Online, enter your credentials here:</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="syncup">Sync to HD Online</string>
+    <string name="syncdown">Sync from HD Online</string>
+    <string name="dummyTrend">Trend</string>
+    <string name="dummyVar">Var</string>
+    <string name="weight">Weight</string>
+    <string name="rung">Rung</string>
+    <string name="empty"></string>
+    <string name="comment">Comment</string>
+    <string name="saveFirst">Do you want to save before leaving the Hackers Diet?</string>
+    <string name="dontQuit">Don\'t quit</string>
+    <string name="aboutHackDietOffline">The Hackers Diet Offline, Copyright (C) 2014 Benjamin Schieder\nThis program comes with ABSOLUTELY NO WARRANTY! For details see http://www.crash-override.net</string>
+    <string name="thanks">Thanks!</string>
+    <string name="HideAds">Hide Ads</string>
+    <string name="Cheatcode">Enter Cheatcode</string>
+    <string name="ShowAds">Show ads</string>
+
+    <color name="weightLoss">#00ff00</color>
+    <color name="weightGain">#ff0000</color>
+    <color name="weightConstant">#000000</color>
+    <color name="backgroundColor">#3a81b8</color>
+
+</resources>
