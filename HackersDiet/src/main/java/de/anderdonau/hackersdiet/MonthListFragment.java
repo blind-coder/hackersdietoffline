@@ -1,18 +1,14 @@
 package de.anderdonau.hackersdiet;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.Date;
-
-import de.anderdonau.hackersdiet.MonthListContent;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * A list fragment representing a list of Months. This fragment
@@ -24,7 +20,6 @@ import de.anderdonau.hackersdiet.MonthListContent;
  * interface.
  */
 public class MonthListFragment extends ListFragment {
-	MonthListContent mContent = null;
     int id = 0;
 
 	/**
@@ -76,15 +71,18 @@ public class MonthListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        weightData mWeightData = null;
-        weightDataDay mPtr = null;
+        weightData mWeightData;
+        weightDataDay mPtr;
         mWeightData = MonthListActivity.getmWeightData();
-        Date mToday = new Date();
+        Calendar mToday = new GregorianCalendar();
 
 		if (MonthListContent.ITEMS.isEmpty()){
 			int lastyear = 1970;
-			int lastmonth = 01;
-			for (mPtr = mWeightData.allData; mPtr.next != null; mPtr = mPtr.next);
+			int lastmonth = 1;
+            mPtr = mWeightData.allData;
+            while (mPtr.next != null){
+                mPtr = mPtr.next;
+            }
 			for (; mPtr != null; mPtr = mPtr.prev){
 				// mPtr.wholeDate = year*10000 + month * 100 + d;
 				if (mPtr.year != lastyear || mPtr.month != lastmonth){
@@ -96,15 +94,17 @@ public class MonthListFragment extends ListFragment {
 				}
 			}
 		}
-        for (mPtr = mWeightData.allData; mPtr.next != null; mPtr = mPtr.next);
-        if ((mToday.getYear()+1900) *10000 + (mToday.getMonth()+1)*100 + mToday.getDate() > mPtr.wholedate){
+        mPtr = mWeightData.allData;
+        while (mPtr.next != null){
+            mPtr = mPtr.next;
+        }
+        if ((mToday.get(Calendar.YEAR)+1900) * 10000 + (mToday.get(Calendar.MONTH)+1)*100 + mToday.get(Calendar.DAY_OF_MONTH) > mPtr.wholedate){
             id++;
             MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
-                    String.format("%4d/%02d", mToday.getYear()+1900, mToday.getMonth()+1),
-                    mToday.getYear()+1900, mToday.getMonth()+1));
+                    String.format("%4d/%02d", mToday.get(Calendar.YEAR)+1900, mToday.get(Calendar.MONTH)+1),
+                    mToday.get(Calendar.YEAR)+1900, mToday.get(Calendar.MONTH)+1));
         }
 
-		// TODO: replace with a real list adapter.
 		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
 					getActivity(),
 					android.R.layout.simple_list_item_activated_1,
@@ -117,10 +117,9 @@ public class MonthListFragment extends ListFragment {
 		super.onViewCreated(view, savedInstanceState);
 
 		// Restore the previously serialized activated item position.
-		if (savedInstanceState != null
-				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
-			setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
-				}
+		if (savedInstanceState != null && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
+            setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
+        }
 	}
 
 	@Override
@@ -139,7 +138,6 @@ public class MonthListFragment extends ListFragment {
 	public void onDetach() {
 		super.onDetach();
 
-		// Reset the active callbacks interface to the dummy implementation.
 		mCallbacks = sMonthCallbacks;
 	}
 
@@ -149,7 +147,7 @@ public class MonthListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(mContent.ITEMS.get(position).id);
+		mCallbacks.onItemSelected(MonthListContent.ITEMS.get(position).id);
 	}
 
 	@Override
