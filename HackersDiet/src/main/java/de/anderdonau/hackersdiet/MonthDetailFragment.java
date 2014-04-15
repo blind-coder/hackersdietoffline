@@ -56,7 +56,7 @@ public class MonthDetailFragment extends Fragment {
 		SimpleDateFormat sdfDay = new SimpleDateFormat("EEEE, d. MMMM yyyy");
 
 		for (int d = 1; d <= 31; d++){
-			if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR)+1900)){
+			if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR))){
 				/**
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */
@@ -77,7 +77,7 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].comment.setVisibility(View.VISIBLE);
 				mViewCache[d].textDay.setVisibility(View.VISIBLE);
 			}
-			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR)+1900)){
+			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR))){
 				mToday.set(Calendar.DAY_OF_MONTH, d);
 				mViewCache[d].textDay.setText(sdfDay.format(mToday));
 			}
@@ -199,7 +199,7 @@ public class MonthDetailFragment extends Fragment {
                             Log.d("afterTextChanged", "adding because mCanSave is false");
 							return;
 						}
-						mWeight.add(mToday.get(Calendar.YEAR)+1900, mToday.get(Calendar.MONTH)+1, dayOfMonth,
+						mWeight.add(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1, dayOfMonth,
 								mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
 								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
 						MonthListActivity.mChanged = true;
@@ -214,7 +214,7 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].rung.addTextChangedListener(onChange);
 				mViewCache[d].comment.addTextChangedListener(onChange);
 
-				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR)+1900 == mItem.year && mToday.get(Calendar.MONTH)+1 == mItem.month){
+				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR) == mItem.year && mToday.get(Calendar.MONTH)+1 == mItem.month){
 					mViewCache[d].weight.requestFocus();
                 }
 			}
