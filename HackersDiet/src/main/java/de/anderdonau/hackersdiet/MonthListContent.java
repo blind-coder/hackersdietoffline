@@ -14,17 +14,14 @@ import de.anderdonau.hackersdiet.weightDataDay;
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class MonthListContent {
-	/**
-	 * An array of sample items.
-	 */
-	public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+	public static List<MonthItem> ITEMS = new ArrayList<MonthItem>();
 
 	/**
 	 * A map of sample items, by ID.
 	 */
-	public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
+	public static Map<String, MonthItem> ITEM_MAP = new HashMap<String, MonthItem>();
 
-	public static void addItem(DummyItem item) {
+	public static void addItem(MonthItem item) {
 		ITEMS.add(item);
 		ITEM_MAP.put(item.id, item);
 	}
@@ -32,13 +29,13 @@ public class MonthListContent {
 	/**
 	 * A item representing a piece of content.
 	 */
-	public static class DummyItem {
+	public static class MonthItem {
 		public String id;
 		public String content;
         public int year;
         public int month;
 
-		public DummyItem(String id, String content, int year, int month) {
+		public MonthItem(String id, String content, int year, int month) {
 			this.id = id;
 			this.content = content;
             this.year = year;

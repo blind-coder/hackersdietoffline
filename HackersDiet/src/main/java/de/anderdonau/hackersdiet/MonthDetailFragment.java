@@ -36,7 +36,7 @@ public class MonthDetailFragment extends Fragment {
 	boolean mCanSave = false;
 	boolean viewCachePopulated = false;
 	public static final String ARG_ITEM_ID = "item_id";
-	private MonthListContent.DummyItem mItem;
+	private MonthListContent.MonthItem mItem;
 	viewCache[] mViewCache = new viewCache[32]; // 0 is left empty, saves subtracting 1 every time
 	weightData mWeight = null;
 	weightDataDay mPtr = null;

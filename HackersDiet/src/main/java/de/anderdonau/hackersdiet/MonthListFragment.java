@@ -90,7 +90,7 @@ public class MonthListFragment extends ListFragment {
 				if (mPtr.year != lastyear || mPtr.month != lastmonth){
 					id++;
 					//Log.d("MLFragment.onCreate", String.format("%d", mPtr.wholedate));
-					MonthListContent.addItem (new MonthListContent.DummyItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
+					MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
 					lastyear = mPtr.year;
 					lastmonth = mPtr.month;
 				}
@@ -99,13 +99,13 @@ public class MonthListFragment extends ListFragment {
         for (mPtr = mWeightData.allData; mPtr.next != null; mPtr = mPtr.next);
         if ((mToday.getYear()+1900) *10000 + (mToday.getMonth()+1)*100 + mToday.getDate() > mPtr.wholedate){
             id++;
-            MonthListContent.addItem (new MonthListContent.DummyItem(String.format("%d", id),
+            MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
                     String.format("%4d/%02d", mToday.getYear()+1900, mToday.getMonth()+1),
                     mToday.getYear()+1900, mToday.getMonth()+1));
         }
 
 		// TODO: replace with a real list adapter.
-		setListAdapter(new ArrayAdapter<MonthListContent.DummyItem>(
+		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
 					getActivity(),
 					android.R.layout.simple_list_item_activated_1,
 					android.R.id.text1,
