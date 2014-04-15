@@ -11,8 +11,10 @@ public class MonthListContent {
 	public static Map<String, MonthItem> ITEM_MAP = new HashMap<String, MonthItem>();
 
 	public static void addItem(MonthItem item) {
-		ITEMS.add(item);
-		ITEM_MAP.put(item.id, item);
+        if (!ITEM_MAP.containsKey(item.id)){
+            ITEMS.add(item);
+            ITEM_MAP.put(item.id, item);
+        }
 	}
 
 	public static class MonthItem {
