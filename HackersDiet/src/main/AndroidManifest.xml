@@ -33,6 +33,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.anderdonau.hackersdiet.MonthListActivity" />
         </activity>
+
+        <activity
+            android:name="de.anderdonau.hackersdiet.ExcerciseListActivity"
+            android:label="@string/Excercise"
+            android:parentActivityName=".MonthListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.anderdonau.de.hackersdiet.MonthListActivity" />
+        </activity>
+        <activity
+            android:name="de.anderdonau.hackersdiet.ExcerciseDetailActivity"
+            android:label="@string/Excercise"
+            android:parentActivityName=".ExcerciseListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.anderdonau.hackersdiet.ExcerciseListActivity" />
+        </activity>
+
         <activity android:name="Prefs" android:label="@string/preferences">
         </activity>
         <activity android:name="com.google.android.gms.ads.AdActivity"

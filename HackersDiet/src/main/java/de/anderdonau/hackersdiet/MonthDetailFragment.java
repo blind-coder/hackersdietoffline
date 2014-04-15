@@ -79,7 +79,7 @@ public class MonthDetailFragment extends Fragment {
 			}
 			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR))){
 				mToday.set(Calendar.DAY_OF_MONTH, d);
-				mViewCache[d].textDay.setText(sdfDay.format(mToday));
+				mViewCache[d].textDay.setText(sdfDay.format(mToday.getTime()));
 			}
 		}
 
@@ -129,7 +129,7 @@ public class MonthDetailFragment extends Fragment {
 			mViewCache[d].comment.setText(mPtr.comment);
 
             tmpDate.set(Calendar.DAY_OF_MONTH, d);
-            mViewCache[d].textDay.setText(sdfDay.format(tmpDate));
+            mViewCache[d].textDay.setText(sdfDay.format(tmpDate.getTime()));
 
         }
 		mCanSave = true;

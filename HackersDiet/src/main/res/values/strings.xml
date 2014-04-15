@@ -41,6 +41,12 @@
     <string name="HideAds">Hide Ads</string>
     <string name="Cheatcode">Enter Cheatcode</string>
     <string name="ShowAds">Show ads</string>
+    <string name="Excercise">Excercise</string>
+    <string name="excerciseBends">Bends:</string>
+    <string name="excerciseSitUps">Sit ups:</string>
+    <string name="excerciseLegLifts">Leg lifts:</string>
+    <string name="excercisePushups">Push ups:</string>
+    <string name="excerciseSteps">Run/Jumps:</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>

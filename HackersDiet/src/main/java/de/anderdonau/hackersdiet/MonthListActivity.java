@@ -143,8 +143,8 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.settings:
-				Intent intent = new Intent(this, Prefs.class);
-				startActivity(intent);
+				Intent settingsIntent = new Intent(this, Prefs.class);
+				startActivity(settingsIntent);
 				return true;
 			case R.id.save:
 				mWeightData.saveData();
@@ -161,6 +161,10 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 					});
 				about.create().show();
 				return true;
+            case R.id.menuExcercise:
+                Intent excerciseIntent = new Intent(this, ExcerciseListActivity.class);
+                startActivity(excerciseIntent);
+                return true;
 		}
 		return false;
 	}

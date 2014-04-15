@@ -9,11 +9,11 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context="de.anderdonau.hackersdiet.MonthListActivity"
+    tools:context="de.anderdonau.hackersdiet.ExcerciseListActivity"
     android:id="@+id/mainLayout">
 
     <!--
-    This layout is a two-pane layout for the Months
+    This layout is a two-pane layout for the Excercises
     master/detail flow. See res/values-large/refs.xml and
     res/values-sw600dp/refs.xml for an example of layout aliases
     that replace the single-pane version of the layout with
@@ -32,18 +32,18 @@
         <fragment
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:id="@+id/month_list"
-            android:name="de.anderdonau.hackersdiet.MonthListFragment"
+            android:id="@+id/excercise_list"
+            android:name="de.anderdonau.hackersdiet.ExcerciseListFragment"
             tools:layout="@android:layout/list_content" />
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/month_detail_container"
+        android:id="@+id/excercise_detail_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3">
 <!--
-        <com.google.android.gms.ads.AdView android:id="@+id/adViewExcercise"
+        <com.google.android.gms.ads.AdView android:id="@+id/adView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             ads:adUnitId="ca-app-pub-2751649723763471/5257955341"
