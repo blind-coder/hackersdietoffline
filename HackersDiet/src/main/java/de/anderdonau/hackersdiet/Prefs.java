@@ -77,12 +77,12 @@ public class Prefs extends Activity {
 	};
 
 	public void loadData(String username, String password) {
-		pBar = ProgressDialog.show((Context)this, "", getResources().getString(R.string.downloadingFromHackDietOnline), true);
+		pBar = ProgressDialog.show(this, "", getResources().getString(R.string.downloadingFromHackDietOnline), true);
 		LoadThread t = new LoadThread(handler, username, password);
 		t.start();
 	}
 	public void saveData(String username, String password) {
-		pBar = ProgressDialog.show((Context)this, "", getResources().getString(R.string.uploadingToHackDietOnline), true);
+		pBar = ProgressDialog.show(this, "", getResources().getString(R.string.uploadingToHackDietOnline), true);
 		SaveThread t = new SaveThread(handler, username, password);
 		t.start();
 	}
@@ -202,7 +202,6 @@ public class Prefs extends Activity {
 
     public void buttonToggleAds(View view){
         SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-        //boolean hideads = settings.getBoolean("hideads", false);
         ToggleButton btnHideAds = (ToggleButton) view;
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("hideads", btnHideAds.isChecked());
@@ -262,23 +261,23 @@ public class Prefs extends Activity {
 		public String getHackDietOnlineSession(String username, String password){
 			sendToast(R.string.loginInProgress);
 			try {
-				String rawData = "HDiet_username=" + URLEncoder.encode(username);
-				rawData += "&HDiet_password=" + URLEncoder.encode(password);
+				String rawData = "HDiet_username=" + URLEncoder.encode(username, "UTF-8");
+				rawData += "&HDiet_password=" + URLEncoder.encode(password, "UTF-8");
 				rawData += "&q=validate_user";
-				rawData += "&login=" + URLEncoder.encode(" Sign In ");
+				rawData += "&login=" + URLEncoder.encode(" Sign In ", "UTF-8");
 
 				HttpsURLConnection conn = POST(rawData);
 
-				Log.i("retcode", "Return code: "+conn.getResponseCode());
+				Log.d("retcode", "Return code: "+conn.getResponseCode());
 				// Get Response
 				InputStreamReader isr = new InputStreamReader(conn.getInputStream());
 				BufferedReader rd = new BufferedReader(isr);
 
 				String line;
 				while ((line = rd.readLine()) != null) {
-					if (line.indexOf("name=\"s\"") > -1){
+					if (line.contains("name=\"s\"")){
 						Pattern r = Pattern.compile("value=\"(.*)\"");
-						Matcher m = r.matcher(line.toString());
+						Matcher m = r.matcher(line);
 						if (m.find()){
 							String session = m.group(1);
 							rd.close();
@@ -336,7 +335,9 @@ public class Prefs extends Activity {
 						FileOutputStream fos = openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
 						fos.write(data.getBytes());
 						fos.close();
-					} catch (Exception e) { }
+					} catch (Exception e) {
+                        e.printStackTrace();
+                    }
 					sendToast(R.string.downloadFromHDOSuccessful);
 				}
 			}
@@ -421,7 +422,7 @@ public class Prefs extends Activity {
 				rd.close();
 				fin.close();
 				POSTDATA += "\n--" + boundary + "--\n";
-				String rawData = "q=csv_import_data&overwrite=y&s="+session+"&file="+URLEncoder.encode(POSTDATA);
+				String rawData = "q=csv_import_data&overwrite=y&s="+session+"&file="+URLEncoder.encode(POSTDATA, "UTF-8");
 
 				HttpsURLConnection conn = POST(rawData);
 

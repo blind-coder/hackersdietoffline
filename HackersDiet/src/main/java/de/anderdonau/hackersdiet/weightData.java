@@ -18,6 +18,9 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
+import android.content.Context;
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,23 +28,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-
 public class weightData {
 	public weightDataDay allData;
 	private weightDataDay ptr;
 	private Context mContext;
 
-	final Handler handler = new Handler() {
+/*	final Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			//Log.d("Handler", "Message received");
 		}
 	};
+*/
 
 	public weightData(){
 		mContext = MonthListActivity.getAppContext();
@@ -62,49 +59,53 @@ public class weightData {
 		//LoadThread t = new LoadThread(handler);
 		//t.start();
 	}
-	public void saveData(boolean exit) {
+	public void saveData() {
 		try {
 			weightDataDay mPtr = allData;
-			for (;mPtr.prev != null; mPtr = mPtr.prev);
+            while (mPtr.prev != null){
+                mPtr = mPtr.prev;
+            }
 			FileOutputStream fos = mContext.openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
 			for (;mPtr != null; mPtr = mPtr.next){
 				fos.write(mPtr.toString().getBytes());
 				fos.write("\n".getBytes());
 			}
 			fos.close();
-		} catch (FileNotFoundException e){ } catch (IOException e) { }
+		} catch (Exception e){
+            e.printStackTrace();
+        }
 		//SaveThread t = new SaveThread(handler);
 		//t.start();
 	}
 
-	public boolean isleapyear(int x){
-		if (x % 400 == 0){
+	public boolean isleapyear(int year){
+		if (year % 400 == 0){
 			return true;
 		}
-		if (x % 100 == 0){
+		if (year % 100 == 0){
 			return false;
 		}
-		if (x % 4 == 0){
+		if (year % 4 == 0){
 			return true;
 		}
 		return false;
 	}
-	public int daysinmonth(int m, int y) {
-		if (m > 7){
-			if (m % 2 == 0){
+	public int daysinmonth(int month, int year) {
+		if (month > 7){
+			if (month % 2 == 0){
 				return 31;
 			} else {
 				return 30;
 			}
 		} else {
-			if (m == 2){
-				if (isleapyear(y)){
+			if (month == 2){
+				if (isleapyear(year)){
 					return 29;
 				} else {
 					return 28;
 				}
 			}
-			if ( m % 2 == 1){
+			if (month % 2 == 1){
 				return 31;
 			} else {
 				return 30;
@@ -145,11 +146,7 @@ public class weightData {
 			return;
 		}
 		if (day > daysinmonth(month, year)){
-			//Log.d("weightData.add", "Illegal date: "+String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));
 			return;
-		} else {
-			//Log.d("weightData.add", "Legal date: "+String.valueOf(year)+"-"+String.valueOf(month)+"-"+String.valueOf(day));
-			//Log.d("weightData.add", "Max days: "+String.valueOf(daysinmonth(month, year)));
 		}
 		int wholedate = year*10000 + month*100 + day;
 		double weight = Double.parseDouble("0"+elements[1]);
@@ -165,7 +162,6 @@ public class weightData {
 		}
 		if (ptr.prev == null && ptr.next == null){ // only one entry
 			if (ptr.comment.equals("SPECIAL")){ // and even an empty one
-				//Log.d("weightData.add", "First entry!");
 				if (weight == 0){
 					return;
 				}
@@ -182,45 +178,32 @@ public class weightData {
 				return;
 			}
 		}
-		//Log.d("weightData.add", "New entry: "+String.valueOf(wholedate));
 		if (ptr.wholedate > wholedate){
-			//Log.d("weightData.add", "ptr is too far ("+String.valueOf(ptr.wholedate)+" > "+String.valueOf(wholedate)+")");
 			while (ptr.wholedate > wholedate && ptr.prev != null){
 				ptr = ptr.prev;
-				//Log.d("weightData.add", "Rewinding: "+String.valueOf(ptr.wholedate));
 			}
 		}
 		if (ptr.wholedate != wholedate){
-			//Log.d("weightData.add", "Searching for "+String.valueOf(wholedate));
 			while (ptr.wholedate < wholedate && ptr.next != null){
 				ptr = ptr.next;
-				//Log.d("weightData.add", "Forwarding: "+String.valueOf(ptr.wholedate));
 			}
 		}
 		if (ptr.wholedate != wholedate){
-			//Log.d("weightData.add", "End of data reached. Adding empty values after "+String.valueOf(ptr.wholedate));
 			while (ptr.wholedate < wholedate){
 				int nyear; int nmonth; int nday;
 				int nwholedate;
 				nyear = ptr.year;
 				nmonth = ptr.month;
 				nday = ptr.day + 1;
-				nwholedate = nyear*10000 + nmonth*100 + nday;
-				//Log.d("weightData.add", "Checking validity of date "+String.valueOf(nwholedate));
 				if (nday > daysinmonth(nmonth, nyear)){
-					//Log.d("weightData.add", "End of month found");
 					nday = 1;
 					nmonth += 1;
 					if (nmonth > 12){
-						//Log.d("weightData.add", "End of year found");
 						nyear += 1;
 						nmonth = 1;
 					}
-					nwholedate = nyear*10000 + nmonth*100 + nday;
-					//Log.d("weightData.add", "Overflowed to "+String.valueOf(nwholedate));
 				}
 				nwholedate = nyear*10000 + nmonth*100 + nday;
-				//Log.d("weightData.add", "Adding empty: "+String.valueOf(nwholedate));
 
 				ptr.next = new weightDataDay();
 				ptr.next.prev = ptr;
@@ -234,7 +217,6 @@ public class weightData {
 				ptr.var = 0.0f;
 			}
 		}
-		//Log.d("weightData.add", "Found entry "+String.valueOf(wholedate));
 		ptr.rung = rung;
 		ptr.flag = flag;
 		ptr.comment = comment;

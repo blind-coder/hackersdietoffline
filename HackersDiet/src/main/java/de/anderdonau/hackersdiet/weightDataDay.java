@@ -18,7 +18,8 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class weightDataDay {
 	public int year;
@@ -34,10 +35,10 @@ public class weightDataDay {
 	public weightDataDay next;
 	public weightDataDay prev;
 	public weightDataDay(){
-		Date d = new Date();
-		day = d.getDate();
-		month = d.getMonth() + 1;
-		year = d.getYear() + 1900;
+		Calendar d = new GregorianCalendar();
+		day = d.get(Calendar.DAY_OF_MONTH);
+		month = d.get(Calendar.MONTH) + 1;
+		year = d.get(Calendar.YEAR) + 1900;
 		wholedate = year*10000 + month*100 + day;
 		weight = 0.0f;
 		rung = 0;

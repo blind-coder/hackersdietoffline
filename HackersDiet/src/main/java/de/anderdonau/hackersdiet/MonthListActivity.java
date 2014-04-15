@@ -147,7 +147,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 				startActivity(intent);
 				return true;
 			case R.id.save:
-				mWeightData.saveData(false);
+				mWeightData.saveData();
 				mChanged=false;
 				return true;
 			case R.id.menuAbout:
@@ -177,7 +177,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 			.setCancelable(false)
 			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
-					mWeightData.saveData(true);
+					mWeightData.saveData();
 					dialog.cancel();
 					finish();
 				}

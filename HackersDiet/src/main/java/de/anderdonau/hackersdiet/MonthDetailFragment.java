@@ -1,16 +1,11 @@
 package de.anderdonau.hackersdiet;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -20,9 +15,8 @@ import android.widget.TextView;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import de.anderdonau.hackersdiet.MonthListContent;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * A fragment representing a single Month detail screen.
@@ -31,7 +25,7 @@ import de.anderdonau.hackersdiet.MonthListContent;
  * on handsets.
  */
 public class MonthDetailFragment extends Fragment {
-	Date mToday = null;
+	Calendar mToday;
 	View rootView = null;
 	boolean mCanSave = false;
 	boolean viewCachePopulated = false;
@@ -46,7 +40,7 @@ public class MonthDetailFragment extends Fragment {
 	 */
 	public int getIdByName(String name){
 		Class res = R.id.class;
-		int id = -1;
+		int id;
 		try {
 			Field field = res.getField(name);
 			id = field.getInt(null);
@@ -62,7 +56,7 @@ public class MonthDetailFragment extends Fragment {
 		SimpleDateFormat sdfDay = new SimpleDateFormat("EEEE, d. MMMM yyyy");
 
 		for (int d = 1; d <= 31; d++){
-			if (d > 28 && d > mWeight.daysinmonth(mToday.getMonth()+1, mToday.getYear()+1900)){
+			if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR)+1900)){
 				/**
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */
@@ -83,8 +77,8 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].comment.setVisibility(View.VISIBLE);
 				mViewCache[d].textDay.setVisibility(View.VISIBLE);
 			}
-			if (d <= mWeight.daysinmonth(mToday.getMonth()+1, mToday.getYear()+1900)){
-				mToday.setDate(d);
+			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR)+1900)){
+				mToday.set(Calendar.DAY_OF_MONTH, d);
 				mViewCache[d].textDay.setText(sdfDay.format(mToday));
 			}
 		}
@@ -93,9 +87,7 @@ public class MonthDetailFragment extends Fragment {
 		int month         = mItem.month;
 		int wholedate     = year*10000 + month*100 + 1;
 		int wholedatelast = year*10000 + month*100 + mWeight.daysinmonth(month, year);
-        Date tmpDate = new Date();
-        tmpDate.setYear(year-1900);
-        tmpDate.setMonth(month-1);
+        Calendar tmpDate  = new GregorianCalendar(year-1900, month-1, 1);
 
 		mPtr = mWeight.allData;
 
@@ -136,7 +128,7 @@ public class MonthDetailFragment extends Fragment {
 			mViewCache[d].flag.setChecked(mPtr.flag);
 			mViewCache[d].comment.setText(mPtr.comment);
 
-            tmpDate.setDate(d);
+            tmpDate.set(Calendar.DAY_OF_MONTH, d);
             mViewCache[d].textDay.setText(sdfDay.format(tmpDate));
 
         }
@@ -158,7 +150,7 @@ public class MonthDetailFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.fragment_month_detail, container, false);
 
-		mToday = new Date();
+		mToday = new GregorianCalendar();
 		mWeight = MonthListActivity.getmWeightData();
 		mPtr = mWeight.allData;
 
@@ -207,7 +199,7 @@ public class MonthDetailFragment extends Fragment {
                             Log.d("afterTextChanged", "adding because mCanSave is false");
 							return;
 						}
-						mWeight.add(mToday.getYear()+1900, mToday.getMonth()+1, dayOfMonth,
+						mWeight.add(mToday.get(Calendar.YEAR)+1900, mToday.get(Calendar.MONTH)+1, dayOfMonth,
 								mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
 								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
 						MonthListActivity.mChanged = true;
@@ -222,7 +214,7 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].rung.addTextChangedListener(onChange);
 				mViewCache[d].comment.addTextChangedListener(onChange);
 
-				if (d == mToday.getDate() && mToday.getYear()+1900 == mItem.year && mToday.getMonth()+1 == mItem.month){
+				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR)+1900 == mItem.year && mToday.get(Calendar.MONTH)+1 == mItem.month){
 					mViewCache[d].weight.requestFocus();
                 }
 			}

@@ -1,19 +1,10 @@
 package de.anderdonau.hackersdiet;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-
-import java.lang.reflect.Field;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * An activity representing a single Month detail screen. This
@@ -33,8 +24,7 @@ public class MonthDetailActivity extends FragmentActivity {
 		setContentView(R.layout.activity_month_detail);
 
 		// Show the Up button in the action bar.
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 		// savedInstanceState is non-null when there is fragment state
 		// saved from previous configurations of this activity
 		// (e.g. when rotating the screen from portrait to landscape).
