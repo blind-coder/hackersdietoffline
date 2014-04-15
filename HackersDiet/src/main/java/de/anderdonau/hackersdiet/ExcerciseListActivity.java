@@ -34,9 +34,8 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
         /**
          * Check for possibility of displaying ads
          */
-        if (false){
         if (adView == null){
-            adView = (AdView) findViewById(R.id.adView);
+            adView = (AdView) findViewById(R.id.adViewExcercise);
         }
         if (adView != null){
             /* additional check for cheatcode */
@@ -44,7 +43,7 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
             if (check != 0){
                 GooglePlayServicesUtil.getErrorDialog(check, this, 0);
             } else {
-                LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
+                LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayoutExcercise);
                 SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
                 final boolean hideAds = settings.getBoolean("hideads", false);
 
@@ -62,7 +61,6 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
                     }
                 }
             }
-        }
         }
 
         /**
