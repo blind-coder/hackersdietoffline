@@ -214,8 +214,9 @@ public class MonthDetailFragment extends Fragment {
         gStyle.setNumVerticalLabels(5);
         gStyle.setVerticalLabelsWidth(110);
         gStyle.setNumHorizontalLabels(9);
-        graphView.setScalable(true);
-        graphView.setScrollable(true);
+				//graphView.setViewPort(1, 10);
+        //graphView.setScalable(true);
+        //graphView.setScrollable(true);
         graphView.setShowLegend(true);
         graphView.setBackgroundColor(Color.DKGRAY);
         graphView.setCustomLabelFormatter(new CustomLabelFormatter() {
