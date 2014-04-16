@@ -114,7 +114,7 @@ public class weightData {
 	}
     public weightDataDay getByDate(int year, int month, int day){
         weightDataDay retVal = allData;
-        while (retVal.year != year && retVal.month != month && retVal.day != day){
+        while (retVal.year != year || retVal.month != month || retVal.day != day){
             retVal = retVal.next;
             if (retVal == null){
                 retVal = new weightDataDay(year, month, day, 0.0f, 0, false, "");
@@ -154,7 +154,7 @@ public class weightData {
 			month = Integer.parseInt(dateElements[1]);
 			day = Integer.parseInt(dateElements[2]);
 		} catch (NumberFormatException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
 			return;
 		}
 		if (day > daysinmonth(month, year)){
@@ -172,7 +172,6 @@ public class weightData {
 				comment = elements[4];
 			}
 		}
-        ptr = allData;
 		if (ptr.prev == null && ptr.next == null){ // only one entry
 			if (ptr.comment.equals("SPECIAL")){ // and even an empty one
 				/*if (weight == 0){
