@@ -44,6 +44,8 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 	public static weightData mWeightData = null;
 	public static boolean    mChanged    = false; // will be true if any field has changed
 
+    public MonthListFragment mFragment;
+
 	public static Context getAppContext() { return MonthListActivity.mContext; }
 	public static weightData getmWeightData(){ return MonthListActivity.mWeightData; }
 
@@ -93,6 +95,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
                 }
             }
         }
+        mFragment = ((MonthListFragment) getSupportFragmentManager().findFragmentById(R.id.month_list));
 
         /**
          * Is this twoPane mode?
@@ -106,9 +109,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
             // In two-pane mode, list items should be given the
             // 'activated' state when touched.
-            ((MonthListFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.month_list))
-                    .setActivateOnItemClick(true);
+            mFragment.setActivateOnItemClick(true);
         }
     }
 
@@ -215,6 +216,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
         if (adView != null){
             adView.resume();
         }
+        mFragment.updateList();
     }
 
     @Override

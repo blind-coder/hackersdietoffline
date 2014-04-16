@@ -20,8 +20,6 @@ import java.util.GregorianCalendar;
  * interface.
  */
 public class MonthListFragment extends ListFragment {
-    int id = 0;
-
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
 	 * activated item position. Only used on tablets.
@@ -68,32 +66,28 @@ public class MonthListFragment extends ListFragment {
 	public MonthListFragment() {
 	}
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-        weightData mWeightData;
-        weightDataDay mPtr;
-        mWeightData = MonthListActivity.getmWeightData();
+    public void updateList(){
+        int id = 0;
+        int lastyear = 1970;
+        int lastmonth = 1;
+        weightData mWeightData = MonthListActivity.getmWeightData();
+        weightDataDay mPtr = mWeightData.allData;
         Calendar mToday = new GregorianCalendar();
 
-		if (MonthListContent.ITEMS.isEmpty()){
-			int lastyear = 1970;
-			int lastmonth = 1;
-            mPtr = mWeightData.allData;
-            while (mPtr.next != null){
-                mPtr = mPtr.next;
+        MonthListContent.ITEMS.clear();
+        MonthListContent.ITEM_MAP.clear();
+        while (mPtr.next != null){
+            mPtr = mPtr.next;
+        }
+        for (; mPtr != null; mPtr = mPtr.prev){
+            // mPtr.wholeDate = year*10000 + month * 100 + d;
+            if (mPtr.year != lastyear || mPtr.month != lastmonth){
+                id++;
+                MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
+                lastyear = mPtr.year;
+                lastmonth = mPtr.month;
             }
-			for (; mPtr != null; mPtr = mPtr.prev){
-				// mPtr.wholeDate = year*10000 + month * 100 + d;
-				if (mPtr.year != lastyear || mPtr.month != lastmonth){
-					id++;
-					//Log.d("MLFragment.onCreate", String.format("%d", mPtr.wholedate));
-					MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
-					lastyear = mPtr.year;
-					lastmonth = mPtr.month;
-				}
-			}
-		}
+        }
         mPtr = mWeightData.allData;
         while (mPtr.next != null){
             mPtr = mPtr.next;
@@ -104,12 +98,16 @@ public class MonthListFragment extends ListFragment {
                     String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),
                     mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1));
         }
-
-		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
-					getActivity(),
-					android.R.layout.simple_list_item_activated_1,
-					android.R.id.text1,
-					MonthListContent.ITEMS));
+        setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
+                getActivity(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                MonthListContent.ITEMS));
+    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+        updateList();
 	}
 
 	@Override

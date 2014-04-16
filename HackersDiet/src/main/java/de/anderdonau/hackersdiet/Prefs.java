@@ -335,6 +335,7 @@ public class Prefs extends Activity {
 						FileOutputStream fos = openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
 						fos.write(data.getBytes());
 						fos.close();
+                        MonthListActivity.mWeightData.loadData();
 					} catch (Exception e) {
                         e.printStackTrace();
                     }
