@@ -47,6 +47,8 @@
     <string name="excerciseLegLifts">Leg lifts:</string>
     <string name="excercisePushups">Push ups:</string>
     <string name="excerciseSteps">Run/Jumps:</string>
+    <string name="addRungToday">Stufe zu heutigem Eintrag hinzufügen.</string>
+    <string name="toastAddedRungToTodaysEntry">Stufe %d zu heutigem Eintrag hinzugefügt.</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>

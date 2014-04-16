@@ -38,7 +38,7 @@ public class weightDataDay {
 		Calendar d = new GregorianCalendar();
 		day = d.get(Calendar.DAY_OF_MONTH);
 		month = d.get(Calendar.MONTH) + 1;
-		year = d.get(Calendar.YEAR) + 1900;
+		year = d.get(Calendar.YEAR);
 		wholedate = year*10000 + month*100 + day;
 		weight = 0.0f;
 		rung = 0;

@@ -112,6 +112,17 @@ public class weightData {
 			}
 		}
 	}
+    public weightDataDay getByDate(int year, int month, int day){
+        weightDataDay retVal = allData;
+        while (retVal.year != year && retVal.month != month && retVal.day != day){
+            retVal = retVal.next;
+            if (retVal == null){
+                retVal = new weightDataDay(year, month, day, 0.0f, 0, false, "");
+                return retVal;
+            }
+        }
+        return retVal;
+    }
 	public void add(int y, int m, int d, String weight, String rung, boolean flag, String comment){
 		String retVal = String.valueOf(y)+"-"+String.valueOf(m)+"-"+String.valueOf(d);
 		retVal += ","+String.valueOf(weight);
@@ -125,9 +136,9 @@ public class weightData {
 		//Log.d("", retVal);
 		add(retVal);
 	}
-	public void add(int y, int m, int d){
-		add(String.valueOf(y)+"-"+String.valueOf(m)+"-"+String.valueOf(d)+",,,0,");
-	}
+    public void add(weightDataDay wd){
+        add(wd.toString());
+    }
 	public void add(String line){
 		//2009-07-01,,,0,
 		//2009-07-02,116.3,,0,
@@ -143,6 +154,7 @@ public class weightData {
 			month = Integer.parseInt(dateElements[1]);
 			day = Integer.parseInt(dateElements[2]);
 		} catch (NumberFormatException e) {
+            e.printStackTrace();
 			return;
 		}
 		if (day > daysinmonth(month, year)){
@@ -160,11 +172,12 @@ public class weightData {
 				comment = elements[4];
 			}
 		}
+        ptr = allData;
 		if (ptr.prev == null && ptr.next == null){ // only one entry
 			if (ptr.comment.equals("SPECIAL")){ // and even an empty one
-				if (weight == 0){
+				/*if (weight == 0){
 					return;
-				}
+				}*/
 				ptr.year = year;
 				ptr.month = month;
 				ptr.day = day;

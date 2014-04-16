@@ -4,7 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * An activity representing a single Excercise detail screen. This
@@ -60,5 +66,15 @@ public class ExcerciseDetailActivity extends FragmentActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void btnAddRungToday(View view){
+        weightData w = MonthListActivity.getmWeightData();
+        Calendar today = new GregorianCalendar();
+        weightDataDay wd = w.getByDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DAY_OF_MONTH));
+        wd.rung = Integer.parseInt(getIntent().getStringExtra(ExcerciseDetailFragment.ARG_ITEM_ID));
+        w.add(wd);
+        MonthListActivity.mChanged = true;
+        Toast.makeText(this, String.format(getString(R.string.toastAddedRungToTodaysEntry), wd.rung), Toast.LENGTH_SHORT).show();
     }
 }

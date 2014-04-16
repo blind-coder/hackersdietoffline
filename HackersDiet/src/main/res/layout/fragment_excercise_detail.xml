@@ -123,4 +123,22 @@
             android:layout_column="4" />
     </TableRow>
 
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"></TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addRungToday"
+            android:id="@+id/button"
+            android:layout_column="0"
+            android:onClick="btnAddRungToday"
+            android:layout_span="5" />
+    </TableRow>
+
 </TableLayout>

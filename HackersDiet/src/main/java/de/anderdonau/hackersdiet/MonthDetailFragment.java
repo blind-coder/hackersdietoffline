@@ -87,7 +87,7 @@ public class MonthDetailFragment extends Fragment {
 		int month         = mItem.month;
 		int wholedate     = year*10000 + month*100 + 1;
 		int wholedatelast = year*10000 + month*100 + mWeight.daysinmonth(month, year);
-        Calendar tmpDate  = new GregorianCalendar(year-1900, month-1, 1);
+		Calendar tmpDate  = new GregorianCalendar(year, month-1, 1);
 
 		mPtr = mWeight.allData;
 
