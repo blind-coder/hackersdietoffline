@@ -58,7 +58,7 @@ public class weightDataDay {
 		this.trend = trend;
 		this.var = var;
 		this.flag = flag;
-		this.omment = comment;
+		this.comment = comment;
 		this.next = null;
 		this.prev = null;
 	}
@@ -72,7 +72,7 @@ public class weightDataDay {
 		this.trend = 0.0f;
 		this.var = 0.0f;
 		this.flag = flag;
-		this.omment = comment;
+		this.comment = comment;
 		this.next = null;
 		this.prev = null;
 	}
