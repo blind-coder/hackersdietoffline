@@ -61,7 +61,6 @@ public class MonthDetailFragment extends Fragment {
 	 */
 	public void updateEverything(){
 		mCanSave = false; // while this is running, we prevent saving. Works as a mutex.
-		SimpleDateFormat sdfDay = new SimpleDateFormat("EEEE, d. MMMM yyyy");
 
 		for (int d = 1; d <= 31; d++){
 			if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR))){
@@ -69,8 +68,6 @@ public class MonthDetailFragment extends Fragment {
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */
 				mViewCache[d].row.setVisibility(View.GONE);
-				mViewCache[d].comment.setVisibility(View.GONE);
-				mViewCache[d].textDay.setVisibility(View.GONE);
 				mViewCache[d].weight.setText("");
 				mViewCache[d].trend.setText(" ");
 				mViewCache[d].var.setText(" ");
@@ -82,12 +79,9 @@ public class MonthDetailFragment extends Fragment {
 				 * Obviously only necessary for days 29 and 30 for feb, and 31 for apr, jun, sep, nov.
 				 */
 				mViewCache[d].row.setVisibility(View.VISIBLE);
-				mViewCache[d].comment.setVisibility(View.VISIBLE);
-				mViewCache[d].textDay.setVisibility(View.VISIBLE);
 			}
 			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR))){
 				mToday.set(Calendar.DAY_OF_MONTH, d);
-				mViewCache[d].textDay.setText(sdfDay.format(mToday.getTime()));
 			}
 		}
 
@@ -98,6 +92,9 @@ public class MonthDetailFragment extends Fragment {
 		Calendar tmpDate  = new GregorianCalendar(year, month-1, 1);
         double max = -1;
         double min = 99999;
+
+        SimpleDateFormat sdfDay = new SimpleDateFormat("MMMM yyyy");
+        ((TextView)rootView.findViewById(R.id.textMonth)).setText(sdfDay.format(tmpDate.getTime()));
 
 		mPtr = mWeight.allData;
 
@@ -120,6 +117,7 @@ public class MonthDetailFragment extends Fragment {
 		}
 
         int numWeight = 0;
+        int numTrend = 0;
         int numRung = 0;
         GraphView.GraphViewData[] tmpTrendValues = new GraphView.GraphViewData[31];
         GraphView.GraphViewData[] tmpWeightValues = new GraphView.GraphViewData[31];
@@ -128,13 +126,19 @@ public class MonthDetailFragment extends Fragment {
         for (;mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next){ // fill all values
 			int d = mPtr.wholedate % (year*10000+month*100);
 
+            tmpTrendValues[numTrend] = new GraphView.GraphViewData(d, mPtr.trend);
+            numTrend++;
+            max = Math.max(max, mPtr.trend);
+            min = Math.min(min, mPtr.trend);
             if (mPtr.weight > 0.0f){ // only care if we have an actual value
-                max = Math.max(max, mPtr.trend);
-                min = Math.min(min, mPtr.trend);
-                tmpTrendValues[numWeight] = new GraphView.GraphViewData(d, mPtr.trend);
+                max = Math.max(max, mPtr.weight);
+                min = Math.min(min, mPtr.weight);
                 tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, mPtr.weight);
-                numWeight++;
+            } else {
+                tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, Double.NaN);
             }
+            numWeight++;
+
             if (mPtr.rung > 0){
                 tmpRungValues[numRung] = new GraphView.GraphViewData(d, mPtr.rung);
                 numRung++;
@@ -157,18 +161,17 @@ public class MonthDetailFragment extends Fragment {
 			mViewCache[d].comment.setText(mPtr.comment);
 
             tmpDate.set(Calendar.DAY_OF_MONTH, d);
-            mViewCache[d].textDay.setText(sdfDay.format(tmpDate.getTime()));
 
         }
 
         graphView.removeAllSeries();
         if (numWeight > 0){
-            max++;
-            min--;
+            max += 0.2;
+            min -= 0.2;
 
-            GraphView.GraphViewData[] trendValues = new GraphView.GraphViewData[numWeight];
+            GraphView.GraphViewData[] trendValues = new GraphView.GraphViewData[numTrend];
             GraphView.GraphViewData[] weightValues = new GraphView.GraphViewData[numWeight];
-            System.arraycopy(tmpTrendValues, 0, trendValues, 0, numWeight);
+            System.arraycopy(tmpTrendValues, 0, trendValues, 0, numTrend);
             System.arraycopy(tmpWeightValues, 0, weightValues, 0, numWeight);
 
             GraphViewSeries gvsTrend = new GraphViewSeries("Trend", null, trendValues);
@@ -212,20 +215,21 @@ public class MonthDetailFragment extends Fragment {
         gStyle.setHorizontalLabelsColor(Color.BLACK);
         gStyle.setVerticalLabelsColor(Color.BLACK);
         gStyle.setNumVerticalLabels(5);
-        gStyle.setVerticalLabelsWidth(110);
         gStyle.setNumHorizontalLabels(9);
-				//graphView.setViewPort(1, 10);
+        gStyle.setLegendWidth(140);
+        //graphView.setViewPort(1, 10);
         //graphView.setScalable(true);
         //graphView.setScrollable(true);
         graphView.setShowLegend(true);
+        graphView.setLegendAlign(GraphView.LegendAlign.BOTTOM);
         graphView.setBackgroundColor(Color.DKGRAY);
         graphView.setCustomLabelFormatter(new CustomLabelFormatter() {
             @Override
             public String formatLabel(double value, boolean isValueX) {
-                if (isValueX) {
-                    return String.format("%.0f", value);
-                }
-                return String.format("%.1f", value);
+            if (isValueX) {
+                return String.format("%.0f", value);
+            }
+            return String.format("%.1f", value);
             }
         });
     }
@@ -262,7 +266,6 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].flag		= (CheckBox) rootView.findViewById(getIdByName("flag" + day));
 				mViewCache[d].comment	= (EditText) rootView.findViewById(getIdByName("comment" + day));
 				mViewCache[d].row		= (LinearLayout) rootView.findViewById(getIdByName("rowDay" + day));
-				mViewCache[d].textDay	= (TextView) rootView.findViewById(getIdByName("textDay" + day));
 				final int dayOfMonth = d;
 				TextWatcher onChange = new TextWatcher() {
 					@Override

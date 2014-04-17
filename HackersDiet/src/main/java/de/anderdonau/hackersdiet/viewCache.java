@@ -31,7 +31,6 @@ public class viewCache {
 	public CheckBox flag;
 	public EditText comment;
 	public LinearLayout row;
-	public TextView textDay;
 
 	public viewCache(){
 		weight = null;
@@ -41,6 +40,5 @@ public class viewCache {
 		flag = null;
 		comment = null;
 		row = null;
-		textDay = null;
 	}
 }
