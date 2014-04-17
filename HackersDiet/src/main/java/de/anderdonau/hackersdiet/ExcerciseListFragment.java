@@ -87,7 +87,7 @@ public class ExcerciseListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         for (int i=1; i <= 48; i++){
-            ExcerciseListContent.addItem(new ExcerciseListContent.ExcerciseItem(String.format("%d", i), String.format("Rung %d", i), i));
+            ExcerciseListContent.addItem(new ExcerciseListContent.ExcerciseItem(String.format("%d", i), String.format(getString(R.string.rungNumber), i), i));
         }
         setListAdapter(new ArrayAdapter<ExcerciseListContent.ExcerciseItem>(
                 getActivity(),

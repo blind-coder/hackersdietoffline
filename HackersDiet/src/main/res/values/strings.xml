@@ -49,6 +49,7 @@
     <string name="excerciseSteps">Run/Jumps:</string>
     <string name="addRungToday">Add Rung to todays entry</string>
     <string name="toastAddedRungToTodaysEntry">Added rung %d to todays entry.</string>
+    <string name="rungNumber">Rung %d</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>
