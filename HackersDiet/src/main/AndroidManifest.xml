@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.anderdonau.hackersdiet"
-    android:versionCode="20140416"
-    android:versionName="20140416" >
+    android:versionCode="20140417"
+    android:versionName="20140417" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -51,8 +51,8 @@
                 android:value="de.anderdonau.hackersdiet.ExcerciseListActivity" />
         </activity>
 
-        <activity android:name="Prefs" android:label="@string/preferences">
-        </activity>
+        <activity android:name="Prefs" android:label="@string/preferences"
+            android:screenOrientation="portrait" />
         <activity android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         <meta-data android:name="com.google.android.gms.version"

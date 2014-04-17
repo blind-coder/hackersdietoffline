@@ -125,14 +125,13 @@ public class weightData {
 	public void add(int y, int m, int d, String weight, String rung, boolean flag, String comment){
 		String retVal = String.valueOf(y)+"-"+String.valueOf(m)+"-"+String.valueOf(d);
 		retVal += ","+String.valueOf(weight);
-		retVal += ","+String.valueOf(rung);
+		retVal += ","+rung;
 		if (flag){
 			retVal += ",1";
 		} else {
 			retVal += ",0";
 		}
 		retVal += ",\""+comment+"\"";
-		//Log.d("", retVal);
 		add(retVal);
 	}
     public void add(weightDataDay wd){

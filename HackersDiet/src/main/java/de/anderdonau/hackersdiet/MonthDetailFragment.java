@@ -27,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -297,15 +298,26 @@ public class MonthDetailFragment extends Fragment {
 
 					@Override
 					public void afterTextChanged(Editable editable) {
-						if (!mCanSave){ // do not save when updateEverything is running
-							return;
-						}
+                        if (!mCanSave) // do not save when updateEverything is running
+                            return;
 						mWeight.add(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1, dayOfMonth,
 								mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
 								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
 						MonthListActivity.mChanged = true;
 					}
 				};
+                CompoundButton.OnCheckedChangeListener onCheck = new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (!mCanSave) // do not save when updateEverything is running
+                            return;
+                        mWeight.add(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1, dayOfMonth,
+                                mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
+                                mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
+                        MonthListActivity.mChanged = true;
+                    }
+                };
+
 				mViewCache[d].weight.setOnFocusChangeListener(onBlur);
 				mViewCache[d].rung.setOnFocusChangeListener(onBlur);
 				mViewCache[d].flag.setOnFocusChangeListener(onBlur);
@@ -314,6 +326,8 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].weight.addTextChangedListener(onChange);
 				mViewCache[d].rung.addTextChangedListener(onChange);
 				mViewCache[d].comment.addTextChangedListener(onChange);
+
+                mViewCache[d].flag.setOnCheckedChangeListener(onCheck);
 
 				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR) == mItem.year && mToday.get(Calendar.MONTH)+1 == mItem.month){
 					mViewCache[d].weight.requestFocus();
