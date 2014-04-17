@@ -15,7 +15,7 @@ package de.anderdonau.hackersdiet;
 	 You should have received a copy of the GNU General Public License along
 	 with this program; if not, write to the Free Software Foundation, Inc.,
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+	 */
 
 import android.content.Context;
 import android.util.Log;
@@ -32,12 +32,13 @@ public class weightData {
 	private weightDataDay ptr;
 	private Context mContext;
 
-/*	final Handler handler = new Handler() {
-		public void handleMessage(Message msg) {
-			//Log.d("Handler", "Message received");
-		}
-	};
-*/
+	/**
+	 * final Handler handler = new Handler() {
+	 * public void handleMessage(Message msg) {
+	 * //Log.d("Handler", "Message received");
+	 * }
+	 * };
+	 */
 
 	public weightData(){
 		mContext = MonthListActivity.getAppContext();
@@ -61,9 +62,9 @@ public class weightData {
 	public void saveData() {
 		try {
 			weightDataDay mPtr = allData;
-            while (mPtr.prev != null){
-                mPtr = mPtr.prev;
-            }
+			while (mPtr.prev != null){
+				mPtr = mPtr.prev;
+			}
 			FileOutputStream fos = mContext.openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
 			for (;mPtr != null; mPtr = mPtr.next){
 				fos.write(mPtr.toString().getBytes());
@@ -71,8 +72,8 @@ public class weightData {
 			}
 			fos.close();
 		} catch (Exception e){
-            e.printStackTrace();
-        }
+			e.printStackTrace();
+		}
 		//SaveThread t = new SaveThread(handler);
 		//t.start();
 	}
@@ -90,6 +91,9 @@ public class weightData {
 		return false;
 	}
 	public int daysinmonth(int month, int year) {
+		/**
+		 * Yes, this could be written better. I prefer readable.
+		 */
 		if (month > 7){
 			if (month % 2 == 0){
 				return 31;
@@ -111,17 +115,17 @@ public class weightData {
 			}
 		}
 	}
-    public weightDataDay getByDate(int year, int month, int day){
-        weightDataDay retVal = allData;
-        while (retVal.year != year || retVal.month != month || retVal.day != day){
-            retVal = retVal.next;
-            if (retVal == null){
-                retVal = new weightDataDay(year, month, day, 0.0f, 0, false, "");
-                return retVal;
-            }
-        }
-        return retVal;
-    }
+	public weightDataDay getByDate(int year, int month, int day){
+		weightDataDay retVal = allData;
+		while (retVal.year != year || retVal.month != month || retVal.day != day){
+			retVal = retVal.next;
+			if (retVal == null){
+				retVal = new weightDataDay(year, month, day, 0.0f, 0, false, "");
+				return retVal;
+			}
+		}
+		return retVal;
+	}
 	public void add(int y, int m, int d, String weight, String rung, boolean flag, String comment){
 		String retVal = String.valueOf(y)+"-"+String.valueOf(m)+"-"+String.valueOf(d);
 		retVal += ","+String.valueOf(weight);
@@ -134,9 +138,9 @@ public class weightData {
 		retVal += ",\""+comment+"\"";
 		add(retVal);
 	}
-    public void add(weightDataDay wd){
-        add(wd.toString());
-    }
+	public void add(weightDataDay wd){
+		add(wd.toString());
+	}
 	public void add(String line){
 		//2009-07-01,,,0,
 		//2009-07-02,116.3,,0,
@@ -152,7 +156,7 @@ public class weightData {
 			month = Integer.parseInt(dateElements[1]);
 			day = Integer.parseInt(dateElements[2]);
 		} catch (NumberFormatException e) {
-            // e.printStackTrace();
+			// e.printStackTrace();
 			return;
 		}
 		if (day > daysinmonth(month, year)){
@@ -174,7 +178,7 @@ public class weightData {
 			if (ptr.comment.equals("SPECIAL")){ // and even an empty one
 				/*if (weight == 0){
 					return;
-				}*/
+					}*/
 				ptr.year = year;
 				ptr.month = month;
 				ptr.day = day;

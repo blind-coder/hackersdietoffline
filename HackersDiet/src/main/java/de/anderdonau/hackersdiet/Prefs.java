@@ -15,7 +15,7 @@ package de.anderdonau.hackersdiet;
 	 You should have received a copy of the GNU General Public License along
 	 with this program; if not, write to the Free Software Foundation, Inc.,
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+	 */
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -56,6 +56,7 @@ import android.widget.ToggleButton;
 public class Prefs extends Activity {
 	ProgressDialog pBar = null;
 	Context mContext = this;
+
 	final Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			int id;
@@ -91,57 +92,63 @@ public class Prefs extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.prefs);
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+
 		String username = settings.getString("username", "");
 		if (username.length() > 0){
 			EditText u = (EditText) findViewById(R.id.textUsername);
 			u.setText(username);
 		}
+
 		String password = settings.getString("password", "");
 		if (password.length() > 0){
 			EditText p = (EditText) findViewById(R.id.textPassword);
 			p.setText(password);
 		}
-        boolean hideads = settings.getBoolean("hideads", false);
-        ToggleButton btnHideAds = (ToggleButton)findViewById(R.id.btnHideAds);
-        btnHideAds.setChecked(hideads);
 
-        TextWatcher watchCheatCode = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+		boolean hideads = settings.getBoolean("hideads", false);
+		ToggleButton btnHideAds = (ToggleButton)findViewById(R.id.btnHideAds);
+		btnHideAds.setChecked(hideads);
 
-            }
+		TextWatcher watchCheatCode = new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+			}
 
-            }
+			@Override
+			public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
-            @Override
-            public void afterTextChanged(Editable cheatcode) {
-                Log.d("cheatcode", String.format("cheatcode is: %s", cheatcode.toString()));
-                if (cheatcode.toString().equalsIgnoreCase("UUDDLRLRBA")){
-                    Log.d("cheatcode", "activating hideads button");
-                    ToggleButton btnHideAds = (ToggleButton)findViewById(R.id.btnHideAds);
-                    btnHideAds.setVisibility(View.VISIBLE);
-                }
-            }
-        };
-        EditText textCheatCode = (EditText)findViewById(R.id.textCheatCode);
-        textCheatCode.addTextChangedListener(watchCheatCode);
+			}
+
+			@Override
+			public void afterTextChanged(Editable cheatcode) {
+				Log.d("cheatcode", String.format("cheatcode is: %s", cheatcode.toString()));
+				if (cheatcode.toString().equalsIgnoreCase("UUDDLRLRBA")){
+					Log.d("cheatcode", "activating hideads button");
+					ToggleButton btnHideAds = (ToggleButton)findViewById(R.id.btnHideAds);
+					btnHideAds.setVisibility(View.VISIBLE);
+				}
+			}
+		};
+		EditText textCheatCode = (EditText)findViewById(R.id.textCheatCode);
+		textCheatCode.addTextChangedListener(watchCheatCode);
 	}
 
 	public void downloadDataFromHackDietOnline(){
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+
 		final String username = settings.getString("username", "");
 		if (username.length() <= 0){
 			Toast.makeText(this, R.string.errorUsernameIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
+
 		final String password = settings.getString("password", "");
 		if (password.length() <= 0){
 			Toast.makeText(this, R.string.errorPasswordIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
+
 		AlertDialog.Builder confirm = new AlertDialog.Builder(this);
 		confirm.setMessage(R.string.reallySyncFromHDO)
 			.setCancelable(false)
@@ -151,27 +158,30 @@ public class Prefs extends Activity {
 					dialog.dismiss();
 				}
 			})
-			.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					dialog.dismiss();
-				}
-			});
+		.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				dialog.dismiss();
+			}
+		});
 		AlertDialog alert = confirm.create();
 		alert.show();
 	}
 
 	public void uploadDataToHackDietOnline(){
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+
 		final String username = settings.getString("username", "");
 		if (username.length() <= 0){
 			Toast.makeText(this, R.string.errorUsernameIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
+
 		final String password = settings.getString("password", "");
 		if (password.length() <= 0){
 			Toast.makeText(this, R.string.errorPasswordIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
+
 		AlertDialog.Builder confirm = new AlertDialog.Builder(this);
 		confirm.setMessage(R.string.reallySyncToHDO)
 			.setCancelable(false)
@@ -199,13 +209,13 @@ public class Prefs extends Activity {
 		uploadDataToHackDietOnline();
 	}
 
-    public void buttonToggleAds(View view){
-        SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-        ToggleButton btnHideAds = (ToggleButton) view;
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putBoolean("hideads", btnHideAds.isChecked());
-        editor.commit();
-    }
+	public void buttonToggleAds(View view){
+		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+		ToggleButton btnHideAds = (ToggleButton) view;
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putBoolean("hideads", btnHideAds.isChecked());
+		editor.commit();
+	}
 
 	public void savePrefs(){
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
@@ -316,7 +326,6 @@ public class Prefs extends Activity {
 			} catch (Exception e){ e.printStackTrace(); }
 			return null;
 		}
-
 	}
 
 	private class LoadThread extends HttpThread {
@@ -334,10 +343,10 @@ public class Prefs extends Activity {
 						FileOutputStream fos = openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
 						fos.write(data.getBytes());
 						fos.close();
-                        MonthListActivity.mWeightData.loadData();
+						MonthListActivity.mWeightData.loadData();
 					} catch (Exception e) {
-                        e.printStackTrace();
-                    }
+						e.printStackTrace();
+					}
 					sendToast(R.string.downloadFromHDOSuccessful);
 				}
 			}
@@ -390,6 +399,7 @@ public class Prefs extends Activity {
 			if (sendHackDietOnlineData(session)){
 				sendToast(R.string.uploadToHDOSuccessful);
 			}
+
 			Message msg = mHandler.obtainMessage();
 			Bundle b = new Bundle();
 			b.putBoolean("finished", true);

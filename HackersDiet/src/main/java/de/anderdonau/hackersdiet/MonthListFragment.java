@@ -15,7 +15,7 @@ package de.anderdonau.hackersdiet;
 	 You should have received a copy of the GNU General Public License along
 	 with this program; if not, write to the Free Software Foundation, Inc.,
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+	 */
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -83,48 +83,48 @@ public class MonthListFragment extends ListFragment {
 	public MonthListFragment() {
 	}
 
-    public void updateList(){
-        int id = 0;
-        int lastyear = 1970;
-        int lastmonth = 1;
-        weightData mWeightData = MonthListActivity.getmWeightData();
-        weightDataDay mPtr = mWeightData.allData;
-        Calendar mToday = new GregorianCalendar();
+	public void updateList(){
+		int id = 0;
+		int lastyear = 1970;
+		int lastmonth = 1;
+		weightData mWeightData = MonthListActivity.getmWeightData();
+		weightDataDay mPtr = mWeightData.allData;
+		Calendar mToday = new GregorianCalendar();
 
-        MonthListContent.ITEMS.clear();
-        MonthListContent.ITEM_MAP.clear();
-        while (mPtr.next != null){
-            mPtr = mPtr.next;
-        }
-        for (; mPtr != null; mPtr = mPtr.prev){
-            // mPtr.wholeDate = year*10000 + month * 100 + d;
-            if (mPtr.year != lastyear || mPtr.month != lastmonth){
-                id++;
-                MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
-                lastyear = mPtr.year;
-                lastmonth = mPtr.month;
-            }
-        }
-        mPtr = mWeightData.allData;
-        while (mPtr.next != null){
-            mPtr = mPtr.next;
-        }
-        if ((mToday.get(Calendar.YEAR)) * 10000 + (mToday.get(Calendar.MONTH)+1)*100 + mToday.get(Calendar.DAY_OF_MONTH) > mPtr.wholedate){
-            id++;
-            MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
-                    String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),
-                    mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1));
-        }
-        setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
-                getActivity(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                MonthListContent.ITEMS));
-    }
+		MonthListContent.ITEMS.clear();
+		MonthListContent.ITEM_MAP.clear();
+		while (mPtr.next != null){
+			mPtr = mPtr.next;
+		}
+		for (; mPtr != null; mPtr = mPtr.prev){
+			// mPtr.wholeDate = year*10000 + month * 100 + d;
+			if (mPtr.year != lastyear || mPtr.month != lastmonth){
+				id++;
+				MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
+				lastyear = mPtr.year;
+				lastmonth = mPtr.month;
+			}
+		}
+		mPtr = mWeightData.allData;
+		while (mPtr.next != null){
+			mPtr = mPtr.next;
+		}
+		if ((mToday.get(Calendar.YEAR)) * 10000 + (mToday.get(Calendar.MONTH)+1)*100 + mToday.get(Calendar.DAY_OF_MONTH) > mPtr.wholedate){
+			id++;
+			MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
+						String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),
+						mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1));
+		}
+		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
+					getActivity(),
+					android.R.layout.simple_list_item_activated_1,
+					android.R.id.text1,
+					MonthListContent.ITEMS));
+	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        updateList();
+		updateList();
 	}
 
 	@Override
@@ -133,8 +133,8 @@ public class MonthListFragment extends ListFragment {
 
 		// Restore the previously serialized activated item position.
 		if (savedInstanceState != null && savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
-            setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
-        }
+			setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
+		}
 	}
 
 	@Override

@@ -15,7 +15,7 @@ package de.anderdonau.hackersdiet;
 	 You should have received a copy of the GNU General Public License along
 	 with this program; if not, write to the Free Software Foundation, Inc.,
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+	 */
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,32 +23,32 @@ import java.util.List;
 import java.util.Map;
 
 public class ExcerciseListContent {
-    public static List<ExcerciseItem> ITEMS = new ArrayList<ExcerciseItem>();
+	public static List<ExcerciseItem> ITEMS = new ArrayList<ExcerciseItem>();
 
-    public static Map<String, ExcerciseItem> ITEM_MAP = new HashMap<String, ExcerciseItem>();
+	public static Map<String, ExcerciseItem> ITEM_MAP = new HashMap<String, ExcerciseItem>();
 
-    public static void addItem(ExcerciseItem item) {
-        if (!ITEM_MAP.containsKey(item.id)){
-            ITEMS.add(item);
-            ITEM_MAP.put(item.id, item);
-        }
-    }
+	public static void addItem(ExcerciseItem item) {
+		if (!ITEM_MAP.containsKey(item.id)){
+			ITEMS.add(item);
+			ITEM_MAP.put(item.id, item);
+		}
+	}
 
-    public static class ExcerciseItem {
-        public String id;
-        public String content;
-        public int rung;
-        public int month;
+	public static class ExcerciseItem {
+		public String id;
+		public String content;
+		public int rung;
+		public int month;
 
-        public ExcerciseItem(String id, String content, int rung) {
-            this.id = id;
-            this.content = content;
-            this.rung = rung;
-        }
+		public ExcerciseItem(String id, String content, int rung) {
+			this.id = id;
+			this.content = content;
+			this.rung = rung;
+		}
 
-        @Override
-        public String toString() {
-            return content;
-        }
-    }
+		@Override
+		public String toString() {
+			return content;
+		}
+	}
 }

@@ -15,7 +15,7 @@ package de.anderdonau.hackersdiet;
 	 You should have received a copy of the GNU General Public License along
 	 with this program; if not, write to the Free Software Foundation, Inc.,
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+	 */
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,23 +28,23 @@ public class MonthListContent {
 	public static Map<String, MonthItem> ITEM_MAP = new HashMap<String, MonthItem>();
 
 	public static void addItem(MonthItem item) {
-        if (!ITEM_MAP.containsKey(item.id)){
-            ITEMS.add(item);
-            ITEM_MAP.put(item.id, item);
-        }
+		if (!ITEM_MAP.containsKey(item.id)){
+			ITEMS.add(item);
+			ITEM_MAP.put(item.id, item);
+		}
 	}
 
 	public static class MonthItem {
 		public String id;
 		public String content;
-        public int year;
-        public int month;
+		public int year;
+		public int month;
 
 		public MonthItem(String id, String content, int year, int month) {
 			this.id = id;
 			this.content = content;
-            this.year = year;
-            this.month = month;
+			this.year = year;
+			this.month = month;
 		}
 
 		@Override

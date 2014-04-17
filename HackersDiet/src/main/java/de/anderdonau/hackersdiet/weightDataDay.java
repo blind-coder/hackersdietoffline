@@ -15,7 +15,7 @@ package de.anderdonau.hackersdiet;
 	 You should have received a copy of the GNU General Public License along
 	 with this program; if not, write to the Free Software Foundation, Inc.,
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+	 */
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -48,55 +48,38 @@ public class weightDataDay {
 		next = null;
 		prev = null;
 	}
-	public weightDataDay(int cyear, int cmonth, int cday, float cweight, int crung, float ctrend, float cvar, boolean cflag, String ccomment){
-		day = cday;
-		month = cmonth;
-		year = cyear;
-		wholedate = year*10000 + month*100 + day;
-		weight = cweight;
-		rung = crung;
-		trend = ctrend;
-		var = cvar;
-		flag = cflag;
-		comment = ccomment;
-		next = null;
-		prev = null;
+	public weightDataDay(int year, int month, int day, float weight, int rung, float trend, float var, boolean flag, String comment){
+		this.day = day;
+		this.month = month;
+		this.year = year;
+		this.wholedate = year*10000 + month*100 + day;
+		this.weight = weight;
+		this.rung = rung;
+		this.trend = trend;
+		this.var = var;
+		this.flag = flag;
+		this.omment = comment;
+		this.next = null;
+		this.prev = null;
 	}
-	public weightDataDay(int cyear, int cmonth, int cday, float cweight, int crung, boolean cflag, String ccomment){
-		day = cday;
-		month = cmonth;
-		year = cyear;
-		wholedate = year*10000 + month*100 + day;
-		weight = cweight;
-		rung = crung;
-		trend = 0.0f;
-		var = 0.0f;
-		flag = cflag;
-		comment = ccomment;
-		next = null;
-		prev = null;
+	public weightDataDay(int year, int month, int day, float weight, int rung, boolean flag, String comment){
+		this.day = day;
+		this.month = month;
+		this.year = year;
+		this.wholedate = year*10000 + month*100 + day;
+		this.weight = weight;
+		this.rung = rung;
+		this.trend = 0.0f;
+		this.var = 0.0f;
+		this.flag = flag;
+		this.omment = comment;
+		this.next = null;
+		this.prev = null;
 	}
 	@Override
 	public String toString(){
 		String retVal;
-		retVal = String.valueOf(year)+"-";
-		if (month < 10){
-			retVal += "0";
-		}
-		retVal += String.valueOf(month)+"-";
-		if (day < 10){
-			retVal += "0";
-		}
-		retVal += String.valueOf(day);
-		retVal += ","+String.valueOf(weight);
-		retVal += ","+String.valueOf(rung);
-		retVal += ",";
-		if (flag){
-			retVal += "1";
-		} else {
-			retVal += "0";
-		}
-		retVal += ",\""+comment+"\"";
+		retVal = String.format("%d-%02d-%02d,%f,%d,%d,\"%s\"", year, month, day, weight, rung, flag ? 1 : 0, comment);
 		return retVal;
 	}
 }
