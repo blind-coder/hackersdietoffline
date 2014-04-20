@@ -26,11 +26,18 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+import static java.util.Collections.*;
 
 public class weightData {
-	public weightDataDay allData;
-	private weightDataDay ptr;
+    public List<weightDataDay> lstWeightData = new ArrayList<weightDataDay>();
 	private Context mContext;
+    public boolean autoUpdate = true;
+    private boolean debugGetByDate = false;
 
 	/**
 	 * final Handler handler = new Handler() {
@@ -42,10 +49,9 @@ public class weightData {
 
 	public weightData(){
 		mContext = MonthListActivity.getAppContext();
-		allData = new weightDataDay(1970, 1, 1, 0, 0, false, "SPECIAL");
-		ptr = allData;
 	}
 	public void loadData() {
+        autoUpdate = false;
 		try {
 			FileInputStream fos = mContext.openFileInput("hackdietdata.csv");
 			BufferedReader rd = new BufferedReader(new InputStreamReader(fos));
@@ -56,20 +62,24 @@ public class weightData {
 			rd.close();
 			fos.close();
 		} catch (FileNotFoundException e){ Log.d("LoadThread", e.getMessage());} catch (IOException e) { Log.d("LoadThread", e.getMessage());}
+        sort(lstWeightData);
+        autoUpdate = true;
+        recalculateTrend();
 		//LoadThread t = new LoadThread(handler);
 		//t.start();
 	}
 	public void saveData() {
 		try {
-			weightDataDay mPtr = allData;
-			while (mPtr.prev != null){
-				mPtr = mPtr.prev;
-			}
-			FileOutputStream fos = mContext.openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
-			for (;mPtr != null; mPtr = mPtr.next){
-				fos.write(mPtr.toString().getBytes());
+            sort(lstWeightData);
+            Iterator<weightDataDay> it = lstWeightData.iterator();
+            FileOutputStream fos = mContext.openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
+
+			while (it.hasNext()){
+                weightDataDay p = it.next();
+				fos.write(p.toString().getBytes());
 				fos.write("\n".getBytes());
 			}
+
 			fos.close();
 		} catch (Exception e){
 			e.printStackTrace();
@@ -115,16 +125,21 @@ public class weightData {
 			}
 		}
 	}
+
 	public weightDataDay getByDate(int year, int month, int day){
-		weightDataDay retVal = allData;
-		while (retVal.year != year || retVal.month != month || retVal.day != day){
-			retVal = retVal.next;
-			if (retVal == null){
-				retVal = new weightDataDay(year, month, day, 0.0f, 0, false, "");
-				return retVal;
-			}
-		}
-		return retVal;
+        Iterator<weightDataDay> it = lstWeightData.iterator();
+        weightDataDay p;
+        if (debugGetByDate)
+            Log.d("getByDate", String.format("Searching %d-%02d-%02d", year, month, day));
+        while (it.hasNext()){
+            p = it.next();
+            if (p.year == year && p.month == month && p.day == day){
+                return p;
+            }
+            if (debugGetByDate)
+                Log.d("getByDate", String.format("%d-%02d-%02d != %d-%02d-%02d", p.year, p.month, p.day, year, month, day));
+        }
+        return null;
 	}
 	public void add(int y, int m, int d, String weight, String rung, boolean flag, String comment){
 		String retVal = String.valueOf(y)+"-"+String.valueOf(m)+"-"+String.valueOf(d);
@@ -163,7 +178,15 @@ public class weightData {
 			return;
 		}
 		int wholedate = year*10000 + month*100 + day;
-		double weight = Double.parseDouble("0"+elements[1]);
+		double weight;
+        try {
+            weight = Double.parseDouble(elements[1]);
+        } catch (Exception e) {
+            weight = 0;
+        }
+        if (weight == 0){
+            weight = Double.NaN;
+        }
 		int rung = Integer.parseInt("0"+elements[2]);
 		boolean flag = (elements[3].equalsIgnoreCase("1"));
 		String comment = "";
@@ -174,82 +197,77 @@ public class weightData {
 				comment = elements[4];
 			}
 		}
-		if (ptr.prev == null && ptr.next == null){ // only one entry
-			if (ptr.comment.equals("SPECIAL")){ // and even an empty one
-				/*if (weight == 0){
-					return;
-					}*/
-				ptr.year = year;
-				ptr.month = month;
-				ptr.day = day;
-				ptr.wholedate = wholedate;
-				ptr.weight = weight;
-				ptr.rung = rung;
-				ptr.trend = weight;
-				ptr.var = 0.0f;
-				ptr.flag = flag;
-				ptr.comment = comment;
-				return;
-			}
-		}
-		if (ptr.wholedate > wholedate){
-			while (ptr.wholedate > wholedate && ptr.prev != null){
-				ptr = ptr.prev;
-			}
-		}
-		if (ptr.wholedate != wholedate){
-			while (ptr.wholedate < wholedate && ptr.next != null){
-				ptr = ptr.next;
-			}
-		}
-		if (ptr.wholedate != wholedate){
-			while (ptr.wholedate < wholedate){
-				int nyear; int nmonth; int nday;
-				int nwholedate;
-				nyear = ptr.year;
-				nmonth = ptr.month;
-				nday = ptr.day + 1;
-				if (nday > daysinmonth(nmonth, nyear)){
-					nday = 1;
-					nmonth += 1;
-					if (nmonth > 12){
-						nyear += 1;
-						nmonth = 1;
-					}
-				}
-				nwholedate = nyear*10000 + nmonth*100 + nday;
 
-				ptr.next = new weightDataDay();
-				ptr.next.prev = ptr;
-				ptr = ptr.next;
-				ptr.day = nday;
-				ptr.month = nmonth;
-				ptr.year = nyear;
-				ptr.weight = 0;
-				ptr.wholedate = nwholedate;
-				ptr.trend = ptr.prev.trend;
-				ptr.var = 0.0f;
-			}
-		}
-		ptr.rung = rung;
-		ptr.flag = flag;
-		ptr.comment = comment;
-		ptr.weight = weight;
-		if (weight == 0){
-			if (ptr.prev != null){
-				ptr.var = 0.0f;
-				ptr.trend = ptr.prev.trend;
-				return;
-			}
-		}
-		if (ptr.prev != null){
-			ptr.var = ptr.weight - ptr.prev.trend;
-			ptr.trend = ptr.prev.trend + (ptr.var / 10);
-		} else {
-			ptr.var = 0.0f;
-			ptr.trend = weight;
-		}
+        weightDataDay p;
+        debugGetByDate = true;
+        if ((p = getByDate(year, month, day)) != null) {
+            Log.d("add", String.format("getByDate returned an entry for %d-%02d-%02d!", year, month, day));
+            p.weight = weight;
+            p.rung = rung;
+            p.trend = weight;
+            p.var = 0.0f;
+            p.flag = flag;
+            p.comment = comment;
+        } else {
+            Log.d("add", String.format("getByDate did not return %d-%02d-%02d", year, month, day));
+            p = new weightDataDay();
+            p.year = year;
+            p.month = month;
+            p.day = day;
+            p.wholedate = wholedate;
+            p.weight = weight;
+            p.rung = rung;
+            p.trend = weight;
+            p.var = 0.0f;
+            p.flag = flag;
+            p.comment = comment;
+            lstWeightData.add(p);
+        }
+        debugGetByDate = false;
+
+        weightDataDay prev = p;
+
+        prev.day--;
+        if (prev.day < 1){
+            prev.month--;
+            if (prev.month < 1){
+                prev.year--;
+                prev.month = 12;
+            }
+            prev.day = daysinmonth(prev.year, prev.month);
+        }
+
+        prev = getByDate(prev.year, prev.month, prev.day);
+        if (prev != null){
+            p.var = p.weight - prev.trend;
+            p.trend = prev.trend + (p.var / 10);
+        }
+
+        if (autoUpdate){
+            this.recalculateTrend();
+        }
 	}
+
+    public void recalculateTrend(){
+        weightDataDay prev = new weightDataDay();
+        prev.trend = Double.NaN;
+        Collections.sort(lstWeightData);
+        for (weightDataDay cur : lstWeightData) {
+            if (Double.isNaN(prev.trend)){
+                cur.var = 0.0;
+                prev.trend = cur.trend = cur.weight;
+            } else {
+                if (Double.isNaN(cur.weight)){
+                    cur.var = 0.0;
+                    cur.trend = prev.trend;
+                } else {
+                    cur.var = cur.weight - prev.trend;
+                    cur.trend = prev.trend + (cur.var / 10);
+                    prev.trend = cur.trend;
+                }
+            }
+        }
+    }
 	/*
 		 private class LoadThread extends Thread {
 		 Handler mHandler;
@@ -296,4 +314,4 @@ public class weightData {
 		 }
 		 }
 		 */
-}
+ }

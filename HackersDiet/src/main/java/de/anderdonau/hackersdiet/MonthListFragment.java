@@ -25,7 +25,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 
 /**
  * A list fragment representing a list of Months. This fragment
@@ -88,16 +91,15 @@ public class MonthListFragment extends ListFragment {
 		int lastyear = 1970;
 		int lastmonth = 1;
 		weightData mWeightData = MonthListActivity.getmWeightData();
-		weightDataDay mPtr = mWeightData.allData;
+		weightDataDay mPtr;
 		Calendar mToday = new GregorianCalendar();
 
 		MonthListContent.ITEMS.clear();
 		MonthListContent.ITEM_MAP.clear();
-		while (mPtr.next != null){
-			mPtr = mPtr.next;
-		}
-		for (; mPtr != null; mPtr = mPtr.prev){
-			// mPtr.wholeDate = year*10000 + month * 100 + d;
+
+        Iterator<weightDataDay> it = mWeightData.lstWeightData.iterator();
+        while (it.hasNext()){
+            mPtr = it.next();
 			if (mPtr.year != lastyear || mPtr.month != lastmonth){
 				id++;
 				MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
@@ -105,21 +107,18 @@ public class MonthListFragment extends ListFragment {
 				lastmonth = mPtr.month;
 			}
 		}
-		mPtr = mWeightData.allData;
-		while (mPtr.next != null){
-			mPtr = mPtr.next;
-		}
-        if (!MonthListContent.containsYearMonth(lastyear, lastmonth)){
+        if (!MonthListContent.containsYearMonth(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1)){
             id++;
 			MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
 						String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),
 						mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1));
 		}
-		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
-					getActivity(),
-					android.R.layout.simple_list_item_activated_1,
-					android.R.id.text1,
-					MonthListContent.ITEMS));
+        Collections.reverse(MonthListContent.ITEMS);
+        setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
+                getActivity(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1,
+                MonthListContent.ITEMS));
 	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

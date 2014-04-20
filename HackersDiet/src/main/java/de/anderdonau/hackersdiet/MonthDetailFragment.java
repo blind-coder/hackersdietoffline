@@ -114,6 +114,7 @@ public class MonthDetailFragment extends Fragment {
 		SimpleDateFormat sdfDay = new SimpleDateFormat("MMMM yyyy");
 		((TextView)rootView.findViewById(R.id.textMonth)).setText(sdfDay.format(tmpDate.getTime()));
 
+        /*
 		mPtr = mWeight.allData;
 
 		if (mPtr.wholedate < wholedate){ // mPtr is before today
@@ -133,22 +134,37 @@ public class MonthDetailFragment extends Fragment {
 				return;
 			}
 		}
+        */
 
 		int numWeight = 0;
 		int numTrend = 0;
 		int numRung = 0;
-		GraphView.GraphViewData[] tmpWeightValues = new GraphView.GraphViewData[31];
+		int d;
+        GraphView.GraphViewData[] tmpWeightValues = new GraphView.GraphViewData[31];
 		GraphView.GraphViewData[] tmpTrendValues = new GraphView.GraphViewData[31];
 		GraphView.GraphViewData[] tmpRungValues = new GraphView.GraphViewData[31];
 
-		for (;mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next){ // fill all values
-			int d = mPtr.wholedate % (year*10000+month*100);
+		//for (;mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next){ // fill all values
+        for (d = 1; d<= mWeight.daysinmonth(year, month); d++){
+            mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant));
+            mViewCache[d].var.setText("");
+            mViewCache[d].trend.setText("");
+            mViewCache[d].weight.setText("");
+            mViewCache[d].rung.setText("");
+            mViewCache[d].flag.setChecked(false);
+            mViewCache[d].comment.setText("");
 
+            mPtr = mWeight.getByDate(year, month, d);
+            if (mPtr == null){
+                tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, Double.NaN);
+                numWeight++;
+                continue;
+            }
 			tmpTrendValues[numTrend] = new GraphView.GraphViewData(d, mPtr.trend);
 			numTrend++;
 			max = Math.max(max, mPtr.trend);
 			min = Math.min(min, mPtr.trend);
-			if (mPtr.weight > 0.0f){ // only care if we have an actual value
+			if (!(Double.isNaN(mPtr.weight)) && mPtr.weight > 0.0f){ // only care if we have an actual value
 				max = Math.max(max, mPtr.weight);
 				min = Math.min(min, mPtr.weight);
 				tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, mPtr.weight);
@@ -162,19 +178,24 @@ public class MonthDetailFragment extends Fragment {
 				numRung++;
 			}
 
-			mViewCache[d].weight.setText(String.valueOf(mPtr.weight));
-			mViewCache[d].trend.setText(String.format("%.1f", mPtr.trend));
-
 			if (mPtr.var > 0){
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightGain));
 			} else if (mPtr.var < 0){
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightLoss));
-			} else {
-				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant));
+			//} else {
+				//mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant));
 			}
 
-			mViewCache[d].var.setText(String.format("%+.1f", mPtr.var));
-			mViewCache[d].rung.setText(String.valueOf(mPtr.rung));
+			if (!Double.isNaN(mPtr.var)){
+                mViewCache[d].var.setText(String.format("%+.1f", mPtr.var));
+            }
+            if (!(Double.isNaN(mPtr.weight)) && mPtr.weight > 0.0){
+                mViewCache[d].weight.setText(String.valueOf(mPtr.weight));
+            }
+            mViewCache[d].trend.setText(String.format("%.1f", mPtr.trend));
+            if (mPtr.rung > 0){
+                mViewCache[d].rung.setText(String.valueOf(mPtr.rung));
+            }
 			mViewCache[d].flag.setChecked(mPtr.flag);
 			mViewCache[d].comment.setText(mPtr.comment);
 
@@ -255,8 +276,6 @@ public class MonthDetailFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		rootView = inflater.inflate(R.layout.fragment_month_detail, container, false);
 
-		mPtr = mWeight.allData;
-
 		View.OnFocusChangeListener onBlur = new View.OnFocusChangeListener() {
 			public void onFocusChange(View arg0, boolean hasFocus) {
 				if (hasFocus){ // only update on loss of focus
@@ -283,7 +302,9 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].flag		= (CheckBox) rootView.findViewById(getIdByName("flag" + day));
 				mViewCache[d].comment	= (EditText) rootView.findViewById(getIdByName("comment" + day));
 				mViewCache[d].row			= (LinearLayout) rootView.findViewById(getIdByName("rowDay" + day));
-				final int dayOfMonth = d;
+				final int nDay = d;
+                final int month = mItem.month;
+                final int year = mItem.year;
 				TextWatcher onChange = new TextWatcher() {
 					@Override
 					public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -299,9 +320,9 @@ public class MonthDetailFragment extends Fragment {
 					public void afterTextChanged(Editable editable) {
 						if (!mCanSave) // do not save when updateEverything is running
 							return;
-						mWeight.add(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1, dayOfMonth,
-								mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
-								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
+						mWeight.add(year, month, nDay,
+								mViewCache[nDay].weight.getText().toString(), mViewCache[nDay].rung.getText().toString(),
+								mViewCache[nDay].flag.isChecked(), mViewCache[nDay].comment.getText().toString());
 						MonthListActivity.mChanged = true;
 					}
 				};
@@ -310,9 +331,9 @@ public class MonthDetailFragment extends Fragment {
 					public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 						if (!mCanSave) // do not save when updateEverything is running
 							return;
-						mWeight.add(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1, dayOfMonth,
-								mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
-								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
+						mWeight.add(year, month, nDay,
+								mViewCache[nDay].weight.getText().toString(), mViewCache[nDay].rung.getText().toString(),
+								mViewCache[nDay].flag.isChecked(), mViewCache[nDay].comment.getText().toString());
 						MonthListActivity.mChanged = true;
 					}
 				};

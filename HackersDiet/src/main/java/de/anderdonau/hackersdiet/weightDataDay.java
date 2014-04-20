@@ -18,9 +18,10 @@ package de.anderdonau.hackersdiet;
 	 */
 
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 
-public class weightDataDay {
+public class weightDataDay implements Comparable<weightDataDay> {
 	public int year;
 	public int month;
 	public int day;
@@ -31,8 +32,6 @@ public class weightDataDay {
 	public double var;
 	public boolean flag;
 	public String comment;
-	public weightDataDay next;
-	public weightDataDay prev;
 	public weightDataDay(){
 		Calendar d = new GregorianCalendar();
 		day = d.get(Calendar.DAY_OF_MONTH);
@@ -45,8 +44,6 @@ public class weightDataDay {
 		var = 0.0f;
 		flag = false;
 		comment = "";
-		next = null;
-		prev = null;
 	}
 	public weightDataDay(int year, int month, int day, float weight, int rung, float trend, float var, boolean flag, String comment){
 		this.day = day;
@@ -59,8 +56,6 @@ public class weightDataDay {
 		this.var = var;
 		this.flag = flag;
 		this.comment = comment;
-		this.next = null;
-		this.prev = null;
 	}
 	public weightDataDay(int year, int month, int day, float weight, int rung, boolean flag, String comment){
 		this.day = day;
@@ -73,13 +68,17 @@ public class weightDataDay {
 		this.var = 0.0f;
 		this.flag = flag;
 		this.comment = comment;
-		this.next = null;
-		this.prev = null;
 	}
+    public int compareTo(weightDataDay w){
+        return compare(this.wholedate, w.wholedate);
+    }
+    private static int compare(int a, int b){
+        return a < b ? -1 : a > b ? 1 : 0;
+    }
 	@Override
 	public String toString(){
 		String retVal;
-		retVal = String.format("%d-%02d-%02d,%f,%d,%d,\"%s\"", year, month, day, weight, rung, flag ? 1 : 0, comment);
+		retVal = String.format("%d-%02d-%02d,%f,%d,%d,\"%s\"", year, month, day, Double.isNaN(weight) ? 0 : weight, rung, flag ? 1 : 0, comment);
 		return retVal;
 	}
 }
