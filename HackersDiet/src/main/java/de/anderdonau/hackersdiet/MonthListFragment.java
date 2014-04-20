@@ -109,7 +109,8 @@ public class MonthListFragment extends ListFragment {
 		while (mPtr.next != null){
 			mPtr = mPtr.next;
 		}
-        if (!MonthListContent.containsYearMonth(lastyear, lastmonth)){
+        
+        if (!MonthListContent.containsYearMonth(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1)){
             id++;
 			MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
 						String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),
