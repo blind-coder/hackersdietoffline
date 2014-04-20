@@ -19,6 +19,7 @@ package de.anderdonau.hackersdiet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +35,18 @@ public class MonthListContent {
 		}
 	}
 
-	public static class MonthItem {
+    public static boolean containsYearMonth(int year, int month){
+        Iterator<MonthItem> ptr = ITEMS.iterator();
+        while (ptr.hasNext()){
+            MonthItem p = ptr.next();
+            if (p.year == year && p.month == month){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static class MonthItem {
 		public String id;
 		public String content;
 		public int year;

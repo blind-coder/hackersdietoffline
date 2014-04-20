@@ -109,8 +109,8 @@ public class MonthListFragment extends ListFragment {
 		while (mPtr.next != null){
 			mPtr = mPtr.next;
 		}
-		if ((mToday.get(Calendar.YEAR)) * 10000 + (mToday.get(Calendar.MONTH)+1)*100 + mToday.get(Calendar.DAY_OF_MONTH) > mPtr.wholedate){
-			id++;
+        if (!MonthListContent.containsYearMonth(lastyear, lastmonth)){
+            id++;
 			MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
 						String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),
 						mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1));
