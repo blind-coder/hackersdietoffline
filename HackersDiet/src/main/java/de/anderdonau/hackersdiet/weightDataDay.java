@@ -19,6 +19,7 @@ package de.anderdonau.hackersdiet;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class weightDataDay {
 	public int year;
@@ -79,7 +80,7 @@ public class weightDataDay {
 	@Override
 	public String toString(){
 		String retVal;
-		retVal = String.format("%d-%02d-%02d,%f,%d,%d,\"%s\"", year, month, day, weight, rung, flag ? 1 : 0, comment);
+		retVal = String.format(Locale.ENGLISH, "%d-%02d-%02d,%f,%d,%d,\"%s\"", year, month, day, weight, rung, flag ? 1 : 0, comment);
 		return retVal;
 	}
 }
