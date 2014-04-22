@@ -78,4 +78,11 @@ public class MonthDetailActivity extends FragmentActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
+    @Override
+    public void onPause() {
+        MonthListActivity.checkSaveData();
+        super.onPause();
+    }
+
 }

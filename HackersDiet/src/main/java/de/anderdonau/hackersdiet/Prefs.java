@@ -49,6 +49,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -108,6 +109,10 @@ public class Prefs extends Activity {
 		boolean hideads = settings.getBoolean("hideads", false);
 		ToggleButton btnHideAds = (ToggleButton)findViewById(R.id.btnHideAds);
 		btnHideAds.setChecked(hideads);
+
+        boolean autosave = settings.getBoolean("autosave", true);
+        CheckBox btnAutoSave = (CheckBox)findViewById(R.id.btnAutoSave);
+        btnAutoSave.setChecked(autosave);
 
 		TextWatcher watchCheatCode = new TextWatcher() {
 			@Override
@@ -208,6 +213,13 @@ public class Prefs extends Activity {
 		savePrefs();
 		uploadDataToHackDietOnline();
 	}
+    public void buttonAutoSave(View view){
+        SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+        CheckBox btnAutoSave = (CheckBox) view;
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("autosave", btnAutoSave.isChecked());
+        editor.commit();
+    }
 
 	public void buttonToggleAds(View view){
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);

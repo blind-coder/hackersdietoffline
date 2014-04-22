@@ -38,9 +38,9 @@ public class weightData {
 	final Handler handler = new Handler() {
     	public void handleMessage(Message msg) {
             if (msg.getData().getBoolean("error")){
-                Toast.makeText(mContext, "Error saving data! Please retry!", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(mContext, "Successfully saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "HackDiet: Error saving data!", Toast.LENGTH_LONG).show();
+            //} else {
+            //    Toast.makeText(mContext, "Successfully saved!", Toast.LENGTH_SHORT).show();
             }
 	    }
 	};

@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.ads.AdRequest;
@@ -189,6 +190,8 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
 	@Override
 	public void onBackPressed(){
+        checkSaveData();
+
 		if (!mChanged){
 			finish();
 			return;
@@ -219,13 +222,26 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		alert.show();
 	}
 
+    public static void checkSaveData(){
+        if (mChanged){
+            SharedPreferences settings = mContext.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+            boolean autosave = settings.getBoolean("autosave", true);
+
+            if (autosave){
+                mWeightData.saveData();
+                mChanged = false;
+            }
+        }
+    }
+
 	@Override
 	public void onPause() {
 		if (adView != null){
 			adView.pause();
 		}
-		super.onPause();
-	}
+
+        super.onPause();
+   	}
 
 	@Override
 	public void onResume() {
@@ -241,7 +257,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		if (adView != null){
 			adView.destroy();
 		}
+
 		super.onDestroy();
 	}
-
 }

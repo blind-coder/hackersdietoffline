@@ -50,6 +50,8 @@
     <string name="addRungToday">Stufe zu heutigem Eintrag hinzufügen.</string>
     <string name="toastAddedRungToTodaysEntry">Stufe %d zu heutigem Eintrag hinzugefügt.</string>
     <string name="rungNumber">Stufe %d</string>
+    <string name="autosave">Automatisch speichern</string>
+    <string name="autosaveonclose">Automatisch beim Verlassen speichern</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>
