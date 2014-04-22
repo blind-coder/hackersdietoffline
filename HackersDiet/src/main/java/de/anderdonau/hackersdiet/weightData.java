@@ -18,13 +18,15 @@ package de.anderdonau.hackersdiet;
 	 */
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class weightData {
@@ -32,13 +34,16 @@ public class weightData {
 	private weightDataDay ptr;
 	private Context mContext;
 
-	/**
-	 * final Handler handler = new Handler() {
-	 * public void handleMessage(Message msg) {
-	 * //Log.d("Handler", "Message received");
-	 * }
-	 * };
-	 */
+
+	final Handler handler = new Handler() {
+    	public void handleMessage(Message msg) {
+            if (msg.getData().getBoolean("error")){
+                Toast.makeText(mContext, "Error saving data! Please retry!", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(mContext, "Successfully saved!", Toast.LENGTH_SHORT).show();
+            }
+	    }
+	};
 
 	public weightData(){
 		mContext = MonthListActivity.getAppContext();
@@ -56,29 +61,15 @@ public class weightData {
 			}
 			rd.close();
 			fos.close();
-		} catch (FileNotFoundException e){ Log.d("LoadThread", e.getMessage());} catch (IOException e) { Log.d("LoadThread", e.getMessage());}
+		} catch (Exception e){ Log.d("LoadThread", e.getMessage());}
         weightDataDay.autoUpdate = true;
         allData.setWeight(allData.getWeight()); // now updates the trend of all entries
 		//LoadThread t = new LoadThread(handler);
 		//t.start();
 	}
 	public void saveData() {
-		try {
-			weightDataDay mPtr = allData;
-			while (mPtr.prev != null){
-				mPtr = mPtr.prev;
-			}
-			FileOutputStream fos = mContext.openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
-			for (;mPtr != null; mPtr = mPtr.next){
-				fos.write(mPtr.toString().getBytes());
-				fos.write("\n".getBytes());
-			}
-			fos.close();
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-		//SaveThread t = new SaveThread(handler);
-		//t.start();
+		SaveThread t = new SaveThread(handler);
+		t.start();
 	}
 
 	public boolean isleapyear(int year){
@@ -129,74 +120,29 @@ public class weightData {
 		}
 		return retVal;
 	}
-	public void add(int y, int m, int d, String weight, String rung, boolean flag, String comment){
-		String retVal = String.valueOf(y)+"-"+String.valueOf(m)+"-"+String.valueOf(d);
-		retVal += ","+String.valueOf(weight);
-		retVal += ","+rung;
-		if (flag){
-			retVal += ",1";
-		} else {
-			retVal += ",0";
-		}
-		retVal += ",\""+comment+"\"";
-		add(retVal);
-	}
-	public void add(weightDataDay wd){
-		add(wd.toString());
-	}
-	public void add(String line){
-		//2009-07-01,,,0,
-		//2009-07-02,116.3,,0,
-		//2012-01-30,110.8,,1,
-		//2012-2-1,110.2,34,1,"just a comment"
-		String elements[] = line.split(",");
-		String dateElements[] = elements[0].split("-");
-		int year;
-		int month;
-		int day;
-		try {
-			year = Integer.parseInt(dateElements[0]);
-			month = Integer.parseInt(dateElements[1]);
-			day = Integer.parseInt(dateElements[2]);
-		} catch (NumberFormatException e) {
-			// e.printStackTrace();
-			return;
-		}
-		if (day > daysinmonth(month, year)){
-			return;
-		}
-		int wholedate = year*10000 + month*100 + day;
-		double weight = Double.parseDouble("0"+elements[1]);
-		int rung = Integer.parseInt("0"+elements[2]);
-		boolean flag = (elements[3].equalsIgnoreCase("1"));
-		String comment = "";
-		if (elements.length > 4){
-			if (elements[4].startsWith("\"")){
-				comment = elements[4].substring(1, elements[4].length()-1);
-			} else {
-				comment = elements[4];
-			}
-		}
-		if (ptr.prev == null && ptr.next == null){ // only one entry
-			if (ptr.comment.equals("SPECIAL")){ // and even an empty one
+	public void add(int year, int month, int day, double weight, int rung, boolean flag, String comment){
+        int wholedate = year*10000 + month*100 + day;
+
+        if (ptr.prev == null && ptr.next == null){ // only one entry
+            if (ptr.comment.equals("SPECIAL")){ // and even an empty one
 				/*if (weight == 0){
 					return;
 					}*/
-				ptr.year = year;
-				ptr.month = month;
-				ptr.day = day;
-				ptr.wholedate = wholedate;
+                ptr.year = year;
+                ptr.month = month;
+                ptr.day = day;
+                ptr.wholedate = wholedate;
                 ptr.setWeight(weight);
-				ptr.rung = rung;
-				ptr.flag = flag;
-				ptr.comment = comment;
-				return;
-			}
-		}
-		if (ptr.wholedate > wholedate){
-			while (ptr.wholedate > wholedate && ptr.prev != null){
-				ptr = ptr.prev;
-			}
+                ptr.rung = rung;
+                ptr.flag = flag;
+                ptr.comment = comment;
+                return;
+            }
+        }
+        if (ptr.wholedate > wholedate){
+            while (ptr.wholedate > wholedate && ptr.prev != null){
+                ptr = ptr.prev;
+            }
             if (ptr.wholedate > wholedate){
                 while (ptr.wholedate > wholedate){
                     int nyear; int nmonth; int nday;
@@ -224,43 +170,81 @@ public class weightData {
                     ptr.wholedate = nwholedate;
                 }
             }
-		}
-		if (ptr.wholedate != wholedate){
-			while (ptr.wholedate < wholedate && ptr.next != null){
-				ptr = ptr.next;
-			}
-		}
-		if (ptr.wholedate != wholedate){
-			while (ptr.wholedate < wholedate){
-				int nyear; int nmonth; int nday;
-				int nwholedate;
-				nyear = ptr.year;
-				nmonth = ptr.month;
-				nday = ptr.day + 1;
-				if (nday > daysinmonth(nmonth, nyear)){
-					nday = 1;
-					nmonth += 1;
-					if (nmonth > 12){
-						nyear += 1;
-						nmonth = 1;
-					}
-				}
-				nwholedate = nyear*10000 + nmonth*100 + nday;
+        }
+        if (ptr.wholedate != wholedate){
+            while (ptr.wholedate < wholedate && ptr.next != null){
+                ptr = ptr.next;
+            }
+        }
+        if (ptr.wholedate != wholedate){
+            while (ptr.wholedate < wholedate){
+                int nyear; int nmonth; int nday;
+                int nwholedate;
+                nyear = ptr.year;
+                nmonth = ptr.month;
+                nday = ptr.day + 1;
+                if (nday > daysinmonth(nmonth, nyear)){
+                    nday = 1;
+                    nmonth += 1;
+                    if (nmonth > 12){
+                        nyear += 1;
+                        nmonth = 1;
+                    }
+                }
+                nwholedate = nyear*10000 + nmonth*100 + nday;
 
-				ptr.next = new weightDataDay();
-				ptr.next.prev = ptr;
-				ptr = ptr.next;
-				ptr.day = nday;
-				ptr.month = nmonth;
-				ptr.year = nyear;
-				ptr.setWeight(0);
-				ptr.wholedate = nwholedate;
+                ptr.next = new weightDataDay();
+                ptr.next.prev = ptr;
+                ptr = ptr.next;
+                ptr.day = nday;
+                ptr.month = nmonth;
+                ptr.year = nyear;
+                ptr.setWeight(0);
+                ptr.wholedate = nwholedate;
+            }
+        }
+        ptr.rung = rung;
+        ptr.flag = flag;
+        ptr.comment = comment;
+        ptr.setWeight(weight);
+	}
+	public void add(weightDataDay wd){
+		add(wd.year, wd.month, wd.day, wd.getWeight(), wd.rung, wd.flag, wd.comment);
+	}
+	public void add(String line){
+		//2009-07-01,,,0,
+		//2009-07-02,116.3,,0,
+		//2012-01-30,110.8,,1,
+		//2012-2-1,110.2,34,1,"just a comment"
+		String elements[] = line.split(",");
+		String dateElements[] = elements[0].split("-");
+		int year;
+		int month;
+		int day;
+		try {
+			year = Integer.parseInt(dateElements[0]);
+			month = Integer.parseInt(dateElements[1]);
+			day = Integer.parseInt(dateElements[2]);
+		} catch (NumberFormatException e) {
+			// e.printStackTrace();
+			return;
+		}
+		if (day > daysinmonth(month, year)){
+			return;
+		}
+		double weight = Double.parseDouble("0"+elements[1]);
+		int rung = Integer.parseInt("0"+elements[2]);
+		boolean flag = (elements[3].equalsIgnoreCase("1"));
+		String comment = "";
+		if (elements.length > 4){
+			if (elements[4].startsWith("\"")){
+				comment = elements[4].substring(1, elements[4].length()-1);
+			} else {
+				comment = elements[4];
 			}
 		}
-		ptr.rung = rung;
-		ptr.flag = flag;
-		ptr.comment = comment;
-		ptr.setWeight(weight);
+
+        add(year, month, day, weight, rung, flag, comment);
 	}
 	/*
 		 private class LoadThread extends Thread {
@@ -290,22 +274,44 @@ public class weightData {
 		 }
 
 		 }
-		 private class SaveThread extends Thread {
-		 Handler mHandler;
-
-		 SaveThread(Handler h){
-		 mHandler = h;
-		 }
-
-		 @Override
-		 public void run() {
-		 Message msg = mHandler.obtainMessage();
-		 Bundle b = new Bundle();
-		 b.putBoolean("finished", true);
-		 msg.setData(b);
-		 mHandler.sendMessage(msg);
-//Log.d("SaveThread", "Done saving");
-		 }
-		 }
 		 */
+		 private class SaveThread extends Thread {
+		    Handler mHandler;
+
+		    SaveThread(Handler h){
+		        mHandler = h;
+		    }
+
+		    @Override
+		    public void run() {
+                try {
+                    weightDataDay mPtr = allData;
+                    while (mPtr.prev != null){
+                        mPtr = mPtr.prev;
+                    }
+                    FileOutputStream fos = mContext.openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
+                    for (;mPtr != null; mPtr = mPtr.next){
+                        fos.write(mPtr.toString().getBytes());
+                        fos.write("\n".getBytes());
+                    }
+                    fos.close();
+                } catch (Exception e){
+                    Message msg = mHandler.obtainMessage();
+                    Bundle b = new Bundle();
+                    b.putBoolean("finished", true);
+                    b.putBoolean("error", true);
+                    msg.setData(b);
+                    mHandler.sendMessage(msg);
+                    e.printStackTrace();
+                }
+
+		        Message msg = mHandler.obtainMessage();
+		        Bundle b = new Bundle();
+		        b.putBoolean("finished", true);
+                b.putBoolean("error", false);
+		        msg.setData(b);
+		        mHandler.sendMessage(msg);
+                //Log.d("SaveThread", "Done saving");
+		    }
+		 }
 }

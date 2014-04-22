@@ -298,8 +298,20 @@ public class MonthDetailFragment extends Fragment {
 					public void afterTextChanged(Editable editable) {
 						if (!mCanSave) // do not save when updateEverything is running
 							return;
-						mWeight.add(mItem.year, mItem.month, dayOfMonth,
-								mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
+                        double weight;
+                        int rung;
+                        try {
+                            weight = Double.parseDouble(mViewCache[dayOfMonth].weight.getText().toString());
+                        } catch (Exception e) {
+                            weight = 0.0f;
+                        }
+                        try {
+                            rung = Integer.parseInt(mViewCache[dayOfMonth].rung.getText().toString());
+                        } catch (Exception e){
+                            rung = 0;
+                        }
+                        mWeight.add(mItem.year, mItem.month, dayOfMonth,
+								weight, rung,
 								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
 						MonthListActivity.mChanged = true;
 					}
@@ -307,12 +319,24 @@ public class MonthDetailFragment extends Fragment {
 				CompoundButton.OnCheckedChangeListener onCheck = new CompoundButton.OnCheckedChangeListener() {
 					@Override
 					public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-						if (!mCanSave) // do not save when updateEverything is running
-							return;
-						mWeight.add(mItem.year, mItem.month, dayOfMonth,
-								mViewCache[dayOfMonth].weight.getText().toString(), mViewCache[dayOfMonth].rung.getText().toString(),
-								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
-						MonthListActivity.mChanged = true;
+                        if (!mCanSave) // do not save when updateEverything is running
+                            return;
+                        double weight;
+                        int rung;
+                        try {
+                            weight = Double.parseDouble(mViewCache[dayOfMonth].weight.getText().toString());
+                        } catch (Exception e) {
+                            weight = 0.0f;
+                        }
+                        try {
+                            rung = Integer.parseInt(mViewCache[dayOfMonth].rung.getText().toString());
+                        } catch (Exception e){
+                            rung = 0;
+                        }
+                        mWeight.add(mItem.year, mItem.month, dayOfMonth,
+                                weight, rung,
+                                mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
+                        MonthListActivity.mChanged = true;
 					}
 				};
 
