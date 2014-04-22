@@ -127,6 +127,7 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
 		if (adView != null) {
 			adView.pause();
 		}
+		MonthListActivity.checkSaveData();
 		super.onPause();
 	}
 
