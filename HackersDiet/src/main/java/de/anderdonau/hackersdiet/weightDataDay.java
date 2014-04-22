@@ -36,6 +36,7 @@ public class weightDataDay {
 	public String comment;
 	public weightDataDay next;
 	public weightDataDay prev;
+
 	public weightDataDay(){
 		Calendar d = new GregorianCalendar();
 		day = d.get(Calendar.DAY_OF_MONTH);
@@ -51,6 +52,7 @@ public class weightDataDay {
 		next = null;
 		prev = null;
 	}
+    /*
 	public weightDataDay(int year, int month, int day, float weight, int rung, float trend, float var, boolean flag, String comment){
 		this.day = day;
 		this.month = month;
@@ -65,6 +67,7 @@ public class weightDataDay {
 		this.next = null;
 		this.prev = null;
 	}
+	*/
 	public weightDataDay(int year, int month, int day, float weight, int rung, boolean flag, String comment){
 		this.day = day;
 		this.month = month;
