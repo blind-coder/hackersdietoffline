@@ -22,14 +22,16 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class weightDataDay {
+    public static boolean autoUpdate = true;
+
 	public int year;
 	public int month;
 	public int day;
 	public int wholedate;
-	public double weight;
+	private double weight;
 	public int rung;
-	public double trend;
-	public double var;
+	private double trend;
+	private double var;
 	public boolean flag;
 	public String comment;
 	public weightDataDay next;
@@ -76,6 +78,47 @@ public class weightDataDay {
 		this.comment = comment;
 		this.next = null;
 		this.prev = null;
+	}
+
+    public double getTrend(){
+        return this.trend;
+    }
+    public double getWeight(){
+        return this.weight;
+    }
+    public double getVar(){
+        return this.var;
+    }
+	public void updateTrend(){
+        if (this.weight == 0){
+            this.var = 0.0f;
+            if (this.prev != null){
+                this.trend = this.prev.trend;
+            } else {
+                this.trend = 0.0f;
+            }
+            return;
+        }
+        if (this.prev != null){
+            if (this.prev.trend > 0.0){
+			    this.var = this.weight - this.prev.trend;
+			    this.trend = this.prev.trend + (this.var / 10);
+                return;
+            }
+		}
+        this.var = 0.0;
+        this.trend = this.weight;
+	}
+	public void setWeight(double weight){
+		this.weight = weight;
+		weightDataDay ptr = this;
+        if (!autoUpdate){
+            return;
+        }
+		while (ptr != null){
+			ptr.updateTrend();
+			ptr = ptr.next;
+		}
 	}
 	@Override
 	public String toString(){

@@ -46,6 +46,7 @@ public class weightData {
 		ptr = allData;
 	}
 	public void loadData() {
+        weightDataDay.autoUpdate = false;
 		try {
 			FileInputStream fos = mContext.openFileInput("hackdietdata.csv");
 			BufferedReader rd = new BufferedReader(new InputStreamReader(fos));
@@ -56,6 +57,8 @@ public class weightData {
 			rd.close();
 			fos.close();
 		} catch (FileNotFoundException e){ Log.d("LoadThread", e.getMessage());} catch (IOException e) { Log.d("LoadThread", e.getMessage());}
+        weightDataDay.autoUpdate = true;
+        allData.setWeight(allData.getWeight()); // now updates the trend of all entries
 		//LoadThread t = new LoadThread(handler);
 		//t.start();
 	}
@@ -183,10 +186,8 @@ public class weightData {
 				ptr.month = month;
 				ptr.day = day;
 				ptr.wholedate = wholedate;
-				ptr.weight = weight;
+                ptr.setWeight(weight);
 				ptr.rung = rung;
-				ptr.trend = weight;
-				ptr.var = 0.0f;
 				ptr.flag = flag;
 				ptr.comment = comment;
 				return;
@@ -196,6 +197,33 @@ public class weightData {
 			while (ptr.wholedate > wholedate && ptr.prev != null){
 				ptr = ptr.prev;
 			}
+            if (ptr.wholedate > wholedate){
+                while (ptr.wholedate > wholedate){
+                    int nyear; int nmonth; int nday;
+                    int nwholedate;
+                    nyear = ptr.year;
+                    nmonth = ptr.month;
+                    nday = ptr.day - 1;
+                    if (nday < 1){
+                        nmonth -= 1;
+                        if (nmonth < 1){
+                            nyear -= 1;
+                            nmonth = 12;
+                        }
+                        nday = daysinmonth(nmonth, nyear);
+                    }
+                    nwholedate = nyear*10000 + nmonth*100 + nday;
+
+                    ptr.prev = new weightDataDay();
+                    ptr.prev.next = ptr;
+                    ptr = ptr.prev;
+                    ptr.day = nday;
+                    ptr.month = nmonth;
+                    ptr.year = nyear;
+                    ptr.setWeight(0);
+                    ptr.wholedate = nwholedate;
+                }
+            }
 		}
 		if (ptr.wholedate != wholedate){
 			while (ptr.wholedate < wholedate && ptr.next != null){
@@ -225,30 +253,14 @@ public class weightData {
 				ptr.day = nday;
 				ptr.month = nmonth;
 				ptr.year = nyear;
-				ptr.weight = 0;
+				ptr.setWeight(0);
 				ptr.wholedate = nwholedate;
-				ptr.trend = ptr.prev.trend;
-				ptr.var = 0.0f;
 			}
 		}
 		ptr.rung = rung;
 		ptr.flag = flag;
 		ptr.comment = comment;
-		ptr.weight = weight;
-		if (weight == 0){
-			if (ptr.prev != null){
-				ptr.var = 0.0f;
-				ptr.trend = ptr.prev.trend;
-				return;
-			}
-		}
-		if (ptr.prev != null){
-			ptr.var = ptr.weight - ptr.prev.trend;
-			ptr.trend = ptr.prev.trend + (ptr.var / 10);
-		} else {
-			ptr.var = 0.0f;
-			ptr.trend = weight;
-		}
+		ptr.setWeight(weight);
 	}
 	/*
 		 private class LoadThread extends Thread {

@@ -144,14 +144,14 @@ public class MonthDetailFragment extends Fragment {
 		for (;mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next){ // fill all values
 			int d = mPtr.wholedate % (year*10000+month*100);
 
-			tmpTrendValues[numTrend] = new GraphView.GraphViewData(d, mPtr.trend);
+			tmpTrendValues[numTrend] = new GraphView.GraphViewData(d, mPtr.getTrend());
 			numTrend++;
-			max = Math.max(max, mPtr.trend);
-			min = Math.min(min, mPtr.trend);
-			if (mPtr.weight > 0.0f){ // only care if we have an actual value
-				max = Math.max(max, mPtr.weight);
-				min = Math.min(min, mPtr.weight);
-				tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, mPtr.weight);
+			max = Math.max(max, mPtr.getTrend());
+			min = Math.min(min, mPtr.getTrend());
+			if (mPtr.getWeight() > 0.0f){ // only care if we have an actual value
+				max = Math.max(max, mPtr.getWeight());
+				min = Math.min(min, mPtr.getWeight());
+				tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, mPtr.getWeight());
 			} else {
 				tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, Double.NaN);
 			}
@@ -162,18 +162,17 @@ public class MonthDetailFragment extends Fragment {
 				numRung++;
 			}
 
-			mViewCache[d].weight.setText(String.valueOf(mPtr.weight));
-			mViewCache[d].trend.setText(String.format("%.1f", mPtr.trend));
-
-			if (mPtr.var > 0){
+			if (mPtr.getVar() > 0){
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightGain));
-			} else if (mPtr.var < 0){
+			} else if (mPtr.getVar() < 0){
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightLoss));
 			} else {
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant));
 			}
 
-			mViewCache[d].var.setText(String.format("%+.1f", mPtr.var));
+            mViewCache[d].weight.setText(String.valueOf(mPtr.getWeight()));
+            mViewCache[d].trend.setText(String.format("%.1f", mPtr.getTrend()));
+			mViewCache[d].var.setText(String.format("%+.1f", mPtr.getVar()));
 			mViewCache[d].rung.setText(String.valueOf(mPtr.rung));
 			mViewCache[d].flag.setChecked(mPtr.flag);
 			mViewCache[d].comment.setText(mPtr.comment);
