@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.anderdonau.hackersdiet"
-    android:versionCode="20140417"
-    android:versionName="20140417" >
+    android:versionCode="20140422"
+    android:versionName="20140422" >
 
     <uses-sdk
         android:minSdkVersion="14"
