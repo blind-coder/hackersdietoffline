@@ -64,24 +64,27 @@ public class MonthDetailFragment extends Fragment {
 	/**
 	 * Search a widget by its name and return its ID.
 	 */
-	public int getIdByName(String name){
+	public int getIdByName(String name) {
 		Class res = R.id.class;
 		int id;
 		try {
 			Field field = res.getField(name);
 			id = field.getInt(null);
-		} catch (Exception e){ Log.d("getIdByName", "Cant get " + name); return -1; }
+		} catch (Exception e) {
+			Log.d("getIdByName", "Cant get " + name);
+			return -1;
+		}
 		return id;
 	}
 
 	/**
 	 * Main drawing-handling function. Updates all widgets and text
 	 */
-	public void updateEverything(){
+	public void updateEverything() {
 		mCanSave = false; // while this is running, we prevent saving. Works as a mutex.
 
-		for (int d = 1; d <= 31; d++){
-			if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR))){
+		for (int d = 1; d <= 31; d++) {
+			if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
 				/**
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */
@@ -92,43 +95,43 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].rung.setText("");
 				mViewCache[d].flag.setChecked(false);
 				mViewCache[d].comment.setText("");
-			} else if (d > 28){
+			} else if (d > 28) {
 				/**
 				 * Obviously only necessary for days 29 and 30 for feb, and 31 for apr, jun, sep, nov.
 				 */
 				mViewCache[d].row.setVisibility(View.VISIBLE);
 			}
-			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH)+1, mToday.get(Calendar.YEAR))){
+			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
 				mToday.set(Calendar.DAY_OF_MONTH, d);
 			}
 		}
 
-		int year          = mItem.year;
-		int month         = mItem.month;
-		int wholedate     = year*10000 + month*100 + 1;
-		int wholedatelast = year*10000 + month*100 + mWeight.daysinmonth(month, year);
-		Calendar tmpDate  = new GregorianCalendar(year, month-1, 1);
+		int year = mItem.year;
+		int month = mItem.month;
+		int wholedate = year * 10000 + month * 100 + 1;
+		int wholedatelast = year * 10000 + month * 100 + mWeight.daysinmonth(month, year);
+		Calendar tmpDate = new GregorianCalendar(year, month - 1, 1);
 		double max = -1;
 		double min = 99999;
 
 		SimpleDateFormat sdfDay = new SimpleDateFormat("MMMM yyyy");
-		((TextView)rootView.findViewById(R.id.textMonth)).setText(sdfDay.format(tmpDate.getTime()));
+		((TextView) rootView.findViewById(R.id.textMonth)).setText(sdfDay.format(tmpDate.getTime()));
 
 		mPtr = mWeight.allData;
 
-		if (mPtr.wholedate < wholedate){ // mPtr is before today
-			while (mPtr.wholedate < wholedate && mPtr.next != null){
+		if (mPtr.wholedate < wholedate) { // mPtr is before today
+			while (mPtr.wholedate < wholedate && mPtr.next != null) {
 				mPtr = mPtr.next;
 			}
-			if (mPtr.wholedate < wholedate){ // No entries for this month
+			if (mPtr.wholedate < wholedate) { // No entries for this month
 				mCanSave = true;
 				return;
 			}
-		} else if (mPtr.wholedate > wholedate){ // mPtr is beyond today
-			while (mPtr.wholedate > wholedate && mPtr.prev != null){
+		} else if (mPtr.wholedate > wholedate) { // mPtr is beyond today
+			while (mPtr.wholedate > wholedate && mPtr.prev != null) {
 				mPtr = mPtr.prev;
 			}
-			if (mPtr.wholedate > wholedatelast){ // No entries for this month
+			if (mPtr.wholedate > wholedatelast) { // No entries for this month
 				mCanSave = true;
 				return;
 			}
@@ -141,14 +144,14 @@ public class MonthDetailFragment extends Fragment {
 		GraphView.GraphViewData[] tmpTrendValues = new GraphView.GraphViewData[31];
 		GraphView.GraphViewData[] tmpRungValues = new GraphView.GraphViewData[31];
 
-		for (;mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next){ // fill all values
-			int d = mPtr.wholedate % (year*10000+month*100);
+		for (; mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next) { // fill all values
+			int d = mPtr.wholedate % (year * 10000 + month * 100);
 
 			tmpTrendValues[numTrend] = new GraphView.GraphViewData(d, mPtr.getTrend());
 			numTrend++;
 			max = Math.max(max, mPtr.getTrend());
 			min = Math.min(min, mPtr.getTrend());
-			if (mPtr.getWeight() > 0.0f){ // only care if we have an actual value
+			if (mPtr.getWeight() > 0.0f) { // only care if we have an actual value
 				max = Math.max(max, mPtr.getWeight());
 				min = Math.min(min, mPtr.getWeight());
 				tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, mPtr.getWeight());
@@ -157,21 +160,21 @@ public class MonthDetailFragment extends Fragment {
 			}
 			numWeight++;
 
-			if (mPtr.rung > 0){
+			if (mPtr.rung > 0) {
 				tmpRungValues[numRung] = new GraphView.GraphViewData(d, mPtr.rung);
 				numRung++;
 			}
 
-			if (mPtr.getVar() > 0){
+			if (mPtr.getVar() > 0) {
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightGain));
-			} else if (mPtr.getVar() < 0){
+			} else if (mPtr.getVar() < 0) {
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightLoss));
 			} else {
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant));
 			}
 
-            mViewCache[d].weight.setText(String.valueOf(mPtr.getWeight()));
-            mViewCache[d].trend.setText(String.format("%.1f", mPtr.getTrend()));
+			mViewCache[d].weight.setText(String.valueOf(mPtr.getWeight()));
+			mViewCache[d].trend.setText(String.format("%.1f", mPtr.getTrend()));
 			mViewCache[d].var.setText(String.format("%+.1f", mPtr.getVar()));
 			mViewCache[d].rung.setText(String.valueOf(mPtr.rung));
 			mViewCache[d].flag.setChecked(mPtr.flag);
@@ -181,7 +184,7 @@ public class MonthDetailFragment extends Fragment {
 		}
 
 		graphView.removeAllSeries();
-		if (numWeight > 0){
+		if (numWeight > 0) {
 			max += 0.2;
 			min -= 0.2;
 
@@ -210,7 +213,8 @@ public class MonthDetailFragment extends Fragment {
 		mCanSave = true;
 	}
 
-	public MonthDetailFragment() { }
+	public MonthDetailFragment() {
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -258,30 +262,30 @@ public class MonthDetailFragment extends Fragment {
 
 		View.OnFocusChangeListener onBlur = new View.OnFocusChangeListener() {
 			public void onFocusChange(View arg0, boolean hasFocus) {
-				if (hasFocus){ // only update on loss of focus
+				if (hasFocus) { // only update on loss of focus
 					return;
 				}
-				if (MonthListActivity.mChanged){
+				if (MonthListActivity.mChanged) {
 					updateEverything();
 				}
 			}
 		};
 
-		if (!viewCachePopulated){
-			for (int d = 1; d <= 31; d++){
+		if (!viewCachePopulated) {
+			for (int d = 1; d <= 31; d++) {
 				String day = "";
-				if (d < 10){
+				if (d < 10) {
 					day = "0";
 				}
 				day += String.valueOf(d);
 				mViewCache[d] = new viewCache();
-				mViewCache[d].weight	= (EditText) rootView.findViewById(getIdByName("weight" + day));
-				mViewCache[d].trend		= (TextView) rootView.findViewById(getIdByName("trend" + day));
-				mViewCache[d].var			= (TextView) rootView.findViewById(getIdByName("var" + day));
-				mViewCache[d].rung		= (EditText) rootView.findViewById(getIdByName("rung" + day));
-				mViewCache[d].flag		= (CheckBox) rootView.findViewById(getIdByName("flag" + day));
-				mViewCache[d].comment	= (EditText) rootView.findViewById(getIdByName("comment" + day));
-				mViewCache[d].row			= (LinearLayout) rootView.findViewById(getIdByName("rowDay" + day));
+				mViewCache[d].weight = (EditText) rootView.findViewById(getIdByName("weight" + day));
+				mViewCache[d].trend = (TextView) rootView.findViewById(getIdByName("trend" + day));
+				mViewCache[d].var = (TextView) rootView.findViewById(getIdByName("var" + day));
+				mViewCache[d].rung = (EditText) rootView.findViewById(getIdByName("rung" + day));
+				mViewCache[d].flag = (CheckBox) rootView.findViewById(getIdByName("flag" + day));
+				mViewCache[d].comment = (EditText) rootView.findViewById(getIdByName("comment" + day));
+				mViewCache[d].row = (LinearLayout) rootView.findViewById(getIdByName("rowDay" + day));
 				final int dayOfMonth = d;
 				TextWatcher onChange = new TextWatcher() {
 					@Override
@@ -298,45 +302,41 @@ public class MonthDetailFragment extends Fragment {
 					public void afterTextChanged(Editable editable) {
 						if (!mCanSave) // do not save when updateEverything is running
 							return;
-                        double weight;
-                        int rung;
-                        try {
-                            weight = Double.parseDouble(mViewCache[dayOfMonth].weight.getText().toString());
-                        } catch (Exception e) {
-                            weight = 0.0f;
-                        }
-                        try {
-                            rung = Integer.parseInt(mViewCache[dayOfMonth].rung.getText().toString());
-                        } catch (Exception e){
-                            rung = 0;
-                        }
-                        mWeight.add(mItem.year, mItem.month, dayOfMonth,
-								weight, rung,
-								mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
+						double weight;
+						int rung;
+						try {
+							weight = Double.parseDouble(mViewCache[dayOfMonth].weight.getText().toString());
+						} catch (Exception e) {
+							weight = 0.0f;
+						}
+						try {
+							rung = Integer.parseInt(mViewCache[dayOfMonth].rung.getText().toString());
+						} catch (Exception e) {
+							rung = 0;
+						}
+						mWeight.add(mItem.year, mItem.month, dayOfMonth, weight, rung, mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
 						MonthListActivity.mChanged = true;
 					}
 				};
 				CompoundButton.OnCheckedChangeListener onCheck = new CompoundButton.OnCheckedChangeListener() {
 					@Override
 					public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (!mCanSave) // do not save when updateEverything is running
-                            return;
-                        double weight;
-                        int rung;
-                        try {
-                            weight = Double.parseDouble(mViewCache[dayOfMonth].weight.getText().toString());
-                        } catch (Exception e) {
-                            weight = 0.0f;
-                        }
-                        try {
-                            rung = Integer.parseInt(mViewCache[dayOfMonth].rung.getText().toString());
-                        } catch (Exception e){
-                            rung = 0;
-                        }
-                        mWeight.add(mItem.year, mItem.month, dayOfMonth,
-                                weight, rung,
-                                mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
-                        MonthListActivity.mChanged = true;
+						if (!mCanSave) // do not save when updateEverything is running
+							return;
+						double weight;
+						int rung;
+						try {
+							weight = Double.parseDouble(mViewCache[dayOfMonth].weight.getText().toString());
+						} catch (Exception e) {
+							weight = 0.0f;
+						}
+						try {
+							rung = Integer.parseInt(mViewCache[dayOfMonth].rung.getText().toString());
+						} catch (Exception e) {
+							rung = 0;
+						}
+						mWeight.add(mItem.year, mItem.month, dayOfMonth, weight, rung, mViewCache[dayOfMonth].flag.isChecked(), mViewCache[dayOfMonth].comment.getText().toString());
+						MonthListActivity.mChanged = true;
 					}
 				};
 
@@ -351,7 +351,7 @@ public class MonthDetailFragment extends Fragment {
 
 				mViewCache[d].flag.setOnCheckedChangeListener(onCheck);
 
-				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR) == mItem.year && mToday.get(Calendar.MONTH)+1 == mItem.month){
+				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR) == mItem.year && mToday.get(Calendar.MONTH) + 1 == mItem.month) {
 					mViewCache[d].weight.requestFocus();
 				}
 			}

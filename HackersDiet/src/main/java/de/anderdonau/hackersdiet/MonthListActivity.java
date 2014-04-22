@@ -45,34 +45,39 @@ import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayS
  * lead to a {@link MonthDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
- * <p>
+ * <p/>
  * The activity makes heavy use of fragments. The list of items is a
  * {@link MonthListFragment} and the item details
  * (if present) is a {@link MonthDetailFragment}.
- * <p>
+ * <p/>
  * This activity also implements the required
  * {@link MonthListFragment.Callbacks} interface
  * to listen for item selections.
  */
 public class MonthListActivity extends FragmentActivity implements MonthListFragment.Callbacks {
 	private boolean mTwoPane = false; // running on tablet?
-	private AdView  adView   = null;
+	private AdView adView = null;
 
-	public static Context    mContext    = null;
+	public static Context mContext = null;
 	public static weightData mWeightData = null;
-	public static boolean    mChanged    = false; // will be true if any field has changed
+	public static boolean mChanged = false; // will be true if any field has changed
 
 	public MonthListFragment mFragment;
 
-	public static Context getAppContext() { return MonthListActivity.mContext; }
-	public static weightData getmWeightData(){ return MonthListActivity.mWeightData; }
+	public static Context getAppContext() {
+		return MonthListActivity.mContext;
+	}
+
+	public static weightData getmWeightData() {
+		return MonthListActivity.mWeightData;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		MonthListActivity.mContext = getApplicationContext();
 
-		if (MonthListActivity.mWeightData == null){
+		if (MonthListActivity.mWeightData == null) {
 			/**
 			 * Only load the data once on startup.
 			 */
@@ -85,27 +90,26 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		/**
 		 * Check for possibility of displaying ads
 		 */
-		if (adView == null){
+		if (adView == null) {
 			adView = (AdView) findViewById(R.id.adView);
 		}
-		if (adView != null){
+		if (adView != null) {
 			/* additional check for cheatcode */
 			int check = isGooglePlayServicesAvailable(this);
-			if (check != 0){
+			if (check != 0) {
 				GooglePlayServicesUtil.getErrorDialog(check, this, 0);
 			} else {
-				LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
+				LinearLayout layout = (LinearLayout) findViewById(R.id.mainLayout);
 				SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 				final boolean hideAds = settings.getBoolean("hideads", false);
 
-				if (hideAds){
+				if (hideAds) {
 					adView.setVisibility(View.GONE);
 				} else {
-					if (layout != null){
+					if (layout != null) {
 						// Initiate a generic request.
-						AdRequest adRequest = new AdRequest.Builder()
-							.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulator
-							.build();
+						AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulator
+										                      .build();
 
 						// Load the adView with the ad request.
 						adView.loadAd(adRequest);
@@ -167,17 +171,15 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 				return true;
 			case R.id.save:
 				mWeightData.saveData();
-				mChanged=false;
+				mChanged = false;
 				return true;
 			case R.id.menuAbout:
 				AlertDialog.Builder about = new AlertDialog.Builder(this);
-				about.setMessage(R.string.aboutHackDietOffline)
-					.setCancelable(false)
-					.setNeutralButton(R.string.thanks, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							dialog.dismiss();
-						}
-					});
+				about.setMessage(R.string.aboutHackDietOffline).setCancelable(false).setNeutralButton(R.string.thanks, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.dismiss();
+					}
+				});
 				about.create().show();
 				return true;
 			case R.id.menuExcercise:
@@ -189,32 +191,28 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 	}
 
 	@Override
-	public void onBackPressed(){
-        checkSaveData();
+	public void onBackPressed() {
+		checkSaveData();
 
-		if (!mChanged){
+		if (!mChanged) {
 			finish();
 			return;
 		}
 
 		AlertDialog.Builder confirm = new AlertDialog.Builder(this);
-		confirm.setMessage(R.string.saveFirst)
-			.setCancelable(false)
-			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					mWeightData.saveData();
-					dialog.cancel();
-					finish();
-				}
-			})
-		.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+		confirm.setMessage(R.string.saveFirst).setCancelable(false).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				mWeightData.saveData();
+				dialog.cancel();
+				finish();
+			}
+		}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 				finish();
 			}
-		})
-		.setNeutralButton(R.string.dontQuit, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id){
+		}).setNeutralButton(R.string.dontQuit, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 			}
 		});
@@ -222,31 +220,31 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		alert.show();
 	}
 
-    public static void checkSaveData(){
-        if (mChanged){
-            SharedPreferences settings = mContext.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-            boolean autosave = settings.getBoolean("autosave", true);
+	public static void checkSaveData() {
+		if (mChanged) {
+			SharedPreferences settings = mContext.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+			boolean autosave = settings.getBoolean("autosave", true);
 
-            if (autosave){
-                mWeightData.saveData();
-                mChanged = false;
-            }
-        }
-    }
+			if (autosave) {
+				mWeightData.saveData();
+				mChanged = false;
+			}
+		}
+	}
 
 	@Override
 	public void onPause() {
-		if (adView != null){
+		if (adView != null) {
 			adView.pause();
 		}
 
-        super.onPause();
-   	}
+		super.onPause();
+	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (adView != null){
+		if (adView != null) {
 			adView.resume();
 		}
 		mFragment.updateList();
@@ -254,7 +252,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
 	@Override
 	public void onDestroy() {
-		if (adView != null){
+		if (adView != null) {
 			adView.destroy();
 		}
 

@@ -31,7 +31,7 @@ public class viewCache {
 	public EditText comment;
 	public LinearLayout row;
 
-	public viewCache(){
+	public viewCache() {
 		weight = null;
 		trend = null;
 		var = null;

@@ -28,7 +28,7 @@ public class ExcerciseListContent {
 	public static Map<String, ExcerciseItem> ITEM_MAP = new HashMap<String, ExcerciseItem>();
 
 	public static void addItem(ExcerciseItem item) {
-		if (!ITEM_MAP.containsKey(item.id)){
+		if (!ITEM_MAP.containsKey(item.id)) {
 			ITEMS.add(item);
 			ITEM_MAP.put(item.id, item);
 		}

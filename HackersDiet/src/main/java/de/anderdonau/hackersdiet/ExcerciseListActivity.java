@@ -33,10 +33,13 @@ import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayS
 
 public class ExcerciseListActivity extends FragmentActivity implements ExcerciseListFragment.Callbacks {
 	private boolean mTwoPane = false; // running on tablet?
-	private AdView  adView   = null;
+	private AdView adView = null;
 
-	public static Context mContext    = null;
-	public static Context getAppContext() { return ExcerciseListActivity.mContext; }
+	public static Context mContext = null;
+
+	public static Context getAppContext() {
+		return ExcerciseListActivity.mContext;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,27 +53,26 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
 		/**
 		 * Check for possibility of displaying ads
 		 */
-		if (adView == null){
+		if (adView == null) {
 			adView = (AdView) findViewById(R.id.adViewExcercise);
 		}
-		if (adView != null){
+		if (adView != null) {
 			/* additional check for cheatcode */
 			int check = isGooglePlayServicesAvailable(this);
-			if (check != 0){
+			if (check != 0) {
 				GooglePlayServicesUtil.getErrorDialog(check, this, 0);
 			} else {
-				LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayoutExcercise);
+				LinearLayout layout = (LinearLayout) findViewById(R.id.mainLayoutExcercise);
 				SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 				final boolean hideAds = settings.getBoolean("hideads", false);
 
-				if (hideAds){
+				if (hideAds) {
 					adView.setVisibility(View.GONE);
 				} else {
-					if (layout != null){
+					if (layout != null) {
 						// Initiate a generic request.
-						AdRequest adRequest = new AdRequest.Builder()
-							.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulator
-							.build();
+						AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulator
+										                      .build();
 
 						// Load the adView with the ad request.
 						adView.loadAd(adRequest);
@@ -91,9 +93,7 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
-			((ExcerciseListFragment) getSupportFragmentManager()
-			 .findFragmentById(R.id.excercise_list))
-				.setActivateOnItemClick(true);
+			((ExcerciseListFragment) getSupportFragmentManager().findFragmentById(R.id.excercise_list)).setActivateOnItemClick(true);
 		}
 	}
 
@@ -118,13 +118,13 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
 	}
 
 	@Override
-	public void onBackPressed(){
+	public void onBackPressed() {
 		finish();
 	}
 
 	@Override
 	public void onPause() {
-		if (adView != null){
+		if (adView != null) {
 			adView.pause();
 		}
 		super.onPause();
@@ -133,14 +133,14 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (adView != null){
+		if (adView != null) {
 			adView.resume();
 		}
 	}
 
 	@Override
 	public void onDestroy() {
-		if (adView != null){
+		if (adView != null) {
 			adView.destroy();
 		}
 		super.onDestroy();

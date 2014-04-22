@@ -29,24 +29,24 @@ public class MonthListContent {
 	public static Map<String, MonthItem> ITEM_MAP = new HashMap<String, MonthItem>();
 
 	public static void addItem(MonthItem item) {
-		if (!ITEM_MAP.containsKey(item.id)){
+		if (!ITEM_MAP.containsKey(item.id)) {
 			ITEMS.add(item);
 			ITEM_MAP.put(item.id, item);
 		}
 	}
 
-    public static boolean containsYearMonth(int year, int month){
-        Iterator<MonthItem> ptr = ITEMS.iterator();
-        while (ptr.hasNext()){
-            MonthItem p = ptr.next();
-            if (p.year == year && p.month == month){
-                return true;
-            }
-        }
-        return false;
-    }
+	public static boolean containsYearMonth(int year, int month) {
+		Iterator<MonthItem> ptr = ITEMS.iterator();
+		while (ptr.hasNext()) {
+			MonthItem p = ptr.next();
+			if (p.year == year && p.month == month) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    public static class MonthItem {
+	public static class MonthItem {
 		public String id;
 		public String content;
 		public int year;

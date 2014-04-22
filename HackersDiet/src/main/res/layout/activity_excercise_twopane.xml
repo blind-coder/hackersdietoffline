@@ -42,7 +42,9 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3">
-        <com.google.android.gms.ads.AdView android:id="@+id/adView"
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             ads:adUnitId="ca-app-pub-2751649723763471/5257955341"

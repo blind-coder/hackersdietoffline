@@ -64,14 +64,14 @@ public class Prefs extends Activity {
 			boolean finished;
 			id = msg.getData().getInt("sendToast", -1);
 			finished = msg.getData().getBoolean("finished", false);
-			if (finished){
-				if (pBar != null){
-					if (pBar.isShowing()){
+			if (finished) {
+				if (pBar != null) {
+					if (pBar.isShowing()) {
 						pBar.dismiss();
 					}
 				}
 				pBar = null;
-			} else if (id >= 0){
+			} else if (id >= 0) {
 				Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
 			}
 		}
@@ -82,6 +82,7 @@ public class Prefs extends Activity {
 		LoadThread t = new LoadThread(handler, username, password);
 		t.start();
 	}
+
 	public void saveData(String username, String password) {
 		pBar = ProgressDialog.show(this, "", getResources().getString(R.string.uploadingToHackDietOnline), true);
 		SaveThread t = new SaveThread(handler, username, password);
@@ -95,24 +96,24 @@ public class Prefs extends Activity {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 
 		String username = settings.getString("username", "");
-		if (username.length() > 0){
+		if (username.length() > 0) {
 			EditText u = (EditText) findViewById(R.id.textUsername);
 			u.setText(username);
 		}
 
 		String password = settings.getString("password", "");
-		if (password.length() > 0){
+		if (password.length() > 0) {
 			EditText p = (EditText) findViewById(R.id.textPassword);
 			p.setText(password);
 		}
 
 		boolean hideads = settings.getBoolean("hideads", false);
-		ToggleButton btnHideAds = (ToggleButton)findViewById(R.id.btnHideAds);
+		ToggleButton btnHideAds = (ToggleButton) findViewById(R.id.btnHideAds);
 		btnHideAds.setChecked(hideads);
 
-        boolean autosave = settings.getBoolean("autosave", true);
-        CheckBox btnAutoSave = (CheckBox)findViewById(R.id.btnAutoSave);
-        btnAutoSave.setChecked(autosave);
+		boolean autosave = settings.getBoolean("autosave", true);
+		CheckBox btnAutoSave = (CheckBox) findViewById(R.id.btnAutoSave);
+		btnAutoSave.setChecked(autosave);
 
 		TextWatcher watchCheatCode = new TextWatcher() {
 			@Override
@@ -128,42 +129,39 @@ public class Prefs extends Activity {
 			@Override
 			public void afterTextChanged(Editable cheatcode) {
 				Log.d("cheatcode", String.format("cheatcode is: %s", cheatcode.toString()));
-				if (cheatcode.toString().equalsIgnoreCase("UUDDLRLRBA")){
+				if (cheatcode.toString().equalsIgnoreCase("UUDDLRLRBA")) {
 					Log.d("cheatcode", "activating hideads button");
-					ToggleButton btnHideAds = (ToggleButton)findViewById(R.id.btnHideAds);
+					ToggleButton btnHideAds = (ToggleButton) findViewById(R.id.btnHideAds);
 					btnHideAds.setVisibility(View.VISIBLE);
 				}
 			}
 		};
-		EditText textCheatCode = (EditText)findViewById(R.id.textCheatCode);
+		EditText textCheatCode = (EditText) findViewById(R.id.textCheatCode);
 		textCheatCode.addTextChangedListener(watchCheatCode);
 	}
 
-	public void downloadDataFromHackDietOnline(){
+	public void downloadDataFromHackDietOnline() {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 
 		final String username = settings.getString("username", "");
-		if (username.length() <= 0){
+		if (username.length() <= 0) {
 			Toast.makeText(this, R.string.errorUsernameIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
 
 		final String password = settings.getString("password", "");
-		if (password.length() <= 0){
+		if (password.length() <= 0) {
 			Toast.makeText(this, R.string.errorPasswordIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
 
 		AlertDialog.Builder confirm = new AlertDialog.Builder(this);
-		confirm.setMessage(R.string.reallySyncFromHDO)
-			.setCancelable(false)
-			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					loadData(username, password);
-					dialog.dismiss();
-				}
-			})
-		.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+		confirm.setMessage(R.string.reallySyncFromHDO).setCancelable(false).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				loadData(username, password);
+				dialog.dismiss();
+			}
+		}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.dismiss();
 			}
@@ -172,31 +170,28 @@ public class Prefs extends Activity {
 		alert.show();
 	}
 
-	public void uploadDataToHackDietOnline(){
+	public void uploadDataToHackDietOnline() {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 
 		final String username = settings.getString("username", "");
-		if (username.length() <= 0){
+		if (username.length() <= 0) {
 			Toast.makeText(this, R.string.errorUsernameIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
 
 		final String password = settings.getString("password", "");
-		if (password.length() <= 0){
+		if (password.length() <= 0) {
 			Toast.makeText(this, R.string.errorPasswordIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
 
 		AlertDialog.Builder confirm = new AlertDialog.Builder(this);
-		confirm.setMessage(R.string.reallySyncToHDO)
-			.setCancelable(false)
-			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					saveData(username, password);
-					dialog.dismiss();
-				}
-			})
-		.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+		confirm.setMessage(R.string.reallySyncToHDO).setCancelable(false).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				saveData(username, password);
+				dialog.dismiss();
+			}
+		}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.dismiss();
 			}
@@ -205,23 +200,25 @@ public class Prefs extends Activity {
 		alert.show();
 	}
 
-	public void buttonSyncFromHDonline(View view){
+	public void buttonSyncFromHDonline(View view) {
 		savePrefs();
 		downloadDataFromHackDietOnline();
 	}
-	public void buttonSyncToHDonline(View view){
+
+	public void buttonSyncToHDonline(View view) {
 		savePrefs();
 		uploadDataToHackDietOnline();
 	}
-    public void buttonAutoSave(View view){
-        SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-        CheckBox btnAutoSave = (CheckBox) view;
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putBoolean("autosave", btnAutoSave.isChecked());
-        editor.commit();
-    }
 
-	public void buttonToggleAds(View view){
+	public void buttonAutoSave(View view) {
+		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+		CheckBox btnAutoSave = (CheckBox) view;
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putBoolean("autosave", btnAutoSave.isChecked());
+		editor.commit();
+	}
+
+	public void buttonToggleAds(View view) {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 		ToggleButton btnHideAds = (ToggleButton) view;
 		SharedPreferences.Editor editor = settings.edit();
@@ -229,7 +226,7 @@ public class Prefs extends Activity {
 		editor.commit();
 	}
 
-	public void savePrefs(){
+	public void savePrefs() {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 		SharedPreferences.Editor editor = settings.edit();
 		EditText u = (EditText) findViewById(R.id.textUsername);
@@ -249,25 +246,27 @@ public class Prefs extends Activity {
 		public Handler mHandler;
 		public String mUsername;
 		public String mPassword;
-		TrustManager[] trustAllCerts = new TrustManager[] {
-			new X509TrustManager() {
-				public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-					/**
-					 * TODO: Stop being so lazy.
-					 */
-					return null;
-				}
-				public void checkClientTrusted(X509Certificate[] certs, String authType) {  }
-				public void checkServerTrusted(X509Certificate[] certs, String authType) {  }
+		TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+				/**
+				 * TODO: Stop being so lazy.
+				 */
+				return null;
 			}
-		};
+
+			public void checkClientTrusted(X509Certificate[] certs, String authType) {
+			}
+
+			public void checkServerTrusted(X509Certificate[] certs, String authType) {
+			}
+		}};
 		HostnameVerifier allHostsValid = new HostnameVerifier() {
 			public boolean verify(String hostname, SSLSession session) {
 				return true;
 			}
 		};
 
-		HttpThread(Handler handle, String username, String password){
+		HttpThread(Handler handle, String username, String password) {
 			mHandler = handler;
 			mUsername = username;
 			mPassword = password;
@@ -275,11 +274,13 @@ public class Prefs extends Activity {
 				SSLContext sc = SSLContext.getInstance("TLS");
 				sc.init(null, trustAllCerts, new java.security.SecureRandom());
 				HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-			} catch (Exception e){ e.printStackTrace(); }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
 		}
 
-		public String getHackDietOnlineSession(String username, String password){
+		public String getHackDietOnlineSession(String username, String password) {
 			sendToast(R.string.loginInProgress);
 			try {
 				String rawData = "HDiet_username=" + URLEncoder.encode(username, "UTF-8");
@@ -289,17 +290,17 @@ public class Prefs extends Activity {
 
 				HttpsURLConnection conn = POST(rawData);
 
-				Log.d("retcode", "Return code: "+conn.getResponseCode());
+				Log.d("retcode", "Return code: " + conn.getResponseCode());
 				// Get Response
 				InputStreamReader isr = new InputStreamReader(conn.getInputStream());
 				BufferedReader rd = new BufferedReader(isr);
 
 				String line;
 				while ((line = rd.readLine()) != null) {
-					if (line.contains("name=\"s\"")){
+					if (line.contains("name=\"s\"")) {
 						Pattern r = Pattern.compile("value=\"(.*)\"");
 						Matcher m = r.matcher(line);
-						if (m.find()){
+						if (m.find()) {
 							String session = m.group(1);
 							rd.close();
 							conn.disconnect();
@@ -316,14 +317,16 @@ public class Prefs extends Activity {
 			sendToast(R.string.errorLoginFailed);
 			return "";
 		}
-		public void sendToast(int id){
+
+		public void sendToast(int id) {
 			Message msg = mHandler.obtainMessage();
 			Bundle b = new Bundle();
 			b.putInt("sendToast", id);
 			msg.setData(b);
 			mHandler.sendMessage(msg);
 		}
-		public HttpsURLConnection POST(String data){
+
+		public HttpsURLConnection POST(String data) {
 			try {
 				// Open Connection
 				URL url = new URL("https://www.fourmilab.ch/cgi-bin/HackDiet");
@@ -335,22 +338,24 @@ public class Prefs extends Activity {
 				wr.write(data);
 				wr.flush();
 				return conn;
-			} catch (Exception e){ e.printStackTrace(); }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return null;
 		}
 	}
 
 	private class LoadThread extends HttpThread {
-		public LoadThread(Handler handle, String username, String password){
+		public LoadThread(Handler handle, String username, String password) {
 			super(handle, username, password);
 		}
 
 		@Override
 		public void run() {
 			String session = getHackDietOnlineSession(mUsername, mPassword);
-			if (session.length() > 0){
+			if (session.length() > 0) {
 				String data = getHackDietOnlineData(session);
-				if (data.length() >= 0){
+				if (data.length() >= 0) {
 					try {
 						FileOutputStream fos = openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
 						fos.write(data.getBytes());
@@ -370,10 +375,10 @@ public class Prefs extends Activity {
 			mHandler.sendMessage(msg);
 		}
 
-		public String getHackDietOnlineData(String session){
+		public String getHackDietOnlineData(String session) {
 			sendToast(R.string.requestingDataFromHDO);
 			try {
-				String rawData = "format=palm&period=a&s="+session+"&q=do_exportdb";
+				String rawData = "format=palm&period=a&s=" + session + "&q=do_exportdb";
 
 				// Open Connection
 				HttpsURLConnection conn = POST(rawData);
@@ -384,7 +389,7 @@ public class Prefs extends Activity {
 				String retVal;
 				retVal = "";
 				while ((line = rd.readLine()) != null) {
-					retVal += line+"\n";
+					retVal += line + "\n";
 				}
 				rd.close();
 				conn.disconnect();
@@ -396,19 +401,20 @@ public class Prefs extends Activity {
 			return "";
 		}
 	}
+
 	private class SaveThread extends HttpThread {
-		public SaveThread(Handler handle, String username, String password){
+		public SaveThread(Handler handle, String username, String password) {
 			super(handle, username, password);
 		}
 
 		@Override
 		public void run() {
 			String session = getHackDietOnlineSession(mUsername, mPassword);
-			if (session.length() <= 0){
+			if (session.length() <= 0) {
 				return;
 			}
 
-			if (sendHackDietOnlineData(session)){
+			if (sendHackDietOnlineData(session)) {
 				sendToast(R.string.uploadToHDOSuccessful);
 			}
 
@@ -419,13 +425,13 @@ public class Prefs extends Activity {
 			mHandler.sendMessage(msg);
 		}
 
-		public boolean sendHackDietOnlineData(String session){
+		public boolean sendHackDietOnlineData(String session) {
 			String boundary = Long.toHexString(System.currentTimeMillis()); // Just generate some unique random value.
 			String POSTDATA = "";
 			sendToast(R.string.sendigDataToHDO);
 			try {
 				POSTDATA += "--" + boundary + "\n";
-				POSTDATA += "Content-Disposition: form-data; name=\"s\"\n\n"+session+"\n";
+				POSTDATA += "Content-Disposition: form-data; name=\"s\"\n\n" + session + "\n";
 				POSTDATA += "--" + boundary + "\n";
 				POSTDATA += "Content-Disposition: form-data; name=\"q\"\n\ncsv_import_data\n";
 				POSTDATA += "--" + boundary + "\n";
@@ -438,19 +444,19 @@ public class Prefs extends Activity {
 				FileInputStream fin = mContext.openFileInput("hackdietdata.csv");
 				BufferedReader rd = new BufferedReader(new InputStreamReader(fin));
 				String line;
-				while ((line = rd.readLine()) != null){
+				while ((line = rd.readLine()) != null) {
 					POSTDATA += line + "\n";
 				}
 				rd.close();
 				fin.close();
 				POSTDATA += "\n--" + boundary + "--\n";
-				String rawData = "q=csv_import_data&overwrite=y&s="+session+"&file="+URLEncoder.encode(POSTDATA, "UTF-8");
+				String rawData = "q=csv_import_data&overwrite=y&s=" + session + "&file=" + URLEncoder.encode(POSTDATA, "UTF-8");
 
 				HttpsURLConnection conn = POST(rawData);
 
 				int r = conn.getResponseCode();
-				if (r < 300 && r > 199){
-					POST("s="+session+"&q=update_trend&m=0000-00&canon=0");
+				if (r < 300 && r > 199) {
+					POST("s=" + session + "&q=update_trend&m=0000-00&canon=0");
 					return true;
 				}
 			} catch (IOException e) {

@@ -34,7 +34,7 @@ import java.util.GregorianCalendar;
  * activity is only used on handset devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
  * in a {@link ExcerciseListActivity}.
- *
+ * <p/>
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link ExcerciseDetailFragment}.
  */
@@ -85,10 +85,10 @@ public class ExcerciseDetailActivity extends FragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void btnAddRungToday(View view){
+	public void btnAddRungToday(View view) {
 		Calendar today = new GregorianCalendar();
 		weightData w = MonthListActivity.getmWeightData();
-		weightDataDay wd = w.getByDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DAY_OF_MONTH));
+		weightDataDay wd = w.getByDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DAY_OF_MONTH));
 
 		wd.rung = Integer.parseInt(getIntent().getStringExtra(ExcerciseDetailFragment.ARG_ITEM_ID));
 		w.add(wd);

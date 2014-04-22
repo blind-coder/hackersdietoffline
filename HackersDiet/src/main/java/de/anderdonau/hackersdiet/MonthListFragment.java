@@ -32,7 +32,7 @@ import java.util.GregorianCalendar;
  * also supports tablet devices by allowing list items to be given an
  * 'activated' state upon selection. This helps indicate which item is
  * currently being viewed in a {@link MonthDetailFragment}.
- * <p>
+ * <p/>
  * Activities containing this fragment MUST implement the {@link Callbacks}
  * interface.
  */
@@ -83,7 +83,7 @@ public class MonthListFragment extends ListFragment {
 	public MonthListFragment() {
 	}
 
-	public void updateList(){
+	public void updateList() {
 		int id = 0;
 		int lastyear = 1970;
 		int lastmonth = 1;
@@ -93,35 +93,30 @@ public class MonthListFragment extends ListFragment {
 
 		MonthListContent.ITEMS.clear();
 		MonthListContent.ITEM_MAP.clear();
-		while (mPtr.next != null){
+		while (mPtr.next != null) {
 			mPtr = mPtr.next;
 		}
-		for (; mPtr != null; mPtr = mPtr.prev){
+		for (; mPtr != null; mPtr = mPtr.prev) {
 			// mPtr.wholeDate = year*10000 + month * 100 + d;
-			if (mPtr.year != lastyear || mPtr.month != lastmonth){
+			if (mPtr.year != lastyear || mPtr.month != lastmonth) {
 				id++;
-				MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
+				MonthListContent.addItem(new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mPtr.year, mPtr.month), mPtr.year, mPtr.month));
 				lastyear = mPtr.year;
 				lastmonth = mPtr.month;
 			}
 		}
 		mPtr = mWeightData.allData;
-		while (mPtr.next != null){
+		while (mPtr.next != null) {
 			mPtr = mPtr.next;
 		}
 
-        if (!MonthListContent.containsYearMonth(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1)){
-            id++;
-			MonthListContent.addItem (new MonthListContent.MonthItem(String.format("%d", id),
-						String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),
-						mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1));
+		if (!MonthListContent.containsYearMonth(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1)) {
+			id++;
+			MonthListContent.addItem(new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1), mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1));
 		}
-		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(
-					getActivity(),
-					android.R.layout.simple_list_item_activated_1,
-					android.R.id.text1,
-					MonthListContent.ITEMS));
+		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(getActivity(), android.R.layout.simple_list_item_activated_1, android.R.id.text1, MonthListContent.ITEMS));
 	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -182,9 +177,7 @@ public class MonthListFragment extends ListFragment {
 	public void setActivateOnItemClick(boolean activateOnItemClick) {
 		// When setting CHOICE_MODE_SINGLE, ListView will automatically
 		// give items the 'activated' state when touched.
-		getListView().setChoiceMode(activateOnItemClick
-				? ListView.CHOICE_MODE_SINGLE
-				: ListView.CHOICE_MODE_NONE);
+		getListView().setChoiceMode(activateOnItemClick ? ListView.CHOICE_MODE_SINGLE : ListView.CHOICE_MODE_NONE);
 	}
 
 	private void setActivatedPosition(int position) {
