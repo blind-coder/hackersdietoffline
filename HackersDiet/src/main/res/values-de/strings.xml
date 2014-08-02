@@ -28,8 +28,8 @@
     <string name="password">Passwort</string>
     <string name="syncup">Daten hochladen</string>
     <string name="syncdown">Daten herunterladen</string>
-    <string name="dummyTrend">Verlauf</string>
-    <string name="dummyVar">Var</string>
+    <string name="dummyTrend"></string>
+    <string name="dummyVar"></string>
     <string name="weight">Gewicht</string>
     <string name="rung">Stufe</string>
     <string name="empty"></string>

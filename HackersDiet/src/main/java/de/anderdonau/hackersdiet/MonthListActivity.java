@@ -28,7 +28,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.ads.AdRequest;

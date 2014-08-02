@@ -85,14 +85,19 @@ public class MonthListFragment extends ListFragment {
 
 	public void updateList() {
 		int id = 0;
-		int lastyear = 1970;
-		int lastmonth = 1;
+		int lastyear;
+		int lastmonth;
 		weightData mWeightData = MonthListActivity.getmWeightData();
 		weightDataDay mPtr = mWeightData.allData;
 		Calendar mToday = new GregorianCalendar();
 
 		MonthListContent.ITEMS.clear();
 		MonthListContent.ITEM_MAP.clear();
+
+		MonthListContent.addItem(new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1), mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1));
+		lastyear = mToday.get(Calendar.YEAR);
+		lastmonth = mToday.get(Calendar.MONTH) + 1;
+
 		while (mPtr.next != null) {
 			mPtr = mPtr.next;
 		}
@@ -110,10 +115,6 @@ public class MonthListFragment extends ListFragment {
 			mPtr = mPtr.next;
 		}
 
-		if (!MonthListContent.containsYearMonth(mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1)) {
-			id++;
-			MonthListContent.addItem(new MonthListContent.MonthItem(String.format("%d", id), String.format("%4d/%02d", mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1), mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH) + 1));
-		}
 		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(getActivity(), android.R.layout.simple_list_item_activated_1, android.R.id.text1, MonthListContent.ITEMS));
 	}
 

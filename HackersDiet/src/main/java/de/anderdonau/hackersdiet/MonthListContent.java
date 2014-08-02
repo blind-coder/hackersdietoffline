@@ -36,9 +36,7 @@ public class MonthListContent {
 	}
 
 	public static boolean containsYearMonth(int year, int month) {
-		Iterator<MonthItem> ptr = ITEMS.iterator();
-		while (ptr.hasNext()) {
-			MonthItem p = ptr.next();
+		for (MonthItem p : ITEMS) {
 			if (p.year == year && p.month == month) {
 				return true;
 			}
