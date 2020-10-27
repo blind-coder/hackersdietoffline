@@ -84,20 +84,6 @@
             android:id="@+id/btnAutoSave"
             android:onClick="buttonAutoSave" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Cheatcode"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/textCheatCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/Cheatcode"
-            android:inputType="textPassword" />
-
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

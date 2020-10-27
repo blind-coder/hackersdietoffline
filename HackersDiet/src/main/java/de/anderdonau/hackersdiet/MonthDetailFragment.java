@@ -84,7 +84,8 @@ public class MonthDetailFragment extends Fragment {
 		mCanSave = false; // while this is running, we prevent saving. Works as a mutex.
 
 		for (int d = 1; d <= 31; d++) {
-			if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
+			// if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
+			if (d > 28 && d > mWeight.daysinmonth(mItem.month, mItem.year)) {
 				/**
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */

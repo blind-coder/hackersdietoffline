@@ -30,13 +30,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-
-import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayServicesAvailable;
-
-
 /**
  * An activity representing a list of Months. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -54,14 +47,11 @@ import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayS
  * to listen for item selections.
  */
 public class MonthListActivity extends FragmentActivity implements MonthListFragment.Callbacks {
-	private boolean mTwoPane = false; // running on tablet?
-	private AdView adView = null;
-
-	public static Context mContext = null;
-	public static weightData mWeightData = null;
-	public static boolean mChanged = false; // will be true if any field has changed
-
-	public MonthListFragment mFragment;
+	public static Context           mContext    = null;
+	public static weightData        mWeightData = null;
+	public static boolean           mChanged    = false; // will be true if any field has changed
+	public        MonthListFragment mFragment   = null;
+	private       boolean           mTwoPane    = false; // running on tablet?
 
 	public static Context getAppContext() {
 		return MonthListActivity.mContext;
@@ -71,66 +61,15 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		return MonthListActivity.mWeightData;
 	}
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		MonthListActivity.mContext = getApplicationContext();
+	public static void checkSaveData() {
+		if (mChanged) {
+			SharedPreferences settings = mContext.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+			boolean autoSave = settings.getBoolean("autosave", true);
 
-		if (MonthListActivity.mWeightData == null) {
-			/**
-			 * Only load the data once on startup.
-			 */
-			MonthListActivity.mWeightData = new weightData();
-			MonthListActivity.mWeightData.loadData();
-		}
-
-		setContentView(R.layout.activity_month_list);
-
-		/**
-		 * Check for possibility of displaying ads
-		 */
-		if (adView == null) {
-			adView = (AdView) findViewById(R.id.adView);
-		}
-		if (adView != null) {
-			/* additional check for cheatcode */
-			int check = isGooglePlayServicesAvailable(this);
-			if (check != 0) {
-				GooglePlayServicesUtil.getErrorDialog(check, this, 0);
-			} else {
-				LinearLayout layout = (LinearLayout) findViewById(R.id.mainLayout);
-				SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-				final boolean hideAds = settings.getBoolean("hideads", false);
-
-				if (hideAds) {
-					adView.setVisibility(View.GONE);
-				} else {
-					if (layout != null) {
-						// Initiate a generic request.
-						AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulator
-										                      .build();
-
-						// Load the adView with the ad request.
-						adView.loadAd(adRequest);
-					}
-				}
+			if (autoSave) {
+				mWeightData.saveData();
+				mChanged = false;
 			}
-		}
-		mFragment = ((MonthListFragment) getSupportFragmentManager().findFragmentById(R.id.month_list));
-
-		/**
-		 * Is this twoPane mode?
-		 */
-		if (findViewById(R.id.month_detail_container) != null) {
-			// The detail container view will be present only in the
-			// large-screen layouts (res/values-large and
-			// res/values-sw600dp). If this view is present, then the
-			// activity should be in two-pane mode.
-			mTwoPane = true;
-
-			// In two-pane mode, list items should be given the
-			// 'activated' state when touched.
-			mFragment.setActivateOnItemClick(true);
 		}
 	}
 
@@ -144,7 +83,8 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 			arguments.putString(MonthDetailFragment.ARG_ITEM_ID, id);
 			MonthDetailFragment fragment = new MonthDetailFragment();
 			fragment.setArguments(arguments);
-			getSupportFragmentManager().beginTransaction().replace(R.id.month_detail_container, fragment).commit();
+			getSupportFragmentManager().beginTransaction().replace(R.id.month_detail_container, fragment)
+				.commit();
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
@@ -174,16 +114,18 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 				return true;
 			case R.id.menuAbout:
 				AlertDialog.Builder about = new AlertDialog.Builder(this);
-				about.setMessage(R.string.aboutHackDietOffline).setCancelable(false).setNeutralButton(R.string.thanks, new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.dismiss();
+				about.setMessage(R.string.aboutHackDietOffline).setCancelable(false).setNeutralButton(
+					R.string.thanks, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.dismiss();
+						}
 					}
-				});
+				);
 				about.create().show();
 				return true;
 			case R.id.menuExcercise:
-				Intent excerciseIntent = new Intent(this, ExcerciseListActivity.class);
-				startActivity(excerciseIntent);
+				Intent exerciseIntent = new Intent(this, ExcerciseListActivity.class);
+				startActivity(exerciseIntent);
 				return true;
 		}
 		return false;
@@ -199,13 +141,15 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		}
 
 		AlertDialog.Builder confirm = new AlertDialog.Builder(this);
-		confirm.setMessage(R.string.saveFirst).setCancelable(false).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				mWeightData.saveData();
-				dialog.cancel();
-				finish();
+		confirm.setMessage(R.string.saveFirst).setCancelable(false).setPositiveButton(R.string.yes,
+			new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					mWeightData.saveData();
+					dialog.cancel();
+					finish();
+				}
 			}
-		}).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+		).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
 				finish();
@@ -219,42 +163,53 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		alert.show();
 	}
 
-	public static void checkSaveData() {
-		if (mChanged) {
-			SharedPreferences settings = mContext.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-			boolean autosave = settings.getBoolean("autosave", true);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		MonthListActivity.mContext = getApplicationContext();
 
-			if (autosave) {
-				mWeightData.saveData();
-				mChanged = false;
-			}
+		if (MonthListActivity.mWeightData == null) {
+			/**
+			 * Only load the data once on startup.
+			 */
+			MonthListActivity.mWeightData = new weightData();
+			MonthListActivity.mWeightData.loadData();
+		}
+
+		setContentView(R.layout.activity_month_list);
+
+		mFragment = ((MonthListFragment) getSupportFragmentManager().findFragmentById(R.id.month_list));
+
+		/**
+		 * Is this twoPane mode?
+		 */
+		if (findViewById(R.id.month_detail_container) != null) {
+			// The detail container view will be present only in the
+			// large-screen layouts (res/values-large and
+			// res/values-sw600dp). If this view is present, then the
+			// activity should be in two-pane mode.
+			mTwoPane = true;
+
+			// In two-pane mode, list items should be given the
+			// 'activated' state when touched.
+			mFragment.setActivateOnItemClick(true);
 		}
 	}
 
 	@Override
-	public void onPause() {
-		if (adView != null) {
-			adView.pause();
-		}
+	public void onDestroy() {
 
+		super.onDestroy();
+	}
+
+	@Override
+	public void onPause() {
 		super.onPause();
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (adView != null) {
-			adView.resume();
-		}
 		mFragment.updateList();
-	}
-
-	@Override
-	public void onDestroy() {
-		if (adView != null) {
-			adView.destroy();
-		}
-
-		super.onDestroy();
 	}
 }

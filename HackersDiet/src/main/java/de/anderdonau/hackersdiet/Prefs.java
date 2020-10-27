@@ -136,8 +136,6 @@ public class Prefs extends Activity {
 				}
 			}
 		};
-		EditText textCheatCode = (EditText) findViewById(R.id.textCheatCode);
-		textCheatCode.addTextChangedListener(watchCheatCode);
 	}
 
 	public void downloadDataFromHackDietOnline() {
