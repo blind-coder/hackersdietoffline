@@ -22,7 +22,7 @@
             android:text="xmonth 20xx"
             android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
-        <LinearLayout
+        <com.jjoe64.graphview.GraphView
             android:layout_width="fill_parent"
             android:layout_height="200dp"
             android:id="@+id/weightGraph" />

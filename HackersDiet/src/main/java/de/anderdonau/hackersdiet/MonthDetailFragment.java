@@ -33,13 +33,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jjoe64.graphview.CustomLabelFormatter;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.GraphViewStyle;
-import com.jjoe64.graphview.LineGraphView;
+import com.jjoe64.graphview.*;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.lang.reflect.Field;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -60,7 +59,7 @@ public class MonthDetailFragment extends Fragment {
 	viewCache[] mViewCache = new viewCache[32]; // 0 is left empty, saves subtracting 1 every time
 	weightData mWeight = null;
 	weightDataDay mPtr = null;
-	LineGraphView graphView;
+	GraphView graphView;
 
 	/**
 	 * Search a widget by its name and return its ID.
@@ -140,30 +139,36 @@ public class MonthDetailFragment extends Fragment {
 		}
 
 		int numWeight = 0;
-		int numTrend = 0;
 		int numRung = 0;
-		GraphView.GraphViewData[] tmpWeightValues = new GraphView.GraphViewData[31];
-		GraphView.GraphViewData[] tmpTrendValues = new GraphView.GraphViewData[31];
-		GraphView.GraphViewData[] tmpRungValues = new GraphView.GraphViewData[31];
-
+		LineGraphSeries<DataPoint> weightValues = new LineGraphSeries<DataPoint>();
+		LineGraphSeries<DataPoint> trendValues = new LineGraphSeries<DataPoint>();
+		LineGraphSeries<DataPoint> rungValues = new LineGraphSeries<DataPoint>();
+		weightValues.setTitle("Weight");
+		trendValues.setTitle("Trend");
+		rungValues.setTitle("Rung");
+		weightValues.setColor(Color.GREEN);
+		trendValues.setColor(Color.RED);
+		rungValues.setColor(Color.BLUE);
+		weightValues.setDrawDataPoints(true);
+		trendValues.setDrawDataPoints(true);
+		rungValues.setDrawDataPoints(true);
 		for (; mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next) { // fill all values
 			int d = mPtr.wholedate % (year * 10000 + month * 100);
-
-			tmpTrendValues[numTrend] = new GraphView.GraphViewData(d, mPtr.getTrend());
-			numTrend++;
 			max = Math.max(max, mPtr.getTrend());
 			min = Math.min(min, mPtr.getTrend());
 			if (mPtr.getWeight() > 0.0f) { // only care if we have an actual value
 				max = Math.max(max, mPtr.getWeight());
 				min = Math.min(min, mPtr.getWeight());
-				tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, mPtr.getWeight());
+				weightValues.appendData(new DataPoint(d, mPtr.getWeight()), false, 31);
+				trendValues.appendData(new DataPoint(d, mPtr.getTrend()), false, 31);
 			} else {
-				tmpWeightValues[numWeight] = new GraphView.GraphViewData(d, Double.NaN);
+				weightValues.appendData(new DataPoint(d, Double.NaN), false, 31);
+				trendValues.appendData(new DataPoint(d, Double.NaN), false, 31);
 			}
 			numWeight++;
 
 			if (mPtr.rung > 0) {
-				tmpRungValues[numRung] = new GraphView.GraphViewData(d, mPtr.rung);
+				rungValues.appendData(new DataPoint(d, mPtr.rung), false, 31);
 				numRung++;
 			}
 
@@ -184,28 +189,40 @@ public class MonthDetailFragment extends Fragment {
 
 			tmpDate.set(Calendar.DAY_OF_MONTH, d);
 		}
-
-		graphView.removeAllSeries();
-		if (numWeight > 0) {
-			max += 0.2;
-			min -= 0.2;
-
-			GraphView.GraphViewData[] weightValues = new GraphView.GraphViewData[numWeight];
-			GraphView.GraphViewData[] trendValues = new GraphView.GraphViewData[numTrend];
-			System.arraycopy(tmpWeightValues, 0, weightValues, 0, numWeight);
-			System.arraycopy(tmpTrendValues, 0, trendValues, 0, numTrend);
-
-			GraphViewSeries gvsWeight = new GraphViewSeries("Weight", null, weightValues);
-			gvsWeight.getStyle().color = Color.GREEN;
-			GraphViewSeries gvsTrend = new GraphViewSeries("Trend", null, trendValues);
-			gvsTrend.getStyle().color = Color.RED;
-
-			graphView.addSeries(gvsWeight);
-			graphView.addSeries(gvsTrend);
-			graphView.setManualYAxisBounds(max, min);
-			//graphView.getGraphViewStyle().setVerticalLabelsColor(Color.WHITE);
-			//graphView.getGraphViewStyle().setHorizontalLabelsColor(Color.WHITE);
+		for (int i=numWeight+1; i<=31; i++){
+			weightValues.appendData(new DataPoint(i, Double.NaN), false, 31);
+			trendValues.appendData(new DataPoint(i, Double.NaN), false, 31);
+			rungValues.appendData(new DataPoint(i, Double.NaN), false, 31);
 		}
+		graphView = rootView.findViewById(R.id.weightGraph);
+		graphView.removeAllSeries();
+		graphView.addSeries(weightValues);
+		graphView.addSeries(trendValues);
+		if (numRung > 0){
+			graphView.addSeries(rungValues);
+		}
+		graphView.getLegendRenderer().setVisible(true);
+		if (mPtr != null) {
+			graphView.getLegendRenderer().setAlign(mPtr.getWeight() < (max - (max - min) / 2) ? LegendRenderer.LegendAlign.TOP : LegendRenderer.LegendAlign.BOTTOM);
+		}
+		graphView.getViewport().setXAxisBoundsManual(true);
+		graphView.getViewport().setMinX(0);
+		graphView.getViewport().setMaxX(numWeight);
+		GridLabelRenderer gridLabelRenderer = graphView.getGridLabelRenderer();
+		gridLabelRenderer.setHumanRounding(true, false);
+		NumberFormat nfy = NumberFormat.getInstance();
+		nfy.setMinimumFractionDigits(1);
+		nfy.setMaximumFractionDigits(1);
+		nfy.setMinimumIntegerDigits(1);
+		NumberFormat nfx = NumberFormat.getInstance();
+		nfx.setMinimumFractionDigits(0);
+		nfx.setMaximumFractionDigits(0);
+		nfx.setMinimumIntegerDigits(1);
+		gridLabelRenderer.setLabelFormatter(new DefaultLabelFormatter(nfx, nfy));
+		//graphView.getViewport().setMinX(1);
+		graphView.getViewport().setMaxX(31);
+		graphView.getViewport().setMinY(min);
+		graphView.getViewport().setMaxY(max);
 		/**
 		 * TODO: Need a second Y-Axis
 		 * if (numRung > 0){
@@ -230,32 +247,8 @@ public class MonthDetailFragment extends Fragment {
 			return;
 		}
 
-		graphView = new LineGraphView(MonthListActivity.getAppContext(), "");
-		GraphViewStyle gStyle = graphView.getGraphViewStyle();
 		mToday = new GregorianCalendar();
 		mWeight = MonthListActivity.getmWeightData();
-
-		gStyle.setGridColor(Color.LTGRAY);
-		gStyle.setHorizontalLabelsColor(Color.BLACK);
-		gStyle.setVerticalLabelsColor(Color.BLACK);
-		gStyle.setNumVerticalLabels(5);
-		gStyle.setNumHorizontalLabels(9);
-		gStyle.setLegendWidth(140);
-		//graphView.setViewPort(1, 10);
-		//graphView.setScalable(true);
-		//graphView.setScrollable(true);
-		graphView.setShowLegend(true);
-		graphView.setLegendAlign(GraphView.LegendAlign.BOTTOM);
-		graphView.setBackgroundColor(Color.DKGRAY);
-		graphView.setCustomLabelFormatter(new CustomLabelFormatter() {
-			@Override
-			public String formatLabel(double value, boolean isValueX) {
-				if (isValueX) {
-					return String.format("%.0f", value);
-				}
-				return String.format("%.1f", value);
-			}
-		});
 	}
 
 	@Override
@@ -362,8 +355,8 @@ public class MonthDetailFragment extends Fragment {
 			viewCachePopulated = true;
 		}
 
-		LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.weightGraph);
-		layout.addView(graphView);
+		//LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.weightGraph);
+		//layout.addView(graphView);
 
 		updateEverything();
 
