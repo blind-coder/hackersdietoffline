@@ -30,13 +30,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-
-import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayServicesAvailable;
-
-
 /**
  * An activity representing a list of Months. This activity
  * has different presentations for handset and tablet-size devices. On
@@ -55,7 +48,6 @@ import static com.google.android.gms.common.GooglePlayServicesUtil.isGooglePlayS
  */
 public class MonthListActivity extends FragmentActivity implements MonthListFragment.Callbacks {
 	private boolean mTwoPane = false; // running on tablet?
-	private AdView  adView   = null;
 
 	public static Context    mContext    = null;
 	public static weightData mWeightData = null;
@@ -81,37 +73,6 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
 		setContentView(R.layout.activity_month_list);
 
-		/**
-		 * Check for possibility of displaying ads
-		 */
-		if (adView == null){
-			adView = (AdView) findViewById(R.id.adView);
-		}
-		if (adView != null){
-			/* additional check for cheatcode */
-			int check = isGooglePlayServicesAvailable(this);
-			if (check != 0){
-				GooglePlayServicesUtil.getErrorDialog(check, this, 0);
-			} else {
-				LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
-				SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-				final boolean hideAds = settings.getBoolean("hideads", false);
-
-				if (hideAds){
-					adView.setVisibility(View.GONE);
-				} else {
-					if (layout != null){
-						// Initiate a generic request.
-						AdRequest adRequest = new AdRequest.Builder()
-							.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulator
-							.build();
-
-						// Load the adView with the ad request.
-						adView.loadAd(adRequest);
-					}
-				}
-			}
-		}
 		mFragment = ((MonthListFragment) getSupportFragmentManager().findFragmentById(R.id.month_list));
 
 		/**
@@ -159,30 +120,32 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.settings:
-				Intent settingsIntent = new Intent(this, Prefs.class);
-				startActivity(settingsIntent);
-				return true;
-			case R.id.save:
-				mWeightData.saveData();
-				mChanged=false;
-				return true;
-			case R.id.menuAbout:
-				AlertDialog.Builder about = new AlertDialog.Builder(this);
-				about.setMessage(R.string.aboutHackDietOffline)
+		if (item.getItemId() == R.id.settings) {
+			Intent settingsIntent = new Intent(this, Prefs.class);
+			startActivity(settingsIntent);
+			return true;
+		}
+		if (item.getItemId() == R.id.save) {
+			mWeightData.saveData();
+			mChanged = false;
+			return true;
+		}
+		if (item.getItemId() == R.id.menuAbout) {
+			AlertDialog.Builder about = new AlertDialog.Builder(this);
+			about.setMessage(R.string.aboutHackDietOffline)
 					.setCancelable(false)
 					.setNeutralButton(R.string.thanks, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.dismiss();
 						}
 					});
-				about.create().show();
-				return true;
-			case R.id.menuExcercise:
-				Intent excerciseIntent = new Intent(this, ExcerciseListActivity.class);
-				startActivity(excerciseIntent);
-				return true;
+			about.create().show();
+			return true;
+		}
+		if (item.getItemId() == R.id.menuExcercise) {
+			Intent excerciseIntent = new Intent(this, ExcerciseListActivity.class);
+			startActivity(excerciseIntent);
+			return true;
 		}
 		return false;
 	}
@@ -220,28 +183,8 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 	}
 
 	@Override
-	public void onPause() {
-		if (adView != null){
-			adView.pause();
-		}
-		super.onPause();
-	}
-
-	@Override
 	public void onResume() {
 		super.onResume();
-		if (adView != null){
-			adView.resume();
-		}
 		mFragment.updateList();
 	}
-
-	@Override
-	public void onDestroy() {
-		if (adView != null){
-			adView.destroy();
-		}
-		super.onDestroy();
-	}
-
 }

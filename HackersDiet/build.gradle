@@ -1,39 +1,69 @@
+/*
+ * Copyright (c) 2014. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 buildscript {
     repositories {
         mavenCentral()
+        google()
+        maven {
+            url 'https://maven.google.com'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
+        classpath 'com.android.tools.build:gradle:8.2.1'
+        //noinspection GradleCompatible
+        classpath 'com.android.support:support-v4:28.0.0'
     }
 }
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories {
+    google()
     mavenCentral()
 }
 
-android {
-    compileSdkVersion 16
-    buildToolsVersion "19.0.3"
-
+android  {
+    namespace "de.anderdonau.hackersdiet"
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 19
+        minSdkVersion 29
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 29
     }
     buildTypes {
-        release {
-            runProguard false
-            proguardFile getDefaultProguardFile('proguard-android.txt')
-        }
     }
     productFlavors {
-        defaultFlavor {
-            proguardFile 'proguard-rules.txt'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    compileSdk 29
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
+    signingConfigs {
+			release {
+            storeFile file("dummy")
+            storePassword "dummy"
+            keyAlias "dummy"
+            keyPassword "dummy"
+			}
+		}
+    apply from: 'signing.gradle'
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
         }
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
-    compile 'com.google.android.gms:play-services:4.0.30'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:support-v4:28.0.0'
 }

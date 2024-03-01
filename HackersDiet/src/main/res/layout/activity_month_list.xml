@@ -12,12 +12,6 @@
     tools:context="de.anderdonau.hackersdiet.MonthListActivity"
     android:id="@+id/mainLayout">
 
-    <com.google.android.gms.ads.AdView android:id="@+id/adView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        ads:adUnitId="ca-app-pub-2751649723763471/5257955341"
-        ads:adSize="BANNER" />
-
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/month_list"

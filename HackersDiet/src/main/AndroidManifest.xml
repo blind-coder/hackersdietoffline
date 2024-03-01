@@ -1,62 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.anderdonau.hackersdiet"
-    android:versionCode="20140417"
-    android:versionName="20140417" >
+          package="de.anderdonau.hackersdiet"
+          android:versionCode="20201027"
+          android:versionName="20201027" >
 
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<application
+			android:allowBackup="true"
+			android:icon="@drawable/ic_launcher"
+			android:label="@string/app_name"
+			android:theme="@style/AppTheme" >
+		<activity
+				android:name="de.anderdonau.hackersdiet.MonthListActivity"
+				android:label="@string/app_name" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
 
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+				android:name="de.anderdonau.hackersdiet.MonthDetailActivity"
+				android:label="@string/title_month_detail"
+				android:parentActivityName="de.anderdonau.hackersdiet.MonthListActivity" >
+			<meta-data
+					android:name="android.support.PARENT_ACTIVITY"
+					android:value="de.anderdonau.hackersdiet.MonthListActivity" />
+		</activity>
+		<activity
+				android:name="de.anderdonau.hackersdiet.ExcerciseListActivity"
+				android:label="@string/Excercise"
+				android:parentActivityName="de.anderdonau.hackersdiet.MonthListActivity" >
+			<meta-data
+					android:name="android.support.PARENT_ACTIVITY"
+					android:value="de.anderdonau.hackersdiet.MonthListActivity" />
+		</activity>
+		<activity
+				android:name="de.anderdonau.hackersdiet.ExcerciseDetailActivity"
+				android:label="@string/Excercise"
+				android:parentActivityName="de.anderdonau.hackersdiet.ExcerciseListActivity" >
+			<meta-data
+					android:name="android.support.PARENT_ACTIVITY"
+					android:value="de.anderdonau.hackersdiet.ExcerciseListActivity" />
+		</activity>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name="de.anderdonau.hackersdiet.MonthListActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="de.anderdonau.hackersdiet.MonthDetailActivity"
-            android:label="@string/title_month_detail"
-            android:parentActivityName=".MonthListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.anderdonau.hackersdiet.MonthListActivity" />
-        </activity>
+		<activity
+				android:name="de.anderdonau.hackersdiet.Prefs"
+				android:label="@string/preferences"
+				android:parentActivityName=".MonthListActivity"
+				android:screenOrientation="portrait">
+			<meta-data
+					android:name="android.support.PARENT_ACTIVITY"
+					android:value="de.anderdonau.hackersdiet.MonthListActivity"/>
+		</activity>
 
-        <activity
-            android:name="de.anderdonau.hackersdiet.ExcerciseListActivity"
-            android:label="@string/Excercise"
-            android:parentActivityName=".MonthListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.anderdonau.de.hackersdiet.MonthListActivity" />
-        </activity>
-        <activity
-            android:name="de.anderdonau.hackersdiet.ExcerciseDetailActivity"
-            android:label="@string/Excercise"
-            android:parentActivityName=".ExcerciseListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.anderdonau.hackersdiet.ExcerciseListActivity" />
-        </activity>
-
-        <activity android:name="Prefs" android:label="@string/preferences"
-            android:screenOrientation="portrait" />
-        <activity android:name="com.google.android.gms.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
-        <meta-data android:name="com.google.android.gms.version"
-           android:value="@integer/google_play_services_version" />
-    </application>
+	</application>
 
 </manifest>
