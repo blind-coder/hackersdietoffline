@@ -1,0 +1,2134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.2.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.2.1)" variant="all" version="8.2.1">
+
+    <issue
+        id="ApplySharedPref"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        errorLine1="  editor.commit();"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/Prefs.java"
+            line="217"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        errorLine1="  editor.commit();"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/Prefs.java"
+            line="227"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="  e.setText(String.format(&quot;%d&quot;, bends));"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseDetailFragment.java"
+            line="84"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="  e.setText(String.format(&quot;%d&quot;, situps));"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseDetailFragment.java"
+            line="87"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="  e.setText(String.format(&quot;%d&quot;, leglifts));"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseDetailFragment.java"
+            line="90"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="  e.setText(String.format(&quot;%d&quot;, pushups));"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseDetailFragment.java"
+            line="93"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="  e.setText(String.format(&quot;%d - %d/%d&quot;, runjumps, runjumps/75, runjumps%75));"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseDetailFragment.java"
+            line="96"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="  e.setText(String.format(&quot;%d&quot;, mItem.rung));"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseDetailFragment.java"
+            line="99"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="            ExcerciseListContent.addItem(new ExcerciseListContent.ExcerciseItem(String.format(&quot;%d&quot;, i), String.format(getString(R.string.rungNumber), i), i));"
+        errorLine2="                                                                                ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseListFragment.java"
+            line="90"
+            column="81"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="                mViewCache[d].var.setText(String.format(&quot;%+.1f&quot;, mPtr.var));"
+        errorLine2="                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="190"
+            column="43"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="            mViewCache[d].trend.setText(String.format(&quot;%.1f&quot;, mPtr.trend));"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="195"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="     return String.format(&quot;%.0f&quot;, value);"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="268"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="    return String.format(&quot;%.1f&quot;, value);"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="270"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="    MonthListContent.addItem (new MonthListContent.MonthItem(String.format(&quot;%d&quot;, id), String.format(&quot;%4d/%02d&quot;, mPtr.year, mPtr.month), mPtr.year, mPtr.month));"
+        errorLine2="                                                             ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="105"
+            column="62"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="    MonthListContent.addItem (new MonthListContent.MonthItem(String.format(&quot;%d&quot;, id), String.format(&quot;%4d/%02d&quot;, mPtr.year, mPtr.month), mPtr.year, mPtr.month));"
+        errorLine2="                                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="105"
+            column="87"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="   MonthListContent.addItem (new MonthListContent.MonthItem(String.format(&quot;%d&quot;, id),"
+        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="112"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="      String.format(&quot;%4d/%02d&quot;, mToday.get(Calendar.YEAR), mToday.get(Calendar.MONTH)+1),"
+        errorLine2="      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="113"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="DefaultLocale"
+        message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead"
+        errorLine1="  retVal = String.format(&quot;%d-%02d-%02d,%f,%d,%d,\&quot;%s\&quot;&quot;, year, month, day, Double.isNaN(weight) ? 0 : weight, rung, flag ? 1 : 0, comment);"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/weightDataDay.java"
+            line="81"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="SimpleDateFormat"
+        message="To get local formatting use `getDateInstance()`, `getDateTimeInstance()`, or `getTimeInstance()`, or use `new SimpleDateFormat(String template, Locale locale)` with for example `Locale.US` for ASCII dates."
+        errorLine1="  SimpleDateFormat sdfDay = new SimpleDateFormat(&quot;MMMM yyyy&quot;);"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="114"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="SuspiciousIndentation"
+        message="The indentation string here is different from on the previous line (`&quot; &quot;` vs `\t`)"
+        errorLine1="   paint.setAntiAlias(true);"
+        errorLine2=" ~~">
+        <location
+            file="src/main/java/com/jjoe64/graphview/GraphView.java"
+            line="82"
+            column="2"/>
+        <location
+            file="src/main/java/com/jjoe64/graphview/GraphView.java"
+            line="80"
+            column="2"
+            message="Previous line indentation here"/>
+    </issue>
+
+    <issue
+        id="SuspiciousIndentation"
+        message="The indentation string here is different from on the previous line (`&quot; &quot;` vs `\t`)"
+        errorLine1="   tmpTrendValues[numTrend] = new GraphView.GraphViewData(d, mPtr.trend);"
+        errorLine2="~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="163"
+            column="1"/>
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="158"
+            column="1"
+            message="Previous line indentation here"/>
+    </issue>
+
+    <issue
+        id="SuspiciousIndentation"
+        message="The indentation string here is different from on the previous line (`&quot; &quot;` vs `\t`)"
+        errorLine1="  graphView.removeAllSeries();"
+        errorLine2="~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="205"
+            column="1"/>
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthDetailFragment.java"
+            line="148"
+            column="1"
+            message="Previous line indentation here"/>
+    </issue>
+
+    <issue
+        id="SuspiciousIndentation"
+        message="The indentation string here is different from on the previous line (`&quot; &quot;` vs `\t`)"
+        errorLine1="   if (mPtr.year != lastyear || mPtr.month != lastmonth){"
+        errorLine2="~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="103"
+            column="1"/>
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="102"
+            column="1"
+            message="Previous line indentation here"/>
+    </issue>
+
+    <issue
+        id="SuspiciousIndentation"
+        message="The indentation string here is different from on the previous line (`&quot; &quot;` vs `\t`)"
+        errorLine1="   MonthListContent.addItem (new MonthListContent.MonthItem(String.format(&quot;%d&quot;, id),"
+        errorLine2="~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="112"
+            column="1"/>
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListFragment.java"
+            line="111"
+            column="1"
+            message="Previous line indentation here"/>
+    </issue>
+
+    <issue
+        id="SuspiciousIndentation"
+        message="The indentation string here is different from on the previous line (`&quot; &quot;` vs `\t`)"
+        errorLine1="  try {"
+        errorLine2="~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/weightData.java"
+            line="55"
+            column="1"/>
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/weightData.java"
+            line="54"
+            column="1"
+            message="Previous line indentation here"/>
+    </issue>
+
+    <issue
+        id="MissingInflatedId"
+        message="`@layout/activity_excercise_list` does not contain a declaration with id `excercise_detail_container`"
+        errorLine1="  if (findViewById(R.id.excercise_detail_container) != null) {"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseListActivity.java"
+            line="46"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MissingInflatedId"
+        message="`@layout/activity_month_list` does not contain a declaration with id `month_detail_container`"
+        errorLine1="  if (findViewById(R.id.month_detail_container) != null) {"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListActivity.java"
+            line="81"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="RedundantLabel"
+        message="Redundant label can be removed"
+        errorLine1="    android:label=&quot;@string/app_name&quot; >"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="17"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.tools.build:gradle than 8.2.1 is available: 8.3.0. (There is also a newer version of 8.2.𝑥 available, if upgrading to 8.3.0 is difficult: 8.2.2)"
+        errorLine1="        classpath &apos;com.android.tools.build:gradle:8.2.1&apos;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="18"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="LockedOrientationActivity"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices"
+        errorLine1="    android:screenOrientation=&quot;portrait&quot;>"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="53"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="Orientation"
+        message="No orientation specified, and the default is horizontal. This is a common source of bugs when children are added dynamically."
+        errorLine1="        &lt;LinearLayout"
+        errorLine2="         ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="19"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Typos"
+        message="&quot;Excercise&quot; is a common misspelling; did you mean &quot;Exercise&quot;?"
+        errorLine1="    &lt;string name=&quot;Excercise&quot;>Excercise&lt;/string>"
+        errorLine2="                             ^">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="44"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="Typos"
+        message="&quot;todays&quot; is a common misspelling; did you mean &quot;today&apos;s&quot;?"
+        errorLine1="    &lt;string name=&quot;addRungToday&quot;>Add Rung to todays entry&lt;/string>"
+        errorLine2="                                            ^">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="50"
+            column="45"/>
+    </issue>
+
+    <issue
+        id="Typos"
+        message="&quot;todays&quot; is a common misspelling; did you mean &quot;today&apos;s&quot;?"
+        errorLine1="    &lt;string name=&quot;toastAddedRungToTodaysEntry&quot;>Added rung %d to todays entry.&lt;/string>"
+        errorLine2="                                                                ^">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="51"
+            column="65"/>
+    </issue>
+
+    <issue
+        id="BadHostnameVerifier"
+        message="`verify` always returns `true`, which could cause insecure network traffic due to trusting TLS/SSL server certificates for wrong hostnames"
+        errorLine1="   public boolean verify(String hostname, SSLSession session) {"
+        errorLine2="                  ~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/Prefs.java"
+            line="253"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="TrustAllX509TrustManager"
+        message="`checkClientTrusted` is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers"
+        errorLine1="    public void checkClientTrusted(X509Certificate[] certs, String authType) {  }"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/Prefs.java"
+            line="248"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="TrustAllX509TrustManager"
+        message="`checkServerTrusted` is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers"
+        errorLine1="    public void checkServerTrusted(X509Certificate[] certs, String authType) {  }"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/Prefs.java"
+            line="249"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="CustomX509TrustManager"
+        message="Implementing a custom `X509TrustManager` is error-prone and likely to be insecure. It is likely to disable certificate validation altogether, and is non-trivial to implement correctly without calling Android&apos;s default implementation."
+        errorLine1="   new X509TrustManager() {"
+        errorLine2="       ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/Prefs.java"
+            line="241"
+            column="8"/>
+    </issue>
+
+    <issue
+        id="IntentFilterExportedReceiver"
+        message="As of Android 12, `android:exported` must be set; use `true` to make the activity \&#xA;available to other apps, and `false` otherwise. For launcher activities, this should be set to `true`."
+        errorLine1="  &lt;activity"
+        errorLine2="   ~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="15"
+            column="4"/>
+    </issue>
+
+    <issue
+        id="DrawAllocation"
+        message="Avoid object allocations during draw/layout operations (preallocate and reuse instead)"
+        errorLine1="   mBufferedBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_4444);"
+        errorLine2="                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/jjoe64/graphview/GraphView.java"
+            line="79"
+            column="22"/>
+    </issue>
+
+    <issue
+        id="DrawAllocation"
+        message="Avoid object allocations during draw/layout operations (preallocate and reuse instead)"
+        errorLine1="         mBufferedCanvas = new Canvas(mBufferedBitmap);"
+        errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/jjoe64/graphview/GraphView.java"
+            line="80"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="DrawAllocation"
+        message="Avoid object allocations during draw/layout operations (preallocate and reuse instead)"
+        errorLine1="    setLayoutParams(new LayoutParams("
+        errorLine2="                    ^">
+        <location
+            file="src/main/java/com/jjoe64/graphview/GraphView.java"
+            line="283"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="DrawAllocation"
+        message="Avoid object allocations during draw/layout operations (preallocate and reuse instead)"
+        errorLine1="    setLayoutParams(new LayoutParams("
+        errorLine2="                    ^">
+        <location
+            file="src/main/java/com/jjoe64/graphview/GraphView.java"
+            line="286"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields; this is a memory leak"
+        errorLine1=" public static Context mContext    = null;"
+        errorLine2="        ~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/ExcerciseListActivity.java"
+            line="31"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields; this is a memory leak"
+        errorLine1=" public static Context    mContext    = null;"
+        errorLine2="        ~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListActivity.java"
+            line="52"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        message="Do not place Android context classes in static fields (static reference to `weightData` which has field `mContext` pointing to `Context`); this is a memory leak"
+        errorLine1=" public static weightData mWeightData = null;"
+        errorLine2="        ~~~~~~">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/MonthListActivity.java"
+            line="53"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HandlerLeak"
+        message="This `Handler` class should be static or leaks might occur (anonymous android.os.Handler)"
+        errorLine1=" final Handler handler = new Handler() {"
+        errorLine2="                         ^">
+        <location
+            file="src/main/java/de/anderdonau/hackersdiet/Prefs.java"
+            line="60"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.backgroundColor` appears to be unused"
+        errorLine1="    &lt;color name=&quot;backgroundColor&quot;>#3a81b8&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="57"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UselessLeaf"
+        message="This `TableRow` view is unnecessary (no children, no `background`, no `id`, no `style`)"
+        errorLine1="    &lt;TableRow"
+        errorLine2="     ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_excercise_detail.xml"
+            line="126"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="RedundantNamespace"
+        message="This namespace declaration is redundant"
+        errorLine1="    &lt;fragment xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_excercise_list.xml"
+            line="15"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="RedundantNamespace"
+        message="This namespace declaration is redundant"
+        errorLine1="        xmlns:tools=&quot;http://schemas.android.com/tools&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_excercise_list.xml"
+            line="16"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RedundantNamespace"
+        message="This namespace declaration is redundant"
+        errorLine1="    &lt;fragment xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2="              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_month_list.xml"
+            line="15"
+            column="15"/>
+    </issue>
+
+    <issue
+        id="RedundantNamespace"
+        message="This namespace declaration is redundant"
+        errorLine1="        xmlns:tools=&quot;http://schemas.android.com/tools&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_month_list.xml"
+            line="16"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="TooManyViews"
+        message="`fragment_month_detail.xml` has more than 80 views, bad for performance"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;09.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="125"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="TypographyOther"
+        message="Replace (c) with copyright symbol © (&amp;#169;) ?"
+        errorLine1="    &lt;string name=&quot;aboutHackDietOffline&quot;>The Hackers Diet Offline, Copyright (C) 2014 Benjamin Schieder\nThis program comes with ABSOLUTELY NO WARRANTY! For details see http://www.crash-override.net&lt;/string>"
+        errorLine2="                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="41"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/drawable-hdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/drawable-mdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/drawable-xhdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location
+            file="src/main/res/drawable-xxhdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconDipSize"
+        message="The image `ic_launcher.png` varies significantly in its density-independent (dip) size across the various density versions: drawable-hdpi/ic_launcher.png: 55x53 dp (82x80 px), drawable-mdpi/ic_launcher.png: 82x80 dp (82x80 px), drawable-xhdpi/ic_launcher.png: 41x40 dp (82x80 px), drawable-xxhdpi/ic_launcher.png: 27x27 dp (82x80 px)">
+        <location
+            file="src/main/res/drawable-xxhdpi/ic_launcher.png"/>
+        <location
+            file="src/main/res/drawable-xhdpi/ic_launcher.png"/>
+        <location
+            file="src/main/res/drawable-hdpi/ic_launcher.png"/>
+        <location
+            file="src/main/res/drawable-mdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconDuplicatesConfig"
+        message="The `ic_launcher.png` icon has identical contents in the following configuration folders: drawable-hdpi, drawable-mdpi, drawable-xhdpi, drawable-xxhdpi">
+        <location
+            file="src/main/res/drawable-xxhdpi/ic_launcher.png"/>
+        <location
+            file="src/main/res/drawable-xhdpi/ic_launcher.png"/>
+        <location
+            file="src/main/res/drawable-mdpi/ic_launcher.png"/>
+        <location
+            file="src/main/res/drawable-hdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="ButtonStyle"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)"
+        errorLine1="            &lt;Button"
+        errorLine2="             ~~~~~~">
+        <location
+            file="src/main/res/layout/prefs.xml"
+            line="55"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ButtonStyle"
+        message="Buttons in button bars should be borderless; use `style=&quot;?android:attr/buttonBarButtonStyle&quot;` (and `?android:attr/buttonBarStyle` on the parent)"
+        errorLine1="            &lt;Button"
+        errorLine2="             ~~~~~~">
+        <location
+            file="src/main/res/layout/prefs.xml"
+            line="63"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight01&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="34"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung01&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="35"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment01&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="37"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight02&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="46"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung02&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="47"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment02&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="49"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight03&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="58"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung03&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="59"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment03&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="61"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight04&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="70"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung04&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="71"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment04&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="73"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight05&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="82"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung05&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="83"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment05&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="85"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight06&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="94"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung06&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="95"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment06&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="97"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight07&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="106"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung07&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="107"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment07&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="109"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight08&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="118"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung08&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="119"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment08&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="121"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight09&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="130"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung09&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="131"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment09&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="133"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight10&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="142"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung10&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="143"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment10&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="145"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight11&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="154"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung11&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="155"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment11&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="157"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight12&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="166"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung12&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="167"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment12&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="169"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight13&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="178"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung13&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="179"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment13&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="181"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight14&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="190"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung14&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="191"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment14&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="193"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight15&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="202"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung15&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="203"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment15&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="205"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight16&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="214"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung16&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="215"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment16&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="217"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight17&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="226"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung17&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="227"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment17&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="229"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight18&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="238"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung18&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="239"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment18&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="241"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight19&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="250"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung19&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="251"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment19&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="253"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight20&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="262"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung20&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="263"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment20&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="265"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight21&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="274"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung21&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="275"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment21&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="277"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight22&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="286"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung22&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="287"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment22&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="289"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight23&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="298"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung23&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="299"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment23&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="301"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight24&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="310"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung24&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="311"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment24&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="313"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight25&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="322"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung25&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="323"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment25&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="325"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight26&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="334"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung26&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="335"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment26&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="337"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight27&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="346"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung27&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="347"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment27&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="349"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight28&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="358"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung28&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="359"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment28&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="361"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight29&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="370"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung29&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="371"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment29&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="373"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight30&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="382"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung30&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="383"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment30&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="385"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/weight31&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/weight&quot; android:inputType=&quot;numberDecimal&quot; android:singleLine=&quot;true&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="394"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText android:id=&quot;@+id/rung31&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/rung&quot; android:inputType=&quot;number&quot; />"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="395"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="                &lt;EditText android:id=&quot;@+id/comment31&quot; android:layout_width=&quot;wrap_content&quot; android:layout_height=&quot;wrap_content&quot; android:hint=&quot;@string/comment&quot; android:inputType=&quot;text&quot; />"
+        errorLine2="                 ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="397"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/prefs.xml"
+            line="26"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/prefs.xml"
+            line="43"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="        &lt;EditText"
+        errorLine2="         ~~~~~~~~">
+        <location
+            file="src/main/res/layout/prefs.xml"
+            line="80"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="Custom view `GraphViewContentView` overrides `onTouchEvent` but not `performClick`"
+        errorLine1="  public boolean onTouchEvent(MotionEvent event) {"
+        errorLine2="                 ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/jjoe64/graphview/GraphView.java"
+            line="185"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;xmonth 20xx&quot;, should use `@string` resource"
+        errorLine1="            android:text=&quot;xmonth 20xx&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Medium&quot; />"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="17"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;01.&quot;, should use `@string` resource"
+        errorLine1="                    android:text=&quot;01.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="29"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;02.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;02.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="41"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;03.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;03.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="53"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;04.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;04.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="65"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;05.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;05.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="77"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;06.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;06.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="89"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;07.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;07.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="101"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;08.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;08.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="113"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;09.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;09.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="125"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;10.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;10.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="137"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;11.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;11.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="149"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;12.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;12.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="161"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;13.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;13.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="173"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;14.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;14.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="185"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;15.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;15.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="197"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;16.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;16.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="209"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;17.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;17.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="221"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;18.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;18.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="233"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;19.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;19.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="245"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;20.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;20.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="257"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;21.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;21.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="269"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;22.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;22.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="281"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;23.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;23.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="293"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;24.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;24.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="305"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;25.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;25.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="317"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;26.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;26.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="329"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;27.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;27.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="341"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;28.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;28.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="353"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;29.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;29.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="365"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;30.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;30.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="377"
+            column="141"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;31.&quot;, should use `@string` resource"
+        errorLine1="                &lt;TextView android:layout_width=&quot;25dp&quot; android:layout_height=&quot;fill_parent&quot; android:layout_gravity=&quot;center|center_horizontal&quot; android:text=&quot;31.&quot; android:textAppearance=&quot;@android:style/TextAppearance.Holo.Small&quot; />"
+        errorLine2="                                                                                                                                            ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_month_detail.xml"
+            line="389"
+            column="141"/>
+    </issue>
+
+</issues>
