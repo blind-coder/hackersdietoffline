@@ -1,13 +1,3 @@
-import java.security.spec.NamedParameterSpec
-
-/*
- * Copyright (c) 2014. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
- */
-
 buildscript {
     repositories {
         mavenCentral()
@@ -50,19 +40,19 @@ android  {
     }
 
     signingConfigs {
-			debug {
+        debug {
             storeFile file("dummy")
             storePassword "dummy"
             keyAlias "dummy"
             keyPassword "dummy"
-			}
-			release {
+        }
+        release {
             storeFile file("dummy")
             storePassword "dummy"
             keyAlias "dummy"
             keyPassword "dummy"
-			}
-		}
+        }
+    }
     apply from: 'signing.gradle'
     buildTypes {
         release {
