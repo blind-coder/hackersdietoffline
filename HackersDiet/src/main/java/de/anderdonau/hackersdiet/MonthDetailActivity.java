@@ -73,7 +73,8 @@ public class MonthDetailActivity extends FragmentActivity {
 			//
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
-			NavUtils.navigateUpTo(this, new Intent(this, MonthListActivity.class));
+			this.onBackPressed();
+			//NavUtils.navigateUpTo(this, new Intent(this, MonthListActivity.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

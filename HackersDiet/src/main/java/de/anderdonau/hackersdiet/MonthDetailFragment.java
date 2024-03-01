@@ -23,6 +23,7 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -202,6 +203,8 @@ public class MonthDetailFragment extends Fragment {
 			graphView.addSeries(gvsWeight);
 			graphView.addSeries(gvsTrend);
 			graphView.setManualYAxisBounds(max, min);
+			//graphView.getGraphViewStyle().setVerticalLabelsColor(Color.WHITE);
+			//graphView.getGraphViewStyle().setHorizontalLabelsColor(Color.WHITE);
 		}
 		/**
 		 * TODO: Need a second Y-Axis

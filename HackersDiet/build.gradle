@@ -32,7 +32,7 @@ repositories {
 android  {
     namespace "de.anderdonau.hackersdiet"
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
     }
     buildTypes {
@@ -46,6 +46,21 @@ android  {
     compileSdk 29
     lint {
         baseline = file("lint-baseline.xml")
+    }
+
+    signingConfigs {
+			release {
+            storeFile file("dummy")
+            storePassword "dummy"
+            keyAlias "dummy"
+            keyPassword "dummy"
+			}
+		}
+		apply from: 'signing.gradle'
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
     }
 }
 
