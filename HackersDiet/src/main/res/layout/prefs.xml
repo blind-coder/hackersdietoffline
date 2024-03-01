@@ -85,18 +85,18 @@
             android:onClick="buttonAutoSave" />
 
         <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnHideAds"
-            android:clickable="true"
-            android:enabled="true"
-            android:checked="false"
-            android:textOff="@string/ShowAds"
-            android:textOn="@string/HideAds"
-            android:focusable="false"
-            android:visibility="gone"
-            android:focusableInTouchMode="false"
-            android:onClick="buttonToggleAds" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnHideAds"
+                android:clickable="true"
+                android:enabled="true"
+                android:checked="false"
+                android:textOff="@string/ShowAds"
+                android:textOn="@string/HideAds"
+                android:focusable="auto"
+                android:visibility="gone"
+                android:focusableInTouchMode="false"
+                android:onClick="buttonToggleAds"/>
 
         <ProgressBar
             android:id="@+id/progressBarSyncing"

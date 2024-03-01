@@ -103,30 +103,32 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.settings:
-				Intent settingsIntent = new Intent(this, Prefs.class);
-				startActivity(settingsIntent);
-				return true;
-			case R.id.save:
-				mWeightData.saveData();
-				mChanged = false;
-				return true;
-			case R.id.menuAbout:
-				AlertDialog.Builder about = new AlertDialog.Builder(this);
-				about.setMessage(R.string.aboutHackDietOffline).setCancelable(false).setNeutralButton(
+		if (item.getItemId() == R.id.settings) {
+			Intent settingsIntent = new Intent(this, Prefs.class);
+			startActivity(settingsIntent);
+			return true;
+		}
+		if (item.getItemId() == R.id.save) {
+			mWeightData.saveData();
+			mChanged = false;
+			return true;
+		}
+		if (item.getItemId() == R.id.menuAbout) {
+			AlertDialog.Builder about = new AlertDialog.Builder(this);
+			about.setMessage(R.string.aboutHackDietOffline).setCancelable(false).setNeutralButton(
 					R.string.thanks, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.dismiss();
 						}
 					}
-				);
-				about.create().show();
-				return true;
-			case R.id.menuExcercise:
-				Intent exerciseIntent = new Intent(this, ExcerciseListActivity.class);
-				startActivity(exerciseIntent);
-				return true;
+			);
+			about.create().show();
+			return true;
+		}
+		if (item.getItemId() == R.id.menuExcercise) {
+			Intent exerciseIntent = new Intent(this, ExcerciseListActivity.class);
+			startActivity(exerciseIntent);
+			return true;
 		}
 		return false;
 	}
