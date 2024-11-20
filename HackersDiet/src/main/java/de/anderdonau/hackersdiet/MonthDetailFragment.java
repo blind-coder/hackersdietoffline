@@ -180,7 +180,10 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant));
 			}
 
-			mViewCache[d].weight.setText(String.valueOf(mPtr.getWeight()));
+			mViewCache[d].weight.setHint("0.0");
+			if (mPtr.getWeight() > 0) {
+				mViewCache[d].weight.setText(String.valueOf(mPtr.getWeight()));
+			}
 			mViewCache[d].trend.setText(String.format("%.1f", mPtr.getTrend()));
 			mViewCache[d].var.setText(String.format("%+.1f", mPtr.getVar()));
 			mViewCache[d].rung.setText(String.valueOf(mPtr.rung));
