@@ -9,10 +9,10 @@
     tools:context="de.anderdonau.hackersdiet.MonthDetailFragment">
 
     <LinearLayout
+        android:id="@id/monthDetailLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@id/monthDetailLayout">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textMonth"
@@ -23,9 +23,9 @@
             android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
         <com.jjoe64.graphview.GraphView
+            android:id="@+id/weightGraph"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/weightGraph" />
+            android:layout_height="200dp" />
 
         <ScrollView
             android:id="@+id/scrollView1"
@@ -39,10 +39,10 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/rowDay01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay01">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -78,15 +78,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag01"
@@ -99,15 +98,14 @@
                         android:id="@+id/comment01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay02">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -143,15 +141,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag02"
@@ -164,15 +161,14 @@
                         android:id="@+id/comment02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay03">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -208,15 +204,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag03"
@@ -229,15 +224,14 @@
                         android:id="@+id/comment03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay04"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay04">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -273,15 +267,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag04"
@@ -294,15 +287,14 @@
                         android:id="@+id/comment04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay05"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay05">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -338,15 +330,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag05"
@@ -359,15 +350,14 @@
                         android:id="@+id/comment05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay06"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay06">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -403,15 +393,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag06"
@@ -424,15 +413,14 @@
                         android:id="@+id/comment06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay07"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay07">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -468,15 +456,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung07"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag07"
@@ -489,15 +476,14 @@
                         android:id="@+id/comment07"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay08"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay08">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -533,15 +519,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag08"
@@ -554,15 +539,14 @@
                         android:id="@+id/comment08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay09"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay09">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -598,15 +582,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung09"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag09"
@@ -619,15 +602,14 @@
                         android:id="@+id/comment09"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay10">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -663,15 +645,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag10"
@@ -684,15 +665,14 @@
                         android:id="@+id/comment10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay11">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -728,15 +708,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag11"
@@ -749,8 +728,7 @@
                         android:id="@+id/comment11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -793,15 +771,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag12"
@@ -814,15 +791,14 @@
                         android:id="@+id/comment12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay13">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -858,15 +834,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag13"
@@ -879,15 +854,14 @@
                         android:id="@+id/comment13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay14">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -923,15 +897,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag14"
@@ -944,15 +917,14 @@
                         android:id="@+id/comment14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay15">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -988,15 +960,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag15"
@@ -1009,15 +980,14 @@
                         android:id="@+id/comment15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay16">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1053,15 +1023,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag16"
@@ -1074,15 +1043,14 @@
                         android:id="@+id/comment16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay17">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1118,15 +1086,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag17"
@@ -1139,15 +1106,14 @@
                         android:id="@+id/comment17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay18"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay18">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1183,15 +1149,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag18"
@@ -1204,15 +1169,14 @@
                         android:id="@+id/comment18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay19"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay19">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1248,15 +1212,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag19"
@@ -1269,15 +1232,14 @@
                         android:id="@+id/comment19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay20"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay20">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1313,15 +1275,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag20"
@@ -1334,15 +1295,14 @@
                         android:id="@+id/comment20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay21">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1378,15 +1338,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag21"
@@ -1399,15 +1358,14 @@
                         android:id="@+id/comment21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay22">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1443,15 +1401,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag22"
@@ -1464,15 +1421,14 @@
                         android:id="@+id/comment22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay23"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay23">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1508,15 +1464,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag23"
@@ -1529,15 +1484,14 @@
                         android:id="@+id/comment23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay24">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1573,15 +1527,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag24"
@@ -1594,15 +1547,14 @@
                         android:id="@+id/comment24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay25"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay25">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1638,15 +1590,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag25"
@@ -1659,15 +1610,14 @@
                         android:id="@+id/comment25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay26"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay26">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1703,15 +1653,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag26"
@@ -1724,15 +1673,14 @@
                         android:id="@+id/comment26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay27"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay27">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1768,15 +1716,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag27"
@@ -1789,15 +1736,14 @@
                         android:id="@+id/comment27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay28"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay28">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1833,15 +1779,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag28"
@@ -1854,15 +1799,14 @@
                         android:id="@+id/comment28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay29"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay29">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1898,15 +1842,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag29"
@@ -1919,15 +1862,14 @@
                         android:id="@+id/comment29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay30"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay30">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -1963,15 +1905,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag30"
@@ -1984,15 +1925,14 @@
                         android:id="@+id/comment30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                         />
+                        android:hint="@string/comment" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/rowDay31"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay31">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
@@ -2028,15 +1968,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        
+
                         android:singleLine="true" />
 
                     <TextView
                         android:id="@+id/rung31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/rung"
-                         />
+                        android:hint="@string/rung" />
 
                     <CheckBox
                         android:id="@+id/flag31"
@@ -2049,10 +1988,21 @@
                         android:id="@+id/comment31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"/>
+                        android:hint="@string/comment" />
                 </LinearLayout>
-                <LinearLayout android:orientation="vertical" android:id="@+id/addButtonLayout" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <Button android:id="@+id/addButton" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="+"/>
+
+                <LinearLayout
+                    android:id="@+id/addButtonLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/addButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="+"
+                        android:visibility="visible" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
