@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="400dp" android:layout_height="wrap_content">
+
+  <TextView
+      android:id="@+id/dialogNewDataTitle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="10dip"
+      android:gravity="center_horizontal"
+      android:text="Enter new day:"
+      android:textSize="30sp"
+      android:textStyle="bold" />
+  <LinearLayout android:orientation="vertical" android:id="@+id/dialogNewDataMainLayout"
+      android:layout_width="match_parent" android:layout_height="wrap_content">
+    <DatePicker android:id="@+id/dialogNewDataDatePicker" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:firstDayOfWeek="1"
+        android:layout_gravity="center"
+        android:calendarViewShown="false"/>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:baselineAligned="true">
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="match_parent" android:layout_weight="3">
+        <TextView android:textSize="24sp" android:textStyle="bold"
+            android:id="@+id/dNDTextWeight" android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent" android:text="Weight:" />
+      </LinearLayout>
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="7">
+        <EditText android:id="@+id/dNDEditWeight" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:autofillHints=""
+            android:hint="@string/weight"
+            android:singleLine="true" android:inputType="numberDecimal"/>
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:baselineAligned="true">
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="match_parent" android:layout_weight="3">
+        <TextView android:textSize="24sp" android:textStyle="bold" android:id="@+id/dNDTextFlag"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Flag:"/>
+      </LinearLayout>
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="7">
+        <CheckBox android:layout_gravity="center" android:id="@+id/dNDCheckFlag"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text=""/>
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="match_parent" android:layout_weight="3">
+        <TextView android:textSize="24sp" android:textStyle="bold" android:id="@+id/dNDTextRung"
+            android:layout_width="wrap_content" android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Rung:"/>
+      </LinearLayout>
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="7">
+        <EditText android:id="@+id/dNDEditRung" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="@string/rung"
+            android:singleLine="true" android:inputType="number"/>
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="match_parent" android:baselineAligned="true"
+          android:layout_weight="3">
+        <TextView android:textSize="24sp" android:textStyle="bold" android:id="@+id/dNDTextComment"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Comment:"/>
+      </LinearLayout>
+      <LinearLayout android:orientation="vertical" android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="7">
+        <EditText android:id="@+id/dNDEditComment" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="@string/comment"
+            android:singleLine="true" android:inputType="text"/>
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+  <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+      android:layout_height="match_parent">
+    <Button android:id="@+id/dNDBtnCancel" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:text="Cancel" android:layout_weight="1"/>
+    <Button android:id="@+id/dNDBtnAdd" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:text="Add" android:layout_weight="1"/>
+  </LinearLayout>
+</LinearLayout>

@@ -9,8 +9,8 @@
     tools:context="de.anderdonau.hackersdiet.MonthDetailFragment">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@id/monthDetailLayout">
 
@@ -23,30 +23,30 @@
             android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
 
         <com.jjoe64.graphview.GraphView
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:id="@+id/weightGraph" />
 
         <ScrollView
             android:id="@+id/scrollView1"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/allContent"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay01">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="01."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -54,7 +54,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar01"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -73,44 +73,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay02">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="02."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -118,7 +119,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar02"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -137,44 +138,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay03">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="03."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -182,7 +184,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar03"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -201,44 +203,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment03"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay04">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="04."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -246,7 +249,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar04"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -265,44 +268,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment04"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay05">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="05."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -310,7 +314,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar05"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -329,44 +333,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment05"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay06">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="06."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -374,7 +379,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar06"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -393,44 +398,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment06"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay07">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="07."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -438,7 +444,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar07"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -457,44 +463,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight07"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung07"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag07"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment07"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay08">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="08."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -502,7 +509,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar08"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -521,44 +528,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment08"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay09">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="09."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -566,7 +574,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar09"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -585,44 +593,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight09"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung09"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag09"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment09"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay10">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="10."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -630,7 +639,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar10"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -649,44 +658,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay11">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="11."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -694,7 +704,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar11"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -713,44 +723,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:id="@+id/rowDay12"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/rowDay12">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="12."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -758,7 +769,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar12"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -777,44 +788,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay13">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="13."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -822,7 +834,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar13"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -841,44 +853,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay14">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="14."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -886,7 +899,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar14"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -905,44 +918,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay15">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="15."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -950,7 +964,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar15"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -969,44 +983,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay16">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="16."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1014,7 +1029,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar16"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1033,44 +1048,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay17">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="17."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1078,7 +1094,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar17"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1097,44 +1113,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay18">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="18."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1142,7 +1159,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar18"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1161,44 +1178,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay19">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="19."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1206,7 +1224,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar19"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1225,44 +1243,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay20">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="20."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1270,7 +1289,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar20"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1289,44 +1308,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay21">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="21."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1334,7 +1354,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar21"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1353,44 +1373,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay22">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="22."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1398,7 +1419,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar22"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1417,44 +1438,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay23">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="23."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1462,7 +1484,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar23"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1481,44 +1503,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay24">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="24."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1526,7 +1549,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar24"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1545,44 +1568,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay25">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="25."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1590,7 +1614,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar25"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1609,44 +1633,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay26">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="26."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1654,7 +1679,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar26"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1673,44 +1698,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay27">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="27."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1718,7 +1744,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar27"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1737,44 +1763,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay28">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="28."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1782,7 +1809,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar28"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1801,44 +1828,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay29">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="29."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1846,7 +1874,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar29"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1865,44 +1893,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay30">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="30."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1910,7 +1939,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar30"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1929,44 +1958,45 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/comment"
-                        android:inputType="text" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/rowDay31">
 
                     <TextView
                         android:layout_width="25dp"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center|center_horizontal"
                         android:text="31."
                         android:textAppearance="@android:style/TextAppearance.Holo.Small" />
@@ -1974,7 +2004,7 @@
                     <LinearLayout
                         android:id="@+id/trendVar31"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="match_parent"
                         android:orientation="vertical">
 
                         <TextView
@@ -1993,37 +2023,38 @@
                             android:textColor="@color/weightConstant" />
                     </LinearLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/weight31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/weight"
-                        android:inputType="numberDecimal"
+                        
                         android:singleLine="true" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/rung31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/rung"
-                        android:inputType="number" />
+                         />
 
                     <CheckBox
                         android:id="@+id/flag31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:enabled="false"
                         android:text="@string/empty" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/comment31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/comment"
-                        android:inputType="text" />
+                        android:hint="@string/comment"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@+id/addButtonLayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Button android:id="@+id/addButton" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="+"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
     </LinearLayout>
-
 </FrameLayout>

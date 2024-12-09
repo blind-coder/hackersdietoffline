@@ -23,7 +23,6 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +30,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.*;
@@ -49,7 +49,8 @@ import java.util.GregorianCalendar;
  * in two-pane mode (on tablets) or a {@link MonthDetailActivity}
  * on handsets.
  */
-public class MonthDetailFragment extends Fragment {
+public class MonthDetailFragment extends Fragment
+	implements View.OnClickListener {
 	Calendar mToday;
 	View rootView = null;
 	boolean mCanSave = false;
@@ -77,6 +78,13 @@ public class MonthDetailFragment extends Fragment {
 		return id;
 	}
 
+	public void onClick(View view)
+	{
+		DialogNewData dialog = new DialogNewData(getActivity(), this.mWeight, this);
+		dialog.setCanceledOnTouchOutside(false);
+		dialog.show();
+	}
+
 	/**
 	 * Main drawing-handling function. Updates all widgets and text
 	 */
@@ -86,7 +94,7 @@ public class MonthDetailFragment extends Fragment {
 		for (int d = 1; d <= 31; d++) {
 			// if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
 			if (d > 28 && d > mWeight.daysinmonth(mItem.month, mItem.year)) {
-				/**
+				/*
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */
 				mViewCache[d].row.setVisibility(View.GONE);
@@ -97,7 +105,7 @@ public class MonthDetailFragment extends Fragment {
 				mViewCache[d].flag.setChecked(false);
 				mViewCache[d].comment.setText("");
 			} else if (d > 28) {
-				/**
+				/*
 				 * Obviously only necessary for days 29 and 30 for feb, and 31 for apr, jun, sep, nov.
 				 */
 				mViewCache[d].row.setVisibility(View.VISIBLE);
@@ -173,11 +181,11 @@ public class MonthDetailFragment extends Fragment {
 			}
 
 			if (mPtr.getVar() > 0) {
-				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightGain));
+				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightGain, null));
 			} else if (mPtr.getVar() < 0) {
-				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightLoss));
+				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightLoss, null));
 			} else {
-				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant));
+				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant, null));
 			}
 
 			mViewCache[d].weight.setHint("0.0");
@@ -244,13 +252,13 @@ public class MonthDetailFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		if (getArguments().containsKey(ARG_ITEM_ID)) {
-			mItem = MonthListContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
-		} else {
+        if (getArguments() != null && getArguments().containsKey(ARG_ITEM_ID)) {
+            mItem = MonthListContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+        } else {
 			return;
 		}
 
-		mToday = new GregorianCalendar();
+        mToday = new GregorianCalendar();
 		mWeight = MonthListActivity.getmWeightData();
 	}
 
@@ -279,12 +287,12 @@ public class MonthDetailFragment extends Fragment {
 				}
 				day += String.valueOf(d);
 				mViewCache[d] = new viewCache();
-				mViewCache[d].weight = (EditText) rootView.findViewById(getIdByName("weight" + day));
+				mViewCache[d].weight = (TextView) rootView.findViewById(getIdByName("weight" + day));
 				mViewCache[d].trend = (TextView) rootView.findViewById(getIdByName("trend" + day));
 				mViewCache[d].var = (TextView) rootView.findViewById(getIdByName("var" + day));
-				mViewCache[d].rung = (EditText) rootView.findViewById(getIdByName("rung" + day));
+				mViewCache[d].rung = (TextView) rootView.findViewById(getIdByName("rung" + day));
 				mViewCache[d].flag = (CheckBox) rootView.findViewById(getIdByName("flag" + day));
-				mViewCache[d].comment = (EditText) rootView.findViewById(getIdByName("comment" + day));
+				mViewCache[d].comment = (TextView) rootView.findViewById(getIdByName("comment" + day));
 				mViewCache[d].row = (LinearLayout) rootView.findViewById(getIdByName("rowDay" + day));
 				final int dayOfMonth = d;
 				TextWatcher onChange = new TextWatcher() {
@@ -357,11 +365,18 @@ public class MonthDetailFragment extends Fragment {
 			}
 			viewCachePopulated = true;
 		}
-
-		//LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.weightGraph);
-		//layout.addView(graphView);
+		(this.rootView.findViewById(R.id.addButton)).setOnClickListener(this);
 
 		updateEverything();
+
+		final ScrollView scrollView = this.rootView.findViewById(R.id.scrollView1);
+		scrollView.postDelayed(new Runnable()
+			{
+				public void run()
+				{
+					scrollView.fullScroll(View.FOCUS_DOWN);
+				}
+			}, 500L);
 
 		return rootView;
 	}

@@ -28,8 +28,8 @@
     <string name="password">Password</string>
     <string name="syncup">Sync to HD Online</string>
     <string name="syncdown">Sync from HD Online</string>
-    <string name="dummyTrend"></string>
-    <string name="dummyVar"></string>
+    <string name="dummyTrend">87.6</string>
+    <string name="dummyVar">-1.2</string>
     <string name="weight">Weight</string>
     <string name="rung">Rung</string>
     <string name="empty"></string>
@@ -52,6 +52,7 @@
     <string name="rungNumber">Rung %d</string>
     <string name="autosave">Autosave</string>
     <string name="autosaveonclose">Autosave when leaving App</string>
+    <string name="flag">Flag</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>

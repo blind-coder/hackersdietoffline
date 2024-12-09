@@ -23,12 +23,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class viewCache {
-	public EditText weight;
+	public TextView weight;
 	public TextView trend;
 	public TextView var;
-	public EditText rung;
+	public TextView rung;
 	public CheckBox flag;
-	public EditText comment;
+	public TextView comment;
 	public LinearLayout row;
 
 	public viewCache() {
