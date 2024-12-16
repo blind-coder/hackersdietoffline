@@ -115,7 +115,18 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		}
 		if (item.getItemId() == R.id.menuAbout) {
 			AlertDialog.Builder about = new AlertDialog.Builder(this);
-			about.setMessage(R.string.aboutHackDietOffline).setCancelable(false).setNeutralButton(
+			StringBuilder msg = new StringBuilder();
+			msg.append(getString(R.string.aboutHackDietOffline));
+			msg.append("\n");
+			try {
+				long versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).getLongVersionCode();
+				String versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+				msg.append("VersionCode: ").append(versionCode).append("\n").
+						append("VersionName: ").append(versionName);
+			} catch (Exception ignored){
+				msg.append("VersionCode: unknown\nVersionName: unknown");
+			}
+			about.setMessage(msg.toString()).setCancelable(false).setNeutralButton(
 					R.string.thanks, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
 							dialog.dismiss();
