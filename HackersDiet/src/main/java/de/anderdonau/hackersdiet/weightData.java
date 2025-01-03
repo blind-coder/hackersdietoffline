@@ -86,8 +86,8 @@ public class weightData {
 	public void saveDataToLocalStorage(Context context) {
 		FileInputStream fin;
 		SharedPreferences settings = context.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-		String savePath = settings.getString("savePath", "Disabled");
-		if (savePath.equals("Disabled")) {
+		String savePath = settings.getString("savePath", context.getString(R.string.disabled));
+		if (savePath.equals(context.getString(R.string.disabled))){
 			return;
 		}
 		try {
