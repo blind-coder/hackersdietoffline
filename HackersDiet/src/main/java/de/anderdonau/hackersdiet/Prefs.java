@@ -210,6 +210,22 @@ public class Prefs extends Activity {
 		finish();
 	}
 
+	private boolean permissionGranted() {
+		return this.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED
+				&& this.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED;
+	}
+
+	private void requestPermission() {
+		requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+	}
+
+	public void buttonSaveLocation(final View view) {
+		if (permissionGranted()) {
+		} else {
+			requestPermission();
+		}
+	}
+
 	private class HttpThread extends Thread {
 		public Handler mHandler;
 		public String mUsername;
