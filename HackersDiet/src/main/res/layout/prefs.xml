@@ -27,6 +27,7 @@
             android:id="@+id/textUsername"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="@string/username"
             android:hint="@string/username"
             android:inputType="text">
 
@@ -44,6 +45,7 @@
             android:id="@+id/textPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="@string/password"
             android:hint="@string/password"
             android:inputType="textPassword" />
 
@@ -57,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.36"
-                android:onClick="buttonSyncToHDonline"
+                android:onClick="buttonSyncToHDOnline"
                 android:text="@string/syncup" />
 
             <Button
@@ -65,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.33"
-                android:onClick="buttonSyncFromHDonline"
+                android:onClick="buttonSyncFromHDOnline"
                 android:text="@string/syncdown" />
 
         </LinearLayout>
@@ -83,20 +85,6 @@
             android:text="@string/autosaveonclose"
             android:id="@+id/btnAutoSave"
             android:onClick="buttonAutoSave" />
-
-        <ToggleButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnHideAds"
-                android:clickable="true"
-                android:enabled="true"
-                android:checked="false"
-                android:textOff="@string/ShowAds"
-                android:textOn="@string/HideAds"
-                android:focusable="auto"
-                android:visibility="gone"
-                android:focusableInTouchMode="false"
-                android:onClick="buttonToggleAds"/>
 
         <ProgressBar
             android:id="@+id/progressBarSyncing"

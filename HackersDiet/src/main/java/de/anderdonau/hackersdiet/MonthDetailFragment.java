@@ -26,10 +26,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -66,7 +63,7 @@ public class MonthDetailFragment extends Fragment
 	 * Search a widget by its name and return its ID.
 	 */
 	public int getIdByName(String name) {
-		Class res = R.id.class;
+		Class<R.id> res = R.id.class;
 		int id;
 		try {
 			Field field = res.getField(name);
@@ -93,7 +90,7 @@ public class MonthDetailFragment extends Fragment
 
 		for (int d = 1; d <= 31; d++) {
 			// if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
-			if (d > 28 && d > mWeight.daysinmonth(mItem.month, mItem.year)) {
+			if (d > 28 && d > mWeight.daysInMonth(mItem.month, mItem.year)) {
 				/*
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */
@@ -110,15 +107,15 @@ public class MonthDetailFragment extends Fragment
 				 */
 				mViewCache[d].row.setVisibility(View.VISIBLE);
 			}
-			if (d <= mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
+			if (d <= mWeight.daysInMonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
 				mToday.set(Calendar.DAY_OF_MONTH, d);
 			}
 		}
 
 		int year = mItem.year;
 		int month = mItem.month;
-		int wholedate = year * 10000 + month * 100 + 1;
-		int wholedatelast = year * 10000 + month * 100 + mWeight.daysinmonth(month, year);
+		int wholeDate = year * 10000 + month * 100 + 1;
+		int wholeDateLast = year * 10000 + month * 100 + mWeight.daysInMonth(month, year);
 		Calendar tmpDate = new GregorianCalendar(year, month - 1, 1);
 		double max = -1;
 		double min = 99999;
@@ -128,19 +125,19 @@ public class MonthDetailFragment extends Fragment
 
 		mPtr = mWeight.allData;
 
-		if (mPtr.wholedate < wholedate) { // mPtr is before today
-			while (mPtr.wholedate < wholedate && mPtr.next != null) {
+		if (mPtr.wholedate < wholeDate) { // mPtr is before today
+			while (mPtr.wholedate < wholeDate && mPtr.next != null) {
 				mPtr = mPtr.next;
 			}
-			if (mPtr.wholedate < wholedate) { // No entries for this month
+			if (mPtr.wholedate < wholeDate) { // No entries for this month
 				mCanSave = true;
 				return;
 			}
-		} else if (mPtr.wholedate > wholedate) { // mPtr is beyond today
-			while (mPtr.wholedate > wholedate && mPtr.prev != null) {
+		} else if (mPtr.wholedate > wholeDate) { // mPtr is beyond today
+			while (mPtr.wholedate > wholeDate && mPtr.prev != null) {
 				mPtr = mPtr.prev;
 			}
-			if (mPtr.wholedate > wholedatelast) { // No entries for this month
+			if (mPtr.wholedate > wholeDateLast) { // No entries for this month
 				mCanSave = true;
 				return;
 			}
@@ -160,7 +157,7 @@ public class MonthDetailFragment extends Fragment
 		weightValues.setDrawDataPoints(true);
 		trendValues.setDrawDataPoints(true);
 		rungValues.setDrawDataPoints(true);
-		for (; mPtr != null && mPtr.wholedate <= wholedatelast; mPtr = mPtr.next) { // fill all values
+		for (; mPtr != null && mPtr.wholedate <= wholeDateLast; mPtr = mPtr.next) { // fill all values
 			int d = mPtr.wholedate % (year * 10000 + month * 100);
 			max = Math.max(max, mPtr.getTrend());
 			min = Math.min(min, mPtr.getTrend());
@@ -234,7 +231,7 @@ public class MonthDetailFragment extends Fragment
 		graphView.getViewport().setMaxX(31);
 		graphView.getViewport().setMinY(min);
 		graphView.getViewport().setMaxY(max);
-		/**
+		/*
 		 * TODO: Need a second Y-Axis
 		 * if (numRung > 0){
 		 *   GraphView.GraphViewData[] rungValues = new GraphView.GraphViewData[numRung];
@@ -287,13 +284,13 @@ public class MonthDetailFragment extends Fragment
 				}
 				day += String.valueOf(d);
 				mViewCache[d] = new viewCache();
-				mViewCache[d].weight = (TextView) rootView.findViewById(getIdByName("weight" + day));
-				mViewCache[d].trend = (TextView) rootView.findViewById(getIdByName("trend" + day));
-				mViewCache[d].var = (TextView) rootView.findViewById(getIdByName("var" + day));
-				mViewCache[d].rung = (TextView) rootView.findViewById(getIdByName("rung" + day));
-				mViewCache[d].flag = (CheckBox) rootView.findViewById(getIdByName("flag" + day));
-				mViewCache[d].comment = (TextView) rootView.findViewById(getIdByName("comment" + day));
-				mViewCache[d].row = (LinearLayout) rootView.findViewById(getIdByName("rowDay" + day));
+				mViewCache[d].weight = rootView.findViewById(getIdByName("weight" + day));
+				mViewCache[d].trend = rootView.findViewById(getIdByName("trend" + day));
+				mViewCache[d].var = rootView.findViewById(getIdByName("var" + day));
+				mViewCache[d].rung = rootView.findViewById(getIdByName("rung" + day));
+				mViewCache[d].flag = rootView.findViewById(getIdByName("flag" + day));
+				mViewCache[d].comment = rootView.findViewById(getIdByName("comment" + day));
+				mViewCache[d].row = rootView.findViewById(getIdByName("rowDay" + day));
 				final int dayOfMonth = d;
 				TextWatcher onChange = new TextWatcher() {
 					@Override

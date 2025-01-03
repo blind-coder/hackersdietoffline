@@ -32,7 +32,7 @@ import java.io.InputStreamReader;
 public class weightData {
 	public weightDataDay allData;
 	private weightDataDay ptr;
-	private Context mContext;
+	private final Context mContext;
 
 
 	final Handler handler = new Handler() {
@@ -76,7 +76,7 @@ public class weightData {
 		t.start();
 	}
 
-	public boolean isleapyear(int year) {
+	public boolean isLeapYear(int year) {
 		if (year % 400 == 0) {
 			return true;
 		}
@@ -89,8 +89,8 @@ public class weightData {
 		return false;
 	}
 
-	public int daysinmonth(int month, int year) {
-		/**
+	public int daysInMonth(int month, int year) {
+		/*
 		 * Yes, this could be written better. I prefer readable.
 		 */
 		if (month > 7) {
@@ -101,7 +101,7 @@ public class weightData {
 			}
 		} else {
 			if (month == 2) {
-				if (isleapyear(year)) {
+				if (isLeapYear(year)) {
 					return 29;
 				} else {
 					return 28;
@@ -128,7 +128,7 @@ public class weightData {
 	}
 
 	public void add(int year, int month, int day, double weight, int rung, boolean flag, String comment) {
-		int wholedate = year * 10000 + month * 100 + day;
+		int wholeDate = year * 10000 + month * 100 + day;
 
 		if (ptr.prev == null && ptr.next == null) { // only one entry
 			if (ptr.comment.equals("SPECIAL")) { // and even an empty one
@@ -138,7 +138,7 @@ public class weightData {
 				ptr.year = year;
 				ptr.month = month;
 				ptr.day = day;
-				ptr.wholedate = wholedate;
+				ptr.wholedate = wholeDate;
 				ptr.setWeight(weight);
 				ptr.rung = rung;
 				ptr.flag = flag;
@@ -146,16 +146,16 @@ public class weightData {
 				return;
 			}
 		}
-		if (ptr.wholedate > wholedate) {
-			while (ptr.wholedate > wholedate && ptr.prev != null) {
+		if (ptr.wholedate > wholeDate) {
+			while (ptr.wholedate > wholeDate && ptr.prev != null) {
 				ptr = ptr.prev;
 			}
-			if (ptr.wholedate > wholedate) {
-				while (ptr.wholedate > wholedate) {
+			if (ptr.wholedate > wholeDate) {
+				while (ptr.wholedate > wholeDate) {
 					int nyear;
 					int nmonth;
 					int nday;
-					int nwholedate;
+					int nWholeDate;
 					nyear = ptr.year;
 					nmonth = ptr.month;
 					nday = ptr.day - 1;
@@ -165,9 +165,9 @@ public class weightData {
 							nyear -= 1;
 							nmonth = 12;
 						}
-						nday = daysinmonth(nmonth, nyear);
+						nday = daysInMonth(nmonth, nyear);
 					}
-					nwholedate = nyear * 10000 + nmonth * 100 + nday;
+					nWholeDate = nyear * 10000 + nmonth * 100 + nday;
 
 					ptr.prev = new weightDataDay();
 					ptr.prev.next = ptr;
@@ -176,17 +176,17 @@ public class weightData {
 					ptr.month = nmonth;
 					ptr.year = nyear;
 					ptr.setWeight(0);
-					ptr.wholedate = nwholedate;
+					ptr.wholedate = nWholeDate;
 				}
 			}
 		}
-		if (ptr.wholedate != wholedate) {
-			while (ptr.wholedate < wholedate && ptr.next != null) {
+		if (ptr.wholedate != wholeDate) {
+			while (ptr.wholedate < wholeDate && ptr.next != null) {
 				ptr = ptr.next;
 			}
 		}
-		if (ptr.wholedate != wholedate) {
-			while (ptr.wholedate < wholedate) {
+		if (ptr.wholedate != wholeDate) {
+			while (ptr.wholedate < wholeDate) {
 				int nyear;
 				int nmonth;
 				int nday;
@@ -194,7 +194,7 @@ public class weightData {
 				nyear = ptr.year;
 				nmonth = ptr.month;
 				nday = ptr.day + 1;
-				if (nday > daysinmonth(nmonth, nyear)) {
+				if (nday > daysInMonth(nmonth, nyear)) {
 					nday = 1;
 					nmonth += 1;
 					if (nmonth > 12) {
@@ -229,8 +229,8 @@ public class weightData {
 		//2009-07-02,116.3,,0,
 		//2012-01-30,110.8,,1,
 		//2012-2-1,110.2,34,1,"just a comment"
-		String elements[] = line.split(",");
-		String dateElements[] = elements[0].split("-");
+		String[] elements = line.split(",");
+		String[] dateElements = elements[0].split("-");
 		int year;
 		int month;
 		int day;
@@ -242,7 +242,7 @@ public class weightData {
 			// e.printStackTrace();
 			return;
 		}
-		if (day > daysinmonth(month, year)) {
+		if (day > daysInMonth(month, year)) {
 			return;
 		}
 		double weight = Double.parseDouble("0" + elements[1]);

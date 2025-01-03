@@ -19,6 +19,7 @@ package de.anderdonau.hackersdiet;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -69,7 +70,7 @@ public class ExcerciseListFragment extends ListFragment {
 	 * A dummy implementation of the {@link Callbacks} interface that does
 	 * nothing. Used only when this fragment is not attached to an activity.
 	 */
-	private static Callbacks sExcerciseCallbacks = new Callbacks() {
+	private static final Callbacks sExcerciseCallbacks = new Callbacks() {
 		@Override
 		public void onItemSelected(String id) {
 		}
@@ -89,11 +90,11 @@ public class ExcerciseListFragment extends ListFragment {
 		for (int i = 1; i <= 48; i++) {
 			ExcerciseListContent.addItem(new ExcerciseListContent.ExcerciseItem(String.format("%d", i), String.format(getString(R.string.rungNumber), i), i));
 		}
-		setListAdapter(new ArrayAdapter<ExcerciseListContent.ExcerciseItem>(getActivity(), android.R.layout.simple_list_item_activated_1, android.R.id.text1, ExcerciseListContent.ITEMS));
+		setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_activated_1, android.R.id.text1, ExcerciseListContent.ITEMS));
 	}
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
+	public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
 		// Restore the previously serialized activated item position.
@@ -131,7 +132,7 @@ public class ExcerciseListFragment extends ListFragment {
 	}
 
 	@Override
-	public void onSaveInstanceState(Bundle outState) {
+	public void onSaveInstanceState(@NonNull Bundle outState) {
 		super.onSaveInstanceState(outState);
 		if (mActivatedPosition != ListView.INVALID_POSITION) {
 			// Serialize and persist the activated item position.

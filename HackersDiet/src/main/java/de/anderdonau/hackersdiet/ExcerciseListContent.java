@@ -17,6 +17,8 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +48,7 @@ public class ExcerciseListContent {
 			this.rung = rung;
 		}
 
-		@Override
+		@Override @NonNull
 		public String toString() {
 			return content;
 		}

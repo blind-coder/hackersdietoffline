@@ -17,6 +17,8 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
+import android.support.annotation.NonNull;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -129,7 +131,7 @@ public weightDataDay(int year, int month, int day, float weight, int rung, float
 		}
 	}
 
-	@Override
+	@Override @NonNull
 	public String toString() {
 		String retVal;
 		retVal = String.format(Locale.ENGLISH, "%d-%02d-%02d,%f,%d,%d,\"%s\"", year, month, day, weight, rung, flag ? 1 : 0, comment);

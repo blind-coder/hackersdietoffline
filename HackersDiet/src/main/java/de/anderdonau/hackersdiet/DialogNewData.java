@@ -14,8 +14,6 @@ public class DialogNewData extends Dialog
   implements View.OnClickListener
 {
   public Activity c;
-  public Dialog d;
-//  private GregorianCalendar mToday;
   public Button no;
   private final MonthDetailFragment parent;
   private final weightData weight;

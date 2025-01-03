@@ -1,6 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
@@ -12,8 +11,7 @@
     tools:context="de.anderdonau.hackersdiet.ExcerciseListActivity"
     android:id="@+id/mainLayoutExcercise">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/excercise_list"
         android:name="de.anderdonau.hackersdiet.ExcerciseListFragment"
         android:layout_width="match_parent"

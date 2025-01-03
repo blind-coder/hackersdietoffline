@@ -19,6 +19,7 @@ package de.anderdonau.hackersdiet;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -70,7 +71,7 @@ public class MonthListFragment extends ListFragment {
 	 * A dummy implementation of the {@link Callbacks} interface that does
 	 * nothing. Used only when this fragment is not attached to an activity.
 	 */
-	private static Callbacks sMonthCallbacks = new Callbacks() {
+	private static final Callbacks sMonthCallbacks = new Callbacks() {
 		@Override
 		public void onItemSelected(String id) {
 		}
@@ -115,7 +116,9 @@ public class MonthListFragment extends ListFragment {
 			mPtr = mPtr.next;
 		}
 
-		setListAdapter(new ArrayAdapter<MonthListContent.MonthItem>(getActivity(), android.R.layout.simple_list_item_activated_1, android.R.id.text1, MonthListContent.ITEMS));
+		if (getActivity() != null) {
+			setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_activated_1, android.R.id.text1, MonthListContent.ITEMS));
+		}
 	}
 
 	@Override
@@ -125,7 +128,7 @@ public class MonthListFragment extends ListFragment {
 	}
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
+	public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
 		// Restore the previously serialized activated item position.
@@ -163,7 +166,7 @@ public class MonthListFragment extends ListFragment {
 	}
 
 	@Override
-	public void onSaveInstanceState(Bundle outState) {
+	public void onSaveInstanceState(@NonNull Bundle outState) {
 		super.onSaveInstanceState(outState);
 		if (mActivatedPosition != ListView.INVALID_POSITION) {
 			// Serialize and persist the activated item position.

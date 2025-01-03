@@ -11,8 +11,7 @@
     tools:context="de.anderdonau.hackersdiet.MonthListActivity"
     android:id="@+id/mainLayout">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/month_list"
         android:name="de.anderdonau.hackersdiet.MonthListFragment"
         android:layout_width="match_parent"

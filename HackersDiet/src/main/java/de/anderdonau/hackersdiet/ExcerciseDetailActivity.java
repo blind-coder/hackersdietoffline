@@ -30,7 +30,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- * An activity representing a single Excercise detail screen. This
+ * An activity representing a single Exercise detail screen. This
  * activity is only used on handset devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
  * in a {@link ExcerciseListActivity}.

@@ -45,8 +45,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -96,59 +94,37 @@ public class Prefs extends Activity {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 
 		String username = settings.getString("username", "");
-		if (username.length() > 0) {
-			EditText u = (EditText) findViewById(R.id.textUsername);
+		assert username != null;
+		if (!username.isEmpty()) {
+			EditText u = findViewById(R.id.textUsername);
 			u.setText(username);
 		}
 
 		String password = settings.getString("password", "");
-		if (password.length() > 0) {
-			EditText p = (EditText) findViewById(R.id.textPassword);
+		assert password != null;
+		if (!password.isEmpty()) {
+			EditText p = findViewById(R.id.textPassword);
 			p.setText(password);
 		}
 
-		boolean hideads = settings.getBoolean("hideads", false);
-		ToggleButton btnHideAds = (ToggleButton) findViewById(R.id.btnHideAds);
-		btnHideAds.setChecked(hideads);
-
 		boolean autosave = settings.getBoolean("autosave", true);
-		CheckBox btnAutoSave = (CheckBox) findViewById(R.id.btnAutoSave);
+		CheckBox btnAutoSave = findViewById(R.id.btnAutoSave);
 		btnAutoSave.setChecked(autosave);
-
-		TextWatcher watchCheatCode = new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-			}
-
-			@Override
-			public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable cheatcode) {
-				Log.d("cheatcode", String.format("cheatcode is: %s", cheatcode.toString()));
-				if (cheatcode.toString().equalsIgnoreCase("UUDDLRLRBA")) {
-					Log.d("cheatcode", "activating hideads button");
-					ToggleButton btnHideAds = (ToggleButton) findViewById(R.id.btnHideAds);
-					btnHideAds.setVisibility(View.VISIBLE);
-				}
-			}
-		};
 	}
 
 	public void downloadDataFromHackDietOnline() {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 
 		final String username = settings.getString("username", "");
-		if (username.length() <= 0) {
+		assert username != null;
+		if (username.isEmpty()) {
 			Toast.makeText(this, R.string.errorUsernameIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
 
 		final String password = settings.getString("password", "");
-		if (password.length() <= 0) {
+		assert password != null;
+		if (password.isEmpty()) {
 			Toast.makeText(this, R.string.errorPasswordIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
@@ -172,13 +148,15 @@ public class Prefs extends Activity {
 		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
 
 		final String username = settings.getString("username", "");
-		if (username.length() <= 0) {
+		assert username != null;
+		if (username.isEmpty()) {
 			Toast.makeText(this, R.string.errorUsernameIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
 
 		final String password = settings.getString("password", "");
-		if (password.length() <= 0) {
+		assert password != null;
+		if (password.isEmpty()) {
 			Toast.makeText(this, R.string.errorPasswordIsEmpty, Toast.LENGTH_LONG).show();
 			return;
 		}
@@ -198,12 +176,12 @@ public class Prefs extends Activity {
 		alert.show();
 	}
 
-	public void buttonSyncFromHDonline(View view) {
+	public void buttonSyncFromHDOnline(View view) {
 		savePrefs();
 		downloadDataFromHackDietOnline();
 	}
 
-	public void buttonSyncToHDonline(View view) {
+	public void buttonSyncToHDOnline(View view) {
 		savePrefs();
 		uploadDataToHackDietOnline();
 	}
@@ -213,15 +191,7 @@ public class Prefs extends Activity {
 		CheckBox btnAutoSave = (CheckBox) view;
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putBoolean("autosave", btnAutoSave.isChecked());
-		editor.commit();
-	}
-
-	public void buttonToggleAds(View view) {
-		SharedPreferences settings = getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-		ToggleButton btnHideAds = (ToggleButton) view;
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putBoolean("hideads", btnHideAds.isChecked());
-		editor.commit();
+		editor.apply();
 	}
 
 	public void savePrefs() {
@@ -231,7 +201,7 @@ public class Prefs extends Activity {
 		EditText p = (EditText) findViewById(R.id.textPassword);
 		editor.putString("username", u.getText().toString());
 		editor.putString("password", p.getText().toString());
-		editor.commit();
+		editor.apply();
 	}
 
 	@Override
@@ -246,7 +216,7 @@ public class Prefs extends Activity {
 		public String mPassword;
 		TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
 			public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-				/**
+				/*
 				 * TODO: Stop being so lazy.
 				 */
 				return null;
@@ -351,7 +321,7 @@ public class Prefs extends Activity {
 		@Override
 		public void run() {
 			String session = getHackDietOnlineSession(mUsername, mPassword);
-			if (session.length() > 0) {
+			if (!session.isEmpty()) {
 				String data = getHackDietOnlineData(session);
 				if (data.length() >= 0) {
 					try {
@@ -384,14 +354,14 @@ public class Prefs extends Activity {
 				// Get Response
 				BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 				String line;
-				String retVal;
-				retVal = "";
+				StringBuilder retVal;
+				retVal = new StringBuilder();
 				while ((line = rd.readLine()) != null) {
-					retVal += line + "\n";
+					retVal.append(line).append("\n");
 				}
 				rd.close();
 				conn.disconnect();
-				return retVal;
+				return retVal.toString();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -425,30 +395,30 @@ public class Prefs extends Activity {
 
 		public boolean sendHackDietOnlineData(String session) {
 			String boundary = Long.toHexString(System.currentTimeMillis()); // Just generate some unique random value.
-			String POSTDATA = "";
+			StringBuilder POSTDATA = new StringBuilder();
 			sendToast(R.string.sendigDataToHDO);
 			try {
-				POSTDATA += "--" + boundary + "\n";
-				POSTDATA += "Content-Disposition: form-data; name=\"s\"\n\n" + session + "\n";
-				POSTDATA += "--" + boundary + "\n";
-				POSTDATA += "Content-Disposition: form-data; name=\"q\"\n\ncsv_import_data\n";
-				POSTDATA += "--" + boundary + "\n";
-				POSTDATA += "Content-Disposition: form-data; name=\"overwrite\"\n\ny\n";
-				POSTDATA += "--" + boundary + "\n";
-				POSTDATA += "Content-Disposition: form-data; name=\"uploaded_file\"; filename=\"data.csv\"\n";
-				POSTDATA += "Content-Type: text/csv\n\n";
-				POSTDATA += "Date,Weight,Rung,Flag,Comment\n";
-				POSTDATA += "StartTrend,0.0000,0,0,0\n";
+				POSTDATA.append("--").append(boundary).append("\n");
+				POSTDATA.append("Content-Disposition: form-data; name=\"s\"\n\n").append(session).append("\n");
+				POSTDATA.append("--").append(boundary).append("\n");
+				POSTDATA.append("Content-Disposition: form-data; name=\"q\"\n\ncsv_import_data\n");
+				POSTDATA.append("--").append(boundary).append("\n");
+				POSTDATA.append("Content-Disposition: form-data; name=\"overwrite\"\n\ny\n");
+				POSTDATA.append("--").append(boundary).append("\n");
+				POSTDATA.append("Content-Disposition: form-data; name=\"uploaded_file\"; filename=\"data.csv\"\n");
+				POSTDATA.append("Content-Type: text/csv\n\n");
+				POSTDATA.append("Date,Weight,Rung,Flag,Comment\n");
+				POSTDATA.append("StartTrend,0.0000,0,0,0\n");
 				FileInputStream fin = mContext.openFileInput("hackdietdata.csv");
 				BufferedReader rd = new BufferedReader(new InputStreamReader(fin));
 				String line;
 				while ((line = rd.readLine()) != null) {
-					POSTDATA += line + "\n";
+					POSTDATA.append(line).append("\n");
 				}
 				rd.close();
 				fin.close();
-				POSTDATA += "\n--" + boundary + "--\n";
-				String rawData = "q=csv_import_data&overwrite=y&s=" + session + "&file=" + URLEncoder.encode(POSTDATA, "UTF-8");
+				POSTDATA.append("\n--").append(boundary).append("--\n");
+				String rawData = "q=csv_import_data&overwrite=y&s=" + session + "&file=" + URLEncoder.encode(POSTDATA.toString(), "UTF-8");
 
 				HttpsURLConnection conn = POST(rawData);
 

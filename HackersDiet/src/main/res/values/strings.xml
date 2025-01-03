@@ -36,7 +36,7 @@
     <string name="comment">Comment</string>
     <string name="saveFirst">Do you want to save before leaving the Hackers Diet?</string>
     <string name="dontQuit">Don\'t quit</string>
-    <string name="aboutHackDietOffline">The Hackers Diet Offline, Copyright (C) 2014 Benjamin Schieder\nThis program comes with ABSOLUTELY NO WARRANTY! For details see http://www.crash-override.net</string>
+    <string name="aboutHackDietOffline">The Hackers Diet Offline, Copyright © 2014 Benjamin Schieder\nThis program comes with ABSOLUTELY NO WARRANTY! For details see https://www.benjamin-schieder.de/</string>
     <string name="thanks">Thanks!</string>
     <string name="HideAds">Hide Ads</string>
     <string name="Cheatcode">Enter Cheatcode</string>
@@ -53,6 +53,7 @@
     <string name="autosave">Autosave</string>
     <string name="autosaveonclose">Autosave when leaving App</string>
     <string name="flag">Flag</string>
+    <string name="aboutVersion" translatable="false">2024-12-15-dev</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>

@@ -17,10 +17,8 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 
 /**
@@ -41,7 +39,9 @@ public class MonthDetailActivity extends FragmentActivity {
 		setContentView(R.layout.activity_month_detail);
 
 		// Show the Up button in the action bar.
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		if (getActionBar() != null) {
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 		// savedInstanceState is non-null when there is fragment state
 		// saved from previous configurations of this activity
 		// (e.g. when rotating the screen from portrait to landscape).

@@ -18,7 +18,6 @@ package de.anderdonau.hackersdiet;
 	 */
 
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 

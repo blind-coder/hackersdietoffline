@@ -17,33 +17,24 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.LinearLayout;
 
 public class ExcerciseListActivity extends FragmentActivity implements ExcerciseListFragment.Callbacks {
 	private boolean mTwoPane = false; // running on tablet?
 
-	public static Context mContext = null;
-
-	public static Context getAppContext() {
-		return ExcerciseListActivity.mContext;
-	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ExcerciseListActivity.mContext = getApplicationContext();
 
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		if (getActionBar() != null) {
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 
 		setContentView(R.layout.activity_excercise_list);
 
-		/**
+		/*
 		 * Is this twoPane mode?
 		 */
 		if (findViewById(R.id.excercise_detail_container) != null) {
@@ -55,7 +46,11 @@ public class ExcerciseListActivity extends FragmentActivity implements Excercise
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
-			((ExcerciseListFragment) getSupportFragmentManager().findFragmentById(R.id.excercise_list)).setActivateOnItemClick(true);
+			ExcerciseListFragment fragment = (ExcerciseListFragment) getSupportFragmentManager()
+					.findFragmentById(R.id.excercise_list);
+			if (fragment != null) {
+				fragment.setActivateOnItemClick(true);
+			}
 		}
 	}
 

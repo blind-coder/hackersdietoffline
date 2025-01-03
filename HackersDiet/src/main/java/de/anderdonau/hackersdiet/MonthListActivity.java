@@ -27,8 +27,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 
 /**
  * An activity representing a list of Months. This activity
@@ -47,11 +45,11 @@ import android.widget.LinearLayout;
  * to listen for item selections.
  */
 public class MonthListActivity extends FragmentActivity implements MonthListFragment.Callbacks {
-	public static Context           mContext    = null;
-	public static weightData        mWeightData = null;
-	public static boolean           mChanged    = false; // will be true if any field has changed
-	public        MonthListFragment mFragment   = null;
-	private       boolean           mTwoPane    = false; // running on tablet?
+	public static Context mContext = null;
+	public static weightData mWeightData = null;
+	public static boolean mChanged = false; // will be true if any field has changed
+	public MonthListFragment mFragment = null;
+	private boolean mTwoPane = false; // running on tablet?
 
 	public static Context getAppContext() {
 		return MonthListActivity.mContext;
@@ -84,7 +82,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 			MonthDetailFragment fragment = new MonthDetailFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction().replace(R.id.month_detail_container, fragment)
-				.commit();
+					.commit();
 		} else {
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
@@ -155,13 +153,13 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
 		AlertDialog.Builder confirm = new AlertDialog.Builder(this);
 		confirm.setMessage(R.string.saveFirst).setCancelable(false).setPositiveButton(R.string.yes,
-			new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					mWeightData.saveData();
-					dialog.cancel();
-					finish();
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int id) {
+						mWeightData.saveData();
+						dialog.cancel();
+						finish();
+					}
 				}
-			}
 		).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.cancel();
@@ -182,7 +180,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		MonthListActivity.mContext = getApplicationContext();
 
 		if (MonthListActivity.mWeightData == null) {
-			/**
+			/*
 			 * Only load the data once on startup.
 			 */
 			MonthListActivity.mWeightData = new weightData();
@@ -193,7 +191,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 
 		mFragment = ((MonthListFragment) getSupportFragmentManager().findFragmentById(R.id.month_list));
 
-		/**
+		/*
 		 * Is this twoPane mode?
 		 */
 		if (findViewById(R.id.month_detail_container) != null) {

@@ -29,7 +29,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- * A fragment representing a single Excercise detail screen.
+ * A fragment representing a single Exercise detail screen.
  * This fragment is either contained in a {@link ExcerciseListActivity}
  * in two-pane mode (on tablets) or a {@link ExcerciseDetailActivity}
  * on handsets.
@@ -49,7 +49,7 @@ public class ExcerciseDetailFragment extends Fragment {
 		if (getArguments().containsKey(ARG_ITEM_ID)) {
 			mItem = ExcerciseListContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 		}
-		/**
+		/*
 		 * TODO: What do we do if mItem is unset?
 		 */
 	}
@@ -81,22 +81,22 @@ public class ExcerciseDetailFragment extends Fragment {
 		}
 
 		TextView e;
-		e = (TextView) rootView.findViewById(R.id.textBends);
+		e = rootView.findViewById(R.id.textBends);
 		e.setText(String.format("%d", bends));
 
-		e = (TextView) rootView.findViewById(R.id.textSitups);
+		e = rootView.findViewById(R.id.textSitups);
 		e.setText(String.format("%d", situps));
 
-		e = (TextView) rootView.findViewById(R.id.textLegLifts);
+		e = rootView.findViewById(R.id.textLegLifts);
 		e.setText(String.format("%d", leglifts));
 
-		e = (TextView) rootView.findViewById(R.id.textPushups);
+		e = rootView.findViewById(R.id.textPushups);
 		e.setText(String.format("%d", pushups));
 
-		e = (TextView) rootView.findViewById(R.id.textRuns);
+		e = rootView.findViewById(R.id.textRuns);
 		e.setText(String.format("%d - %d/%d", runjumps, runjumps / 75, runjumps % 75));
 
-		e = (TextView) rootView.findViewById(R.id.textExcerciseRung);
+		e = rootView.findViewById(R.id.textExcerciseRung);
 		e.setText(String.format("%d", mItem.rung));
 		return rootView;
 	}
