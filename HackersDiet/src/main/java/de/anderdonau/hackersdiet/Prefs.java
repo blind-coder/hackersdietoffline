@@ -122,7 +122,7 @@ public class Prefs extends Activity {
 		CheckBox btnAutoSave = findViewById(R.id.btnAutoSave);
 		btnAutoSave.setChecked(autosave);
 
-		String path = settings.getString("savePath", "Disabled");
+		String path = settings.getString("savePath", getString(R.string.disabled));
 		Button saveButton = findViewById(R.id.buttonSaveButton);
 		saveButton.setText(path);
 	}
@@ -264,7 +264,7 @@ public class Prefs extends Activity {
 				}
 			}
 		}
-		savePath.setText("Disabled");
+		savePath.setText(R.string.disabled);
 	}
 	private class HttpThread extends Thread {
 		public Handler mHandler;

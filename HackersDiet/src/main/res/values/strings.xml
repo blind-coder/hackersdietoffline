@@ -54,6 +54,8 @@
     <string name="autosaveonclose">Autosave when leaving App</string>
     <string name="flag">Flag</string>
     <string name="aboutVersion" translatable="false">2024-12-15-dev</string>
+    <string name="select_local_save_path">Select local save path</string>
+    <string name="disabled">Disabled</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>
