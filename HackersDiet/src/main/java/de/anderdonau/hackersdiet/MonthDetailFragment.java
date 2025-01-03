@@ -197,11 +197,6 @@ public class MonthDetailFragment extends Fragment
 
 			tmpDate.set(Calendar.DAY_OF_MONTH, d);
 		}
-		for (int i=numWeight+1; i<=31; i++){
-			weightValues.appendData(new DataPoint(i, Double.NaN), false, 31);
-			trendValues.appendData(new DataPoint(i, Double.NaN), false, 31);
-			rungValues.appendData(new DataPoint(i, Double.NaN), false, 31);
-		}
 		graphView = rootView.findViewById(R.id.weightGraph);
 		graphView.removeAllSeries();
 		graphView.addSeries(weightValues);

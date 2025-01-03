@@ -65,7 +65,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 			boolean autoSave = settings.getBoolean("autosave", true);
 
 			if (autoSave) {
-				mWeightData.saveData();
+				mWeightData.saveData(getAppContext());
 				mChanged = false;
 			}
 		}
@@ -107,7 +107,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 			return true;
 		}
 		if (item.getItemId() == R.id.save) {
-			mWeightData.saveData();
+			mWeightData.saveData(getAppContext());
 			mChanged = false;
 			return true;
 		}
@@ -155,7 +155,7 @@ public class MonthListActivity extends FragmentActivity implements MonthListFrag
 		confirm.setMessage(R.string.saveFirst).setCancelable(false).setPositiveButton(R.string.yes,
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
-						mWeightData.saveData();
+						mWeightData.saveData(getAppContext());
 						dialog.cancel();
 						finish();
 					}

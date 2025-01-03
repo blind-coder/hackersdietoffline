@@ -48,7 +48,7 @@ public class DialogNewData extends Dialog
               datePicker.getDayOfMonth(), Double.parseDouble(editWeight.getText().toString()),
               Integer.parseInt(rung), chkFlag.isChecked(),
               editComment.getText().toString());
-      this.weight.saveData();
+      this.weight.saveData(getContext());
       this.parent.updateEverything();
     }
     dismiss();

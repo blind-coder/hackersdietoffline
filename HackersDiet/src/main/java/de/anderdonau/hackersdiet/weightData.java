@@ -18,16 +18,22 @@ package de.anderdonau.hackersdiet;
 	 */
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.ParcelFileDescriptor;
+import android.support.v4.provider.DocumentFile;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 
 public class weightData {
 	public weightDataDay allData;
@@ -71,9 +77,44 @@ public class weightData {
 		//t.start();
 	}
 
-	public void saveData() {
+	public void saveData(Context context) {
 		SaveThread t = new SaveThread(handler);
 		t.start();
+		saveDataToLocalStorage(context);
+	}
+
+	public void saveDataToLocalStorage(Context context) {
+		FileInputStream fin;
+		SharedPreferences settings = context.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+		String savePath = settings.getString("savePath", "Disabled");
+		if (savePath.equals("Disabled")) {
+			return;
+		}
+		try {
+			Uri uri = Uri.parse(savePath);
+			DocumentFile saveDir = DocumentFile.fromTreeUri(context, uri);
+			DocumentFile saveFile;
+			if (saveDir.canWrite()) {
+				saveFile = saveDir.createFile("text/plain", "hackdiet.csv");
+			} else {
+				Toast.makeText(context, "Local directory not writable!", Toast.LENGTH_LONG).show();
+				return;
+			}
+			OutputStream outputStream = context.getContentResolver().openOutputStream(saveFile.getUri());
+			fin = mContext.openFileInput("hackdietdata.csv");
+			BufferedReader rd = new BufferedReader(new InputStreamReader(fin));
+			String line;
+			while ((line = rd.readLine()) != null) {
+				outputStream.write(line.getBytes());
+				outputStream.write("\n".getBytes());
+			}
+			rd.close();
+			fin.close();
+			outputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
 	}
 
 	public boolean isLeapYear(int year) {

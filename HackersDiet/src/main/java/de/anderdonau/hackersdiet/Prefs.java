@@ -17,8 +17,11 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,23 +39,31 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class Prefs extends Activity {
+	private static final int GET_SAVE_LOCATION = 984001;
 	ProgressDialog pBar = null;
 	Context mContext = this;
 
@@ -110,6 +121,10 @@ public class Prefs extends Activity {
 		boolean autosave = settings.getBoolean("autosave", true);
 		CheckBox btnAutoSave = findViewById(R.id.btnAutoSave);
 		btnAutoSave.setChecked(autosave);
+
+		String path = settings.getString("savePath", "Disabled");
+		Button saveButton = findViewById(R.id.buttonSaveButton);
+		saveButton.setText(path);
 	}
 
 	public void downloadDataFromHackDietOnline() {
@@ -199,8 +214,10 @@ public class Prefs extends Activity {
 		SharedPreferences.Editor editor = settings.edit();
 		EditText u = (EditText) findViewById(R.id.textUsername);
 		EditText p = (EditText) findViewById(R.id.textPassword);
+		Button s = (Button) findViewById(R.id.buttonSaveButton);
 		editor.putString("username", u.getText().toString());
 		editor.putString("password", p.getText().toString());
+		editor.putString("savePath", s.getText().toString());
 		editor.apply();
 	}
 
@@ -220,12 +237,35 @@ public class Prefs extends Activity {
 	}
 
 	public void buttonSaveLocation(final View view) {
-		if (permissionGranted()) {
-		} else {
+		if (!permissionGranted()) {
 			requestPermission();
 		}
+		Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+		startActivityForResult(intent, GET_SAVE_LOCATION);
 	}
 
+	@SuppressLint("WrongConstant")
+	public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+		Button savePath = findViewById(R.id.buttonSaveButton);
+		if (requestCode == GET_SAVE_LOCATION && resultCode == Activity.RESULT_OK) {
+			Uri uri = null;
+			if (resultData != null) {
+				uri = resultData.getData();
+				if (uri != null) {
+					Toast.makeText(getBaseContext(), uri.toString(), Toast.LENGTH_SHORT).show();
+					savePath.setText(uri.toString());
+					savePrefs();
+					final int takeFlags = resultData.getFlags()
+							& (Intent.FLAG_GRANT_READ_URI_PERMISSION
+							| Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+					// Check for the freshest data.
+					getContentResolver().takePersistableUriPermission(uri, takeFlags);
+					return;
+				}
+			}
+		}
+		savePath.setText("Disabled");
+	}
 	private class HttpThread extends Thread {
 		public Handler mHandler;
 		public String mUsername;
