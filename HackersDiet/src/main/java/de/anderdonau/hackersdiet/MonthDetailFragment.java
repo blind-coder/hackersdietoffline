@@ -159,44 +159,44 @@ public class MonthDetailFragment extends Fragment
 		trendValues.setDrawDataPoints(true);
 		rungValues.setDrawDataPoints(true);
 		for (; mPtr != null && mPtr.wholedate <= wholeDateLast; mPtr = mPtr.next) { // fill all values
-			int d = mPtr.wholedate % (year * 10000 + month * 100);
+			numWeight = mPtr.wholedate % (year * 10000 + month * 100);
 			max = Math.max(max, mPtr.getTrend());
 			min = Math.min(min, mPtr.getTrend());
 			if (mPtr.getWeight() > 0.0f) { // only care if we have an actual value
 				max = Math.max(max, mPtr.getWeight());
 				min = Math.min(min, mPtr.getWeight());
-				weightValues.appendData(new DataPoint(d, mPtr.getWeight()), false, 31);
-				trendValues.appendData(new DataPoint(d, mPtr.getTrend()), false, 31);
+				weightValues.appendData(new DataPoint(numWeight, mPtr.getWeight()), false, 31);
+				trendValues.appendData(new DataPoint(numWeight, mPtr.getTrend()), false, 31);
 			} else {
-				weightValues.appendData(new DataPoint(d, Double.NaN), false, 31);
-				trendValues.appendData(new DataPoint(d, Double.NaN), false, 31);
+				weightValues.appendData(new DataPoint(numWeight, Double.NaN), false, 31);
+				trendValues.appendData(new DataPoint(numWeight, Double.NaN), false, 31);
 			}
-			numWeight++;
 
 			if (mPtr.rung > 0) {
-				rungValues.appendData(new DataPoint(d, mPtr.rung), false, 31);
+				rungValues.appendData(new DataPoint(numWeight, mPtr.rung), false, 31);
 				numRung++;
 			}
 
 			if (mPtr.getVar() > 0) {
-				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightGain, null));
+				mViewCache[numWeight].var.setTextColor(getResources().getColor(R.color.weightGain, null));
 			} else if (mPtr.getVar() < 0) {
-				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightLoss, null));
+				mViewCache[numWeight].var.setTextColor(getResources().getColor(R.color.weightLoss, null));
 			} else {
-				mViewCache[d].var.setTextColor(getResources().getColor(R.color.weightConstant, null));
+				mViewCache[numWeight].var.setTextColor(getResources().getColor(R.color.weightConstant, null));
 			}
 
-			mViewCache[d].weight.setHint("0.0");
+			mViewCache[numWeight].weight.setHint("0.0");
 			if (mPtr.getWeight() > 0) {
-				mViewCache[d].weight.setText(String.valueOf(mPtr.getWeight()));
+				mViewCache[numWeight].weight.setText(String.valueOf(mPtr.getWeight()));
 			}
-			mViewCache[d].trend.setText(String.format("%.1f", mPtr.getTrend()));
-			mViewCache[d].var.setText(String.format("%+.1f", mPtr.getVar()));
-			mViewCache[d].rung.setText(String.valueOf(mPtr.rung));
-			mViewCache[d].flag.setChecked(mPtr.flag);
-			mViewCache[d].comment.setText(mPtr.comment);
+			mViewCache[numWeight].row.setVisibility(View.VISIBLE);
+			mViewCache[numWeight].trend.setText(String.format("%.1f", mPtr.getTrend()));
+			mViewCache[numWeight].var.setText(String.format("%+.1f", mPtr.getVar()));
+			mViewCache[numWeight].rung.setText(String.valueOf(mPtr.rung));
+			mViewCache[numWeight].flag.setChecked(mPtr.flag);
+			mViewCache[numWeight].comment.setText(mPtr.comment);
 
-			tmpDate.set(Calendar.DAY_OF_MONTH, d);
+			tmpDate.set(Calendar.DAY_OF_MONTH, numWeight);
 		}
 		for (int i = numWeight+1; i<=31; i++){
 			mViewCache[i].row.setVisibility(View.GONE);
