@@ -17,6 +17,7 @@ package de.anderdonau.hackersdiet;
 	 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 	 */
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,7 +28,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -78,36 +78,49 @@ public class MonthDetailFragment extends Fragment
 
 	public void onClick(View view)
 	{
-		DialogNewData dialog = new DialogNewData(getActivity(), this.mWeight, this);
-		dialog.setCanceledOnTouchOutside(false);
+		int id = -1;
+		for (int i = 1; i<=31; i++) {
+			if (view.getId() == getIdByName("row" + (i < 10 ? "0" : "") + i)) {
+				id = i;
+				break;
+			}
+		}
+		if (id == -1){
+			return;
+		}
+		Calendar editDay = (Calendar)mToday.clone();
+		editDay.set(Calendar.DAY_OF_MONTH, id);
+
+		DialogNewData dialog = new DialogNewData(getActivity(), this.mWeight,
+				this, editDay.get(Calendar.DAY_OF_MONTH),
+				editDay.get(Calendar.MONTH), editDay.get(Calendar.YEAR));
+		dialog.setCanceledOnTouchOutside(true);
 		dialog.show();
 	}
 
 	/**
 	 * Main drawing-handling function. Updates all widgets and text
 	 */
+	@SuppressLint("DefaultLocale")
 	public void updateEverything() {
 		mCanSave = false; // while this is running, we prevent saving. Works as a mutex.
 
 		for (int d = 1; d <= 31; d++) {
-			// if (d > 28 && d > mWeight.daysinmonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
 			if (d > 28 && d > mWeight.daysInMonth(mItem.month, mItem.year)) {
 				/*
 				 * Hide all widgets that are not used in this month and set them to empty strings or false.
 				 */
 				mViewCache[d].row.setVisibility(View.GONE);
-				mViewCache[d].weight.setText("");
-				mViewCache[d].trend.setText(" ");
-				mViewCache[d].var.setText(" ");
-				mViewCache[d].rung.setText("");
-				mViewCache[d].flag.setChecked(false);
-				mViewCache[d].comment.setText("");
 			} else if (d > 28) {
 				/*
 				 * Obviously only necessary for days 29 and 30 for feb, and 31 for apr, jun, sep, nov.
 				 */
 				mViewCache[d].row.setVisibility(View.VISIBLE);
 			}
+			mViewCache[d].weight.setText("");
+			mViewCache[d].trend.setText("");
+//				mViewCache[d].flag.setChecked(false);
+			mViewCache[d].comment.setText("");
 			if (d <= mWeight.daysInMonth(mToday.get(Calendar.MONTH) + 1, mToday.get(Calendar.YEAR))) {
 				mToday.set(Calendar.DAY_OF_MONTH, d);
 			}
@@ -185,17 +198,17 @@ public class MonthDetailFragment extends Fragment
 				mViewCache[numWeight].var.setTextColor(getResources().getColor(R.color.weightConstant, null));
 			}
 
-			mViewCache[numWeight].weight.setHint("0.0");
+			mViewCache[numWeight].weight.setHint("");
 			if (mPtr.getWeight() > 0) {
-				mViewCache[numWeight].weight.setText(String.valueOf(mPtr.getWeight()));
+				mViewCache[numWeight].weight.setText(String.format(getResources().getString(R.string.txtWeight), mPtr.getWeight()));
 			}
 			mViewCache[numWeight].row.setVisibility(View.VISIBLE);
-			mViewCache[numWeight].trend.setText(String.format("%.1f", mPtr.getTrend()));
-			mViewCache[numWeight].var.setText(String.format("%+.1f", mPtr.getVar()));
-			mViewCache[numWeight].rung.setText(String.valueOf(mPtr.rung));
-			mViewCache[numWeight].flag.setChecked(mPtr.flag);
-			mViewCache[numWeight].comment.setText(mPtr.comment);
-
+			mViewCache[numWeight].trend.setText(String.format(getResources().getString(R.string.txtTrend), mPtr.getTrend()));
+			mViewCache[numWeight].var.setText(String.format(getResources().getString(R.string.txtVar), mPtr.getVar()));
+//			mViewCache[numWeight].rung.setText(String.valueOf(mPtr.rung));
+//			mViewCache[numWeight].flag.setChecked(mPtr.flag);
+			mViewCache[numWeight].comment.setText(mPtr.comment.isEmpty() ? "" : "...");
+			mViewCache[numWeight].row.setOnClickListener(this);
 			tmpDate.set(Calendar.DAY_OF_MONTH, numWeight);
 		}
 		for (int i = numWeight+1; i<=31; i++){
@@ -254,13 +267,13 @@ public class MonthDetailFragment extends Fragment
 			return;
 		}
 
-        mToday = new GregorianCalendar();
+		mToday = new GregorianCalendar();
 		mWeight = MonthListActivity.getmWeightData();
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.fragment_month_detail, container, false);
+		rootView = inflater.inflate(R.layout.fragment_month_detail_buttons, container, false);
 
 		mPtr = mWeight.allData;
 
@@ -283,13 +296,13 @@ public class MonthDetailFragment extends Fragment
 				}
 				day += String.valueOf(d);
 				mViewCache[d] = new viewCache();
-				mViewCache[d].weight = rootView.findViewById(getIdByName("weight" + day));
-				mViewCache[d].trend = rootView.findViewById(getIdByName("trend" + day));
-				mViewCache[d].var = rootView.findViewById(getIdByName("var" + day));
-				mViewCache[d].rung = rootView.findViewById(getIdByName("rung" + day));
-				mViewCache[d].flag = rootView.findViewById(getIdByName("flag" + day));
-				mViewCache[d].comment = rootView.findViewById(getIdByName("comment" + day));
-				mViewCache[d].row = rootView.findViewById(getIdByName("rowDay" + day));
+				mViewCache[d].weight = rootView.findViewById(getIdByName("txtWeight" + day));
+				mViewCache[d].trend = rootView.findViewById(getIdByName("txtTrend" + day));
+				mViewCache[d].var = rootView.findViewById(getIdByName("txtVar" + day));
+//				mViewCache[d].rung = rootView.findViewById(getIdByName("rung" + day));
+//				mViewCache[d].flag = rootView.findViewById(getIdByName("flag" + day));
+				mViewCache[d].comment = rootView.findViewById(getIdByName("txtComment" + day));
+				mViewCache[d].row = rootView.findViewById(getIdByName("row" + day));
 				final int dayOfMonth = d;
 				TextWatcher onChange = new TextWatcher() {
 					@Override
@@ -344,35 +357,35 @@ public class MonthDetailFragment extends Fragment
 					}
 				};
 
-				mViewCache[d].weight.setOnFocusChangeListener(onBlur);
-				mViewCache[d].rung.setOnFocusChangeListener(onBlur);
-				mViewCache[d].flag.setOnFocusChangeListener(onBlur);
-				mViewCache[d].comment.setOnFocusChangeListener(onBlur);
+//				mViewCache[d].weight.setOnFocusChangeListener(onBlur);
+//				mViewCache[d].rung.setOnFocusChangeListener(onBlur);
+//				mViewCache[d].flag.setOnFocusChangeListener(onBlur);
+//				mViewCache[d].comment.setOnFocusChangeListener(onBlur);
 
 				mViewCache[d].weight.addTextChangedListener(onChange);
-				mViewCache[d].rung.addTextChangedListener(onChange);
-				mViewCache[d].comment.addTextChangedListener(onChange);
+//				mViewCache[d].rung.addTextChangedListener(onChange);
+//				mViewCache[d].comment.addTextChangedListener(onChange);
 
-				mViewCache[d].flag.setOnCheckedChangeListener(onCheck);
+//				mViewCache[d].flag.setOnCheckedChangeListener(onCheck);
 
-				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR) == mItem.year && mToday.get(Calendar.MONTH) + 1 == mItem.month) {
-					mViewCache[d].weight.requestFocus();
-				}
+//				if (d == mToday.get(Calendar.DAY_OF_MONTH) && mToday.get(Calendar.YEAR) == mItem.year && mToday.get(Calendar.MONTH) + 1 == mItem.month) {
+//					mViewCache[d].weight.requestFocus();
+//				}
 			}
 			viewCachePopulated = true;
 		}
-		(this.rootView.findViewById(R.id.addButton)).setOnClickListener(this);
+//		(this.rootView.findViewById(R.id.addButton)).setOnClickListener(this);
 
 		updateEverything();
 
-		final ScrollView scrollView = this.rootView.findViewById(R.id.scrollView1);
-		scrollView.postDelayed(new Runnable()
-			{
-				public void run()
-				{
-					scrollView.fullScroll(View.FOCUS_DOWN);
-				}
-			}, 500L);
+//		final ScrollView scrollView = this.rootView.findViewById(R.id.scrollView1);
+//		scrollView.postDelayed(new Runnable()
+//			{
+//				public void run()
+//				{
+//					scrollView.fullScroll(View.FOCUS_DOWN);
+//				}
+//			}, 500L);
 
 		return rootView;
 	}

@@ -55,6 +55,11 @@
     <string name="flag">Flag</string>
     <string name="select_local_save_path">Lokaler Speicherort</string>
     <string name="disabled">Deaktiviert</string>
+    <string name="txtWeight">G: %.1f</string>
+    <string name="txtTrend">T: %.1f</string>
+    <string name="txtVar">%+.1f</string>
+    <string name="enter_day">Tag %s eingeben:</string>
+    <string name="LocalizedDate">dd.MM.YYYY</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>

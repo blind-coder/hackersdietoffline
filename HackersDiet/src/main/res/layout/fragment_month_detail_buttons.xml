@@ -1,0 +1,1788 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/month_detail"
+    style="?android:attr/textAppearanceLarge"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:textIsSelectable="true"
+    tools:context="de.anderdonau.hackersdiet.MonthDetailFragment">
+
+    <LinearLayout
+        android:id="@id/monthDetailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="TooManyViews">
+
+        <TextView
+            android:id="@+id/textMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
+            android:text="xmonth 20xx"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/weightGraph"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row01"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="01"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight01"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend01"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar01"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment01"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row02"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="02"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight02"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend02"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar02"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment02"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row03"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="03"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight03"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend03"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar03"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment03"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row04"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay04"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="04"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight04"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend04"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar04"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment04"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row05"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay05"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="05"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight05"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend05"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar05"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment05"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row06"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="06"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight06"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend06"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar06"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment06"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row07"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay07"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="07"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight07"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend07"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar07"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment07"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row08"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay08"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="08"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight08"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend08"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar08"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment08"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row09"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay09"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="09"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight09"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend09"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar09"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment09"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row10"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="10"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight10"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend10"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar10"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment10"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row11"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="11"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight11"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend11"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar11"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment11"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row12"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="12"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight12"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend12"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar12"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment12"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row13"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="13"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight13"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend13"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar13"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment13"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row14"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="14"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight14"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend14"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar14"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment14"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row15"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="15"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight15"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend15"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar15"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment15"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row16"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="16"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight16"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend16"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar16"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment16"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row17"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="17"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight17"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend17"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar17"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment17"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row18"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="18"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight18"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend18"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar18"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment18"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row19"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay19"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="19"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight19"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend19"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar19"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment19"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row20"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="20"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight20"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend20"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar20"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment20"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row21"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay21"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="21"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight21"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend21"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar21"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment21"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row22"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay22"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="22"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight22"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend22"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar22"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment22"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row23"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay23"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="23"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight23"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend23"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar23"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment23"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row24"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay24"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="24"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight24"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend24"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar24"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment24"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row25"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay25"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="25"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight25"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend25"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar25"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment25"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row26"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay26"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="26"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight26"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend26"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar26"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment26"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row27"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay27"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="27"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight27"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend27"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar27"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment27"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row28"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay28"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="28"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight28"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend28"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar28"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment28"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row29"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay29"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="29"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight29"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend29"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar29"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment29"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row30"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay30"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="30"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight30"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend30"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar30"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment30"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+
+                </TableRow>
+                <TableRow>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/row31"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hdrDay31"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="31"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtWeight31"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:id="@+id/txtTrend31"
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtVar31"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:id="@+id/txtComment31"
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="31"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="31"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="31"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="31"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:text="31"
+                            android:textAppearance="@android:style/TextAppearance.Material.Large"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_87_6"/>
+
+                        <TextView
+                            android:gravity="start"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="@string/_0_2"/>
+
+                        <TextView
+                            android:gravity="end"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:text="..."/>
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

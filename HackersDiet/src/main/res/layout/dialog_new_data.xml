@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
         android:gravity="center_horizontal"
-        android:text="Enter new day:"
+        android:text="@string/enter_day"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -20,13 +20,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <DatePicker
-            android:id="@+id/dialogNewDataDatePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:calendarViewShown="false"
-            android:firstDayOfWeek="1" />
+<!--        <DatePicker-->
+<!--            android:id="@+id/dialogNewDataDatePicker"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:calendarViewShown="false"-->
+<!--            android:firstDayOfWeek="1" />-->
 
         <TableLayout
             android:layout_width="match_parent"
