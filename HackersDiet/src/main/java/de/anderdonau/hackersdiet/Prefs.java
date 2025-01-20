@@ -19,11 +19,13 @@ package de.anderdonau.hackersdiet;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
@@ -44,26 +46,26 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.ParcelFileDescriptor;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 public class Prefs extends Activity {
 	private static final int GET_SAVE_LOCATION = 984001;
+	private static final int GET_RESTORE_FILE = 984002;
 	ProgressDialog pBar = null;
 	Context mContext = this;
 
@@ -244,10 +246,38 @@ public class Prefs extends Activity {
 		startActivityForResult(intent, GET_SAVE_LOCATION);
 	}
 
+	public void buttonLoadLocation(final View view) {
+		if (!permissionGranted()){
+			requestPermission();
+		}
+		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+		intent.addCategory(Intent.CATEGORY_OPENABLE);
+		intent.setType("*/*");
+
+		if (intent.resolveActivity(getPackageManager()) != null) {
+			startActivityForResult(Intent.createChooser(intent, "Load Backup"), GET_RESTORE_FILE);
+//			startActivityForResult(intent, GET_RESTORE_FILE);
+		} else {
+			Log.d("Debug", "Unable to resolve Intent.ACTION_OPEN_DOCUMENT {}");
+		}
+	}
+
+	public static void triggerRebirth(Context context) {
+		PackageManager packageManager = context.getPackageManager();
+		Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+		ComponentName componentName = intent.getComponent();
+		Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+		// Required for API 34 and later
+		// Ref: https://developer.android.com/about/versions/14/behavior-changes-14#safer-intents
+		mainIntent.setPackage(context.getPackageName());
+		context.startActivity(mainIntent);
+		Runtime.getRuntime().exit(0);
+	}
+
 	@SuppressLint("WrongConstant")
 	public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
-		Button savePath = findViewById(R.id.buttonSaveButton);
 		if (requestCode == GET_SAVE_LOCATION && resultCode == Activity.RESULT_OK) {
+			Button savePath = findViewById(R.id.buttonSaveButton);
 			Uri uri = null;
 			if (resultData != null) {
 				uri = resultData.getData();
@@ -263,8 +293,34 @@ public class Prefs extends Activity {
 					return;
 				}
 			}
+			savePath.setText(R.string.disabled);
 		}
-		savePath.setText(R.string.disabled);
+		if (requestCode == GET_RESTORE_FILE && resultCode == Activity.RESULT_OK){
+			Uri uri = null;
+			if (resultData != null) {
+				uri = resultData.getData();
+				if (uri != null) {
+					try {
+						InputStream is = getContentResolver().openInputStream(uri);
+						InputStreamReader isr = new InputStreamReader(is);
+						BufferedReader br = new BufferedReader(isr);
+						FileOutputStream fos = openFileOutput("hackdietdata.csv", Context.MODE_PRIVATE);
+						String line;
+						while ((line = br.readLine()) != null){
+							fos.write((line+"\n").getBytes());
+						}
+						fos.close();
+						br.close();
+						isr.close();
+						is.close();
+						MonthListActivity.mWeightData.loadData();
+					} catch (IOException ignored) { }
+					finally {
+						triggerRebirth(getBaseContext());
+					}
+				}
+			}
+		}
 	}
 	private class HttpThread extends Thread {
 		public Handler mHandler;
@@ -389,6 +445,7 @@ public class Prefs extends Activity {
 						e.printStackTrace();
 					}
 					sendToast(R.string.downloadFromHDOSuccessful);
+					triggerRebirth(getBaseContext());
 				}
 			}
 

@@ -63,6 +63,7 @@
     <string name="_0_2">-0.2</string>
     <string name="enter_day">Enter day %s:</string>
     <string name="LocalizedDate">MMMM dd, yyyy</string>
+    <string name="restore_local_backup">Restore local backup</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>

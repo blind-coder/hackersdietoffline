@@ -84,6 +84,12 @@
             android:layout_height="wrap_content"
             android:onClick="buttonSaveLocation"
             android:text="/mnt/foo" />
+        <Button
+            android:id="@+id/buttonRestoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="buttonLoadLocation"
+            android:text="@string/restore_local_backup" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
