@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -78,43 +79,8 @@ public class weightData {
 	}
 
 	public void saveData(Context context) {
-		SaveThread t = new SaveThread(handler);
+		SaveThread t = new SaveThread(handler, context);
 		t.start();
-		saveDataToLocalStorage(context);
-	}
-
-	public void saveDataToLocalStorage(Context context) {
-		FileInputStream fin;
-		SharedPreferences settings = context.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
-		String savePath = settings.getString("savePath", context.getString(R.string.disabled));
-		if (savePath.equals(context.getString(R.string.disabled))){
-			return;
-		}
-		try {
-			Uri uri = Uri.parse(savePath);
-			DocumentFile saveDir = DocumentFile.fromTreeUri(context, uri);
-			DocumentFile saveFile;
-			if (saveDir.canWrite()) {
-				saveFile = saveDir.createFile("text/plain", "hackdiet.csv");
-			} else {
-				Toast.makeText(context, "Local directory not writable!", Toast.LENGTH_LONG).show();
-				return;
-			}
-			OutputStream outputStream = context.getContentResolver().openOutputStream(saveFile.getUri());
-			fin = mContext.openFileInput("hackdietdata.csv");
-			BufferedReader rd = new BufferedReader(new InputStreamReader(fin));
-			String line;
-			while ((line = rd.readLine()) != null) {
-				outputStream.write(line.getBytes());
-				outputStream.write("\n".getBytes());
-			}
-			rd.close();
-			fin.close();
-			outputStream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
 	}
 
 	public boolean isLeapYear(int year) {
@@ -332,9 +298,55 @@ public class weightData {
 		 */
 	private class SaveThread extends Thread {
 		Handler mHandler;
+		Context mContext;
 
-		SaveThread(Handler h) {
+		SaveThread(Handler h, Context c) {
 			mHandler = h;
+			mContext = c;
+		}
+		public void saveDataToLocalStorage(Context context) {
+			FileInputStream fin;
+			SharedPreferences settings = context.getSharedPreferences("de.anderdonau.hackdiet.prefs", 0);
+			String savePath = settings.getString("savePath", context.getString(R.string.disabled));
+			if (savePath.equals(context.getString(R.string.disabled))){
+				return;
+			}
+			try {
+				Uri uri = Uri.parse(savePath);
+				DocumentFile saveDir = DocumentFile.fromTreeUri(context, uri);
+				DocumentFile saveFile;
+				if (saveDir.canWrite()) {
+					for (DocumentFile d : saveDir.listFiles()){
+						if (d.getUri().getLastPathSegment().contains("hackdiet")) {
+							d.delete();
+						}
+					}
+					saveFile = saveDir.createFile("text/plain", "hackdiet.csv");
+				} else {
+					Toast.makeText(context, "Local directory not writable!", Toast.LENGTH_LONG).show();
+					return;
+				}
+				OutputStream outputStream;
+				try {
+					outputStream = context.getContentResolver().openOutputStream(saveFile.getUri());
+				} catch (NullPointerException e) {
+					e.printStackTrace();
+					return;
+				}
+				fin = mContext.openFileInput("hackdietdata.csv");
+				BufferedReader rd = new BufferedReader(new InputStreamReader(fin));
+				String line;
+				while ((line = rd.readLine()) != null) {
+					outputStream.write(line.getBytes());
+					outputStream.write("\n".getBytes());
+				}
+				rd.close();
+				fin.close();
+				outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return;
+			}
 		}
 
 		@Override
@@ -365,6 +377,7 @@ public class weightData {
 			b.putBoolean("finished", true);
 			b.putBoolean("error", false);
 			msg.setData(b);
+			saveDataToLocalStorage(mContext);
 			mHandler.sendMessage(msg);
 			//Log.d("SaveThread", "Done saving");
 		}
