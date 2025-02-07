@@ -317,7 +317,7 @@ public class weightData {
 				DocumentFile saveFile;
 				if (saveDir.canWrite()) {
 					for (DocumentFile d : saveDir.listFiles()){
-						if (d.getUri().getLastPathSegment().contains("hackdiet")) {
+						if (d.getUri().getLastPathSegment().contains("hackdiet.csv")) {
 							d.delete();
 						}
 					}
