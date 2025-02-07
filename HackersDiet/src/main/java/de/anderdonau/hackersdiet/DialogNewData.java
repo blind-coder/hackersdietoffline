@@ -54,7 +54,7 @@ public class DialogNewData extends Dialog
         rung = editRung.getText().toString();
       }
       this.weight.add(this.mYear, this.mMonth + 1, this.mDay,
-              Double.parseDouble(editWeight.getText().toString()),
+              Double.parseDouble(editWeight.getText().toString().replace(",", ".")),
               Integer.parseInt(rung), chkFlag.isChecked(),
               editComment.getText().toString());
       this.weight.saveData(getContext());
