@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,12 +50,29 @@ public class DialogNewData extends Dialog
       int i = strRung.length();
       String rung;
       if (i == 0) {
-        rung = "0";
+        strRung = editRung.getHint().toString();
+        if (strRung.isEmpty()) {
+          rung = "0";
+        } else {
+          rung = strRung;
+        }
       } else {
-        rung = editRung.getText().toString();
+        rung = strRung;
+      }
+      String strWeight = editWeight.getText().toString();
+      if (strWeight.isEmpty()){
+        strWeight = editWeight.getHint().toString();
+        if (strWeight.isEmpty()){
+          strWeight = "0";
+        }
+      }
+      double weight = Double.parseDouble(strWeight.replace(",", "."));
+      if (weight <= 0){
+        Toast.makeText(getContext(), R.string.toast_weight_must_be_positive, Toast.LENGTH_SHORT).show();
+        return;
       }
       this.weight.add(this.mYear, this.mMonth + 1, this.mDay,
-              Double.parseDouble(editWeight.getText().toString().replace(",", ".")),
+              weight,
               Integer.parseInt(rung), chkFlag.isChecked(),
               editComment.getText().toString());
       this.weight.saveData(getContext());
@@ -78,10 +96,12 @@ public class DialogNewData extends Dialog
     CheckBox chkFlag = findViewById(R.id.dNDCheckFlag);
     EditText editRung = findViewById(R.id.dNDEditRung);
 
-    editWeight.setText(String.format("%.2f", dataDay.getWeight()));
+    editWeight.setText("");
+    editWeight.setHint(String.format("%.2f", dataDay.getWeight()));
     editComment.setText(dataDay.comment);
     chkFlag.setChecked(dataDay.flag);
-    editRung.setText(String.format("%d", dataDay.rung));
+    editRung.setText("");
+    editRung.setHint(String.format("%d", dataDay.rung));
 
     SimpleDateFormat sdfDay = new SimpleDateFormat(c.getString(R.string.LocalizedDate));
     Calendar tmpDate = new GregorianCalendar(this.mYear, this.mMonth, this.mDay);

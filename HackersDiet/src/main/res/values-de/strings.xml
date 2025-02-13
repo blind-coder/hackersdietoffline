@@ -61,6 +61,7 @@
     <string name="enter_day">Tag %s eingeben:</string>
     <string name="LocalizedDate">dd.MM.YYYY</string>
     <string name="restore_local_backup">Lokales Backup wiederherstellen</string>
+    <string name="toast_weight_must_be_positive">Gewicht muss größer als 0 sein!</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>

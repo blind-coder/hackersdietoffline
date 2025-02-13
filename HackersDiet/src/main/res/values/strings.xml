@@ -59,11 +59,12 @@
     <string name="txtWeight">W: %.1f</string>
     <string name="txtTrend">T: %.1f</string>
     <string name="txtVar">%+.1f</string>
-    <string name="_87_6">87.6</string>
-    <string name="_0_2">-0.2</string>
+    <string name="_87_6" translatable="false">87.6</string>
+    <string name="_0_2" translatable="false">-0.2</string>
     <string name="enter_day">Enter day %s:</string>
     <string name="LocalizedDate">MMMM dd, yyyy</string>
     <string name="restore_local_backup">Restore local backup</string>
+    <string name="toast_weight_must_be_positive">Weight must be positive and greater than zero!</string>
 
     <color name="weightLoss">#00ff00</color>
     <color name="weightGain">#ff0000</color>
