@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="textUsername" type="id" />
-    <item name="textPassword" type="id" />
-    <item name="monthDetailLayout" type="id" />
-</resources>
